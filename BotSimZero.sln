@@ -1,0 +1,28 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
+MinimumVisualStudioVersion = 16.0.0.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotSimZero.Windows", "BotSimZero.Windows\BotSimZero.Windows.csproj", "{8455A14E-766F-41F1-867A-677CDB1C56AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotSimZero", "BotSimZero\BotSimZero.csproj", "{F01AD039-D1A5-4CE3-A27A-E832D16BD206}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8455A14E-766F-41F1-867A-677CDB1C56AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8455A14E-766F-41F1-867A-677CDB1C56AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8455A14E-766F-41F1-867A-677CDB1C56AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8455A14E-766F-41F1-867A-677CDB1C56AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F01AD039-D1A5-4CE3-A27A-E832D16BD206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F01AD039-D1A5-4CE3-A27A-E832D16BD206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F01AD039-D1A5-4CE3-A27A-E832D16BD206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F01AD039-D1A5-4CE3-A27A-E832D16BD206}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

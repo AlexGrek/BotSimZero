@@ -1,0 +1,176 @@
+!SceneAsset
+Id: 0d149c56-ecb8-42fe-b5ca-7008167ad4e4
+SerializedVersion: {Stride: 3.1.0.1}
+Tags: []
+ChildrenIds: []
+Offset: {X: 0.0, Y: 0.0, Z: 0.0}
+Hierarchy:
+    RootParts:
+        - ref!! dfe457cb-16a3-4a66-8739-c8a951197938
+        - ref!! 03386349-8b79-4ae7-bf72-0a6ae7231463
+        - ref!! 262bc47c-282c-42c6-8133-36e6d6ecbf57
+        - ref!! 232b5528-7b47-4936-9ace-50aca78bfeb0
+        - ref!! 5e7c6bd1-9f0c-49d6-9ebc-60ca216f96ea
+        - ref!! 469acee0-fbcf-4325-95b9-8e924fbf35e5
+        - ref!! ddf852e2-641c-4ec1-9fd6-601153a98f36
+        - ref!! fbd5896e-b303-4fb6-a65d-ccf8fe440569
+    Parts:
+        -   Entity:
+                Id: 03386349-8b79-4ae7-bf72-0a6ae7231463
+                Name: Skybox
+                Components:
+                    80cd940fee205c7b773c19decc3d4091: !TransformComponent
+                        Id: ceedc8be-9c2b-4730-8c2d-91fdb75f6393
+                        Position: {X: 0.0, Y: 2.0, Z: -2.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    f9756556f6b7de7a79eadaf71c7a2b55: !BackgroundComponent
+                        Id: 6e34e0fa-7936-4a23-8277-30c0f61d2245
+                        Texture: ba6c7902-0af0-4fbc-8507-ffce4508b5b4:Skybox texture
+        -   Entity:
+                Id: 232b5528-7b47-4936-9ace-50aca78bfeb0
+                Name: CellUiSystem
+                Components:
+                    a9a311198c2f7d8128bd29898d4c3d89: !TransformComponent
+                        Id: c4ace02e-5d2e-446e-bb24-e73610042896
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            f378351950dbb3fc1b3d4b1210c57128: ref!! 040dd57a-b8b1-4f48-9847-f64e01317de2
+        -   Entity:
+                Id: 262bc47c-282c-42c6-8133-36e6d6ecbf57
+                Name: WorldManager
+                Components:
+                    ab3a7fca3fa4111db99c5e0d54ae91fc: !TransformComponent
+                        Id: 6ce3a473-e298-40a5-a920-e5fdc85dfcb5
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    615485f9248dc8072a90b947b823745a: !BotSimZero.World.Terrain.TerrainRenderer,BotSimZero
+                        Id: 4fdf8831-67cb-4270-9820-95bef914f762
+                        Width: 20
+                        Height: 20
+                        WallChance: 0.2
+        -   Entity:
+                Id: 469acee0-fbcf-4325-95b9-8e924fbf35e5
+                Name: Cube
+                Components:
+                    51e4cd28113fb1a6dc56bdfe0cec2ee2: !TransformComponent
+                        Id: 9e8155eb-e305-4df3-9617-a713649f560a
+                        Position: {X: 0.7005043, Y: 1.3753567, Z: -0.50893927}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    fb073298fe408e294a531a8f8253da1e: !ModelComponent
+                        Id: 1c434bb5-8ec4-4d38-98bc-57df3412d797
+                        Model: 34bdcb4c-3ddf-42b2-b4d3-a45e7b0adbcb:Cube
+                        Materials: {}
+                    75fec67caf14f9e93f88f2f577f151ba: !StaticColliderComponent
+                        Id: 3bc1fad3-e810-48fe-9978-9ba3af56a779
+                        CollisionGroup: CustomFilter1
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        AlwaysUpdateNaviMeshCache: false
+                        ColliderShapes:
+                            871dddad912aa5337e3f9a34ea10844b: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 2.0, Y: 2.0, Z: 2.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Entity:
+                Id: 5e7c6bd1-9f0c-49d6-9ebc-60ca216f96ea
+                Name: MainWorldController
+                Components:
+                    32b067a7dbe23a4abe5c5a2155c54ef0: !TransformComponent
+                        Id: b1fd0900-dc48-4122-83b7-3daa9d515ad9
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    2c706eebd03c503a92f60eb8bb05edbe: !BotSimZero.World.MainWorldController,BotSimZero
+                        Id: 0c549880-b423-4c6f-b717-8cb86aa593c6
+        -   Folder: Studio
+            Entity:
+                Id: ddf852e2-641c-4ec1-9fd6-601153a98f36
+                Name: Ambient light
+                Components:
+                    2481af9b008c6af4b33137698c86f5e1: !TransformComponent
+                        Id: 79335b6a-98a2-4aba-addc-f1baed2329b5
+                        Position: {X: -2.0, Y: 2.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    22d8fabe2354dc0963fab26dfd192320: !LightComponent
+                        Id: a10bb418-18e5-414a-a8a3-ac3e6f22c307
+                        Type: !LightAmbient
+                            Color: !ColorRgbProvider
+                                Value: {R: 0.64705884, G: 0.7882353, B: 0.9411765}
+                        Intensity: 0.1
+        -   Entity:
+                Id: dfe457cb-16a3-4a66-8739-c8a951197938
+                Name: Camera
+                Components:
+                    f3222188b1d3a1f415f9e0e5f7acc33f: !TransformComponent
+                        Id: 6c4a7ee0-379a-4339-a167-a0feaef71a43
+                        Position: {X: 0.0, Y: 10.0, Z: 5.975412}
+                        Rotation: {X: -0.67559016, Y: 0.0, Z: 0.0, W: 0.7372773}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    cf9ad57de7c2738e359966fe628fa193: !CameraComponent
+                        Id: 5ba2dfe6-b0c3-4773-ad13-cd2dbe980642
+                        Name: null
+                        Projection: Perspective
+                        VerticalFieldOfView: 60.0
+                        Slot: 96aa70f4-f6ab-4550-930d-6b9caa97275e
+                    c6fbe6436839d7abb41a364e856a52d4: !BotSimZero.Camera.StrategyCameraController,BotSimZero
+                        Id: dda7b0fb-a1a5-47c8-b0d0-29d72069ff42
+                        MoveSpeed: 10.0
+                        ZoomSpeed: 0.5
+                        MinZoom: 0.5
+                        MaxZoom: 10.0
+                        CameraAngle: 40.0
+                        OrbitSpeed: 90.0
+        -   Entity:
+                Id: f8b4c922-48b9-443c-8035-abce3d07fb3b
+                Name: HighlighterSystem
+                Components:
+                    f39190470abeddcddd051072e9b7a9db: !TransformComponent
+                        Id: 040dd57a-b8b1-4f48-9847-f64e01317de2
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    a96da19cea8b511a6e3e45050c873f3d: !BotSimZero.World.UI.HighlighterSystem,BotSimZero
+                        Id: 78ce1750-5672-4f32-a05e-db14ff569f4e
+                        CellSize: 1.0
+                        HighlightGroundLevel: 0.5
+        -   Folder: Studio
+            Entity:
+                Id: fbd5896e-b303-4fb6-a65d-ccf8fe440569
+                Name: Directional light
+                Components:
+                    fbf63ba5919cd259e43effbea591dc7a: !TransformComponent
+                        Id: a305b872-583d-4b6c-9e8d-2d02cfd35bcc
+                        Position: {X: 0.0, Y: 12.131306, Z: 0.0}
+                        Rotation: {X: -0.57357645, Y: 0.0, Z: 0.0, W: 0.81915206}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    365c51f65704398d708a0d8a9bf3f6ba: !LightComponent
+                        Id: 577ded6d-946f-4819-9963-82e25a440cc5
+                        Type: !LightDirectional
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 1.0, B: 1.0}
+                            Shadow:
+                                Size: Large
+                                DepthRange: {}
+                                PartitionMode: !LightDirectionalShadowMap.PartitionLogarithmic {}
+                                ComputeTransmittance: false
+                                BiasParameters: {}
