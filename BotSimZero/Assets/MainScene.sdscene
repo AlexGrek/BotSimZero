@@ -68,6 +68,8 @@ Hierarchy:
                         Highlighter: null
                         PointingAtEntity: null
                         WorldState: null
+                        Sim: null
+                        DebugMessage: 
                     6d01ed45e461e9157790d0dcf023e790: !BotSimZero.World.MainWorldController,BotSimZero
                         Id: 15943265-cb2d-4e16-acd5-0cd9e2f49d52
                         SizeX: 64
@@ -75,6 +77,7 @@ Hierarchy:
                         HighlighterFadeSpeed: 1.0
                         HighlightPrefab: 88221620-3692-4edd-b5b8-115fe2d21f71:BlockSelection
                         VisibleWorldManagerPrefab: 5874d41a-d0dc-4257-b149-b2c64f083c09:VisibleWorldManager
+                        TimeShift: 1.0
         -   Folder: Studio
             Entity:
                 Id: ddf852e2-641c-4ec1-9fd6-601153a98f36
