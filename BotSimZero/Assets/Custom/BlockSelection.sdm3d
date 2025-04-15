@@ -1,0 +1,15 @@
+!Model
+Id: c3257d3d-466a-4c53-b617-31ff8274e7f0
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../Resources/Models/BlockSelection.fbx
+Skeleton: null
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+Materials:
+    f3849db90c741856ee31096913256578:
+        Name: Material
+        MaterialInstance:
+            Material: a12a9a93-8dfa-45da-942e-65566af714cc:Custom/Material
+Modifiers: {}
+~SourceHashes:
+    c2c4899550e51e8cdff29a0058160a29~../../Resources/Models/BlockSelection.fbx: 54dcbc77bd38e5cd17b20829065446ad

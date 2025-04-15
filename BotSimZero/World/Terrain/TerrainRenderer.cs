@@ -9,36 +9,38 @@ using System;
 using Stride.Extensions;
 using Stride.Physics;
 using SharpFont.PostScript;
+using SimuliEngine.World;
+using SimuliEngine.Tiles;
+using BotSimZero.Core;
 
 namespace BotSimZero.World.Terrain
 {
     
 
-    public class TerrainRenderer : SyncScript
+    public class TerrainRenderer : WorldAwareSyncScript
     {
-
-        public int Width = 20;
-        public int Height = 20;
         public float WallChance = 0.2f; // 20% chance for wall
         // Matrix you generated elsewhere
         private int[,] WorldMatrix;
 
         private void GenerateWorldMatrix()
         {
-            WorldMatrix = new int[Width, Height];
-            var rand = new Random();
+            WorldMatrix = new int[SizeX, SizeY];
+            //var rand = new Random();
 
-            for (int x = 0; x < Width; x++)
+            for (int x = 0; x < SizeX; x++)
             {
-                for (int y = 0; y < Height; y++)
+                for (int y = 0; y < SizeY; y++)
                 {
-                    WorldMatrix[x, y] = rand.NextDouble() < WallChance ? 1 : 0;
+                    //WorldState.TileTypeMap[x, y] = rand.NextDouble() < WallChance ? new TileType.Wall() : new TileType.Space(); // Initialize tile type
+                    WorldMatrix[x, y] = WorldState.TileTypeMap[x, y] is TileType.Wall ? 1 : 0;
                 }
             }
         }
 
         public override void Start()
         {
+            base.Start();
             GenerateWorldMatrix();
             GenerateTerrain(WorldMatrix);
         }

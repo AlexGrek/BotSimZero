@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
+using BotSimZero.Core;
 using BotSimZero.World.Terrain;
 using Stride.Core.Mathematics;
 using Stride.Engine;
@@ -19,19 +21,27 @@ namespace BotSimZero.World.UI
         public Color GlowColor { get; set; } = Color.Yellow;
         public float GlowIntensity { get; set; } = 5.0f;
         public float FadeSpeed { get; set; } = 2.0f;
+        public Prefab HighlightPrefab;
+
+        public float CellSize = 1;
+        public float HighlightGroundLevel = 1f;
 
         private Entity highlightEntity;
         private Vector3 targetPosition;
         private bool isHighlightActive = false;
-        EventReceiver<Vector3> highlightReceiver;
+        EventReceiver<CellComponent> highlightReceiver;
 
         // Create and initialize the highlight entity
         public override void Start()
         {
-            highlightReceiver = new EventReceiver<Vector3>(GlobalEvents.HighlightCellEventKey);
+            base.Start();
+            GlobalEvents.Initialize();
+            highlightReceiver = new EventReceiver<CellComponent>(GlobalEvents.HighlightCellEventKey);
 
             // Create the highlight entity
-            highlightEntity = CreateHighlightCube();
+            //highlightEntity = CreateHighlightCube();
+            var highlightEntityPrefab = HighlightPrefab; //Content.Load<Prefab>("BlockSelection");
+            highlightEntity = highlightEntityPrefab.Instantiate()[0];
             highlightEntity.Transform.Scale = Size;
             highlightEntity.Transform.Position = new Vector3(0, -10, 0); // Hide initially
 
@@ -43,15 +53,39 @@ namespace BotSimZero.World.UI
         {
             if (isHighlightActive)
             {
-                // Smoothly move to target position
-                highlightEntity.Transform.Position = Vector3.Lerp(
-                    highlightEntity.Transform.Position,
-                    targetPosition,
-                    (float)(FadeSpeed * Game.UpdateTime.Elapsed.TotalSeconds));
-            } else
+                // Calculate the direction and distance to the target
+                var direction = targetPosition - highlightEntity.Transform.Position;
+                var distance = direction.Length();
+
+                if (distance < 0.1f) // Use constant speed for the final part
+                {
+                    // Normalize the direction and move at a constant speed
+                    direction.Normalize();
+                    highlightEntity.Transform.Position += direction * (float)(FadeSpeed * Game.UpdateTime.Elapsed.TotalSeconds);
+
+                    // Stop the animation if close enough to the target
+                    if (distance < 0.01f)
+                    {
+                        highlightEntity.Transform.Position = targetPosition;
+                        isHighlightActive = false;
+                    }
+                }
+                else
+                {
+                    // Use Lerp for smooth movement
+                    highlightEntity.Transform.Position = Vector3.Lerp(
+                        highlightEntity.Transform.Position,
+                        targetPosition,
+                        (float)(FadeSpeed * 10 * Game.UpdateTime.Elapsed.TotalSeconds));
+                }
+            }
+            else
             {
                 TryHighlightCell();
             }
+
+
+
         }
 
         // Call this method when a cell is clicked
@@ -59,12 +93,28 @@ namespace BotSimZero.World.UI
         {
             targetPosition = position;
             isHighlightActive = true;
-            highlightEntity.Transform.Position = position;
+            //highlightEntity.Transform.Position = position;
+        }
+
+        public void HighlightCell(CellComponent cellComponent)
+        {
+            var gridPosX = cellComponent.Xlocation;
+            var gridPosY = cellComponent.Ylocation;
+
+            // Calculate world position of cell center
+            var worldPos = new Vector3(
+                gridPosX * CellSize,
+                HighlightGroundLevel,  // Keep at ground level
+                gridPosY * CellSize);
+
+            // Highlight the cell
+            HighlightCell(worldPos);
         }
 
         public void TryHighlightCell()
         {
-            if (highlightReceiver.TryReceive(out Vector3 data)) {
+            if (highlightReceiver.TryReceive(out CellComponent data))
+            {
                 HighlightCell(data);
             }
         }
@@ -89,7 +139,7 @@ namespace BotSimZero.World.UI
 
             // Create the volumetric gradient material
             var material = CreateVolumetricGradientMaterial();
-            modelComponent.Materials.Add(new (0, material));
+            modelComponent.Materials.Add(new(0, material));
 
             return entity;
         }
@@ -110,7 +160,7 @@ namespace BotSimZero.World.UI
                     {
                         Alpha = new ComputeFloat(0.8f),
                     }
-                    
+
                 }
             });
 

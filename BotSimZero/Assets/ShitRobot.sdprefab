@@ -1,0 +1,27 @@
+!PrefabAsset
+Id: 1f8227eb-1b2b-49f9-9806-7d914be41ba5
+SerializedVersion: {Stride: 3.1.0.1}
+Tags: []
+Hierarchy:
+    RootParts:
+        - ref!! 1aaedf5e-f6d2-4e49-95fb-9e4add23b250
+    Parts:
+        -   Entity:
+                Id: 1aaedf5e-f6d2-4e49-95fb-9e4add23b250
+                Name: ShitRobot
+                Components:
+                    dd0cb3fd73c89a2f10a6ff887be87d9e: !TransformComponent
+                        Id: 0da3e165-5965-4c96-a538-7513e4d20feb
+                        Position: {X: 0.0, Y: -0.96739537, Z: 1.5785704}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    55ed0a6f66c167f326634d4683abecd1: !ModelComponent
+                        Id: 108dc8de-25b9-4f0e-8067-652ab28f142c
+                        Model: 9c0da01f-c8b1-42f5-903d-1b247f6b3949:Models/ShitRobot
+                        Materials: {}
+                    1ca44f541dcabda67c3856493fd21f3f: !BotSimZero.Entities.BotComponent,BotSimZero
+                        Id: 719ce327-f092-46bc-bf5c-3d0c2c6709ea
+                        SpawnPosition:
+                            Item1: 12
+                            Item2: 7

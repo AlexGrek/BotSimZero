@@ -1,0 +1,23 @@
+!PrefabAsset
+Id: 88221620-3692-4edd-b5b8-115fe2d21f71
+SerializedVersion: {Stride: 3.1.0.1}
+Tags: []
+Hierarchy:
+    RootParts:
+        - ref!! f69b6a32-b8ef-4289-8f2a-2245f8f5c10e
+    Parts:
+        -   Entity:
+                Id: f69b6a32-b8ef-4289-8f2a-2245f8f5c10e
+                Name: BlockSelection
+                Components:
+                    09a47159663ddbbc87943fc598e1a692: !TransformComponent
+                        Id: 58b3e315-53d1-4a55-98ef-e2d6399c185a
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    4d72c1ff2e17a6f64c280717cf8743c5: !ModelComponent
+                        Id: ad26292d-635d-4080-b255-7bf9221bce5d
+                        Model: c3257d3d-466a-4c53-b617-31ff8274e7f0:Custom/BlockSelection
+                        IsShadowCaster: false
+                        Materials: {}

@@ -1,0 +1,28 @@
+!PrefabAsset
+Id: 5874d41a-d0dc-4257-b149-b2c64f083c09
+SerializedVersion: {Stride: 3.1.0.1}
+Tags: []
+Hierarchy:
+    RootParts:
+        - ref!! 02f5fb63-3332-40c8-a586-a08218fbfe25
+    Parts:
+        -   Entity:
+                Id: 02f5fb63-3332-40c8-a586-a08218fbfe25
+                Name: VisibleWorldManager
+                Components:
+                    ab3a7fca3fa4111db99c5e0d54ae91fc: !TransformComponent
+                        Id: 3563dcee-909b-4cbc-8e04-ec78871f1b03
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    615485f9248dc8072a90b947b823745a: !BotSimZero.World.Terrain.TerrainRenderer,BotSimZero
+                        Id: bbc91c09-d074-4310-998c-f63ab950352a
+                        SizeX: 64
+                        SizeY: 64
+                        WallChance: 0.2
+                    e08be45c618ef95bf393f0ac0803fc14: !BotSimZero.World.Terrain.InitialSpawnRenderer,BotSimZero
+                        Id: 9de37bba-8947-4793-9b65-1644c118dc1c
+                        SizeX: 64
+                        SizeY: 64
+                        BotPrefab: 1f8227eb-1b2b-49f9-9806-7d914be41ba5:ShitRobot

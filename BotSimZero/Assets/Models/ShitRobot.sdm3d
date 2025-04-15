@@ -1,0 +1,19 @@
+!Model
+Id: 9c0da01f-c8b1-42f5-903d-1b247f6b3949
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../../../../blender/gamedev/ShitRobot.fbx
+Skeleton: null
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+Materials:
+    6683d571a297396712e64efc2fee0d19:
+        Name: Material
+        MaterialInstance:
+            Material: 30d35185-d6b0-4f0a-a519-adafff07c6b1:Models/Material
+    b5d21479b142826c8d6646098cafecfd:
+        Name: Material.001
+        MaterialInstance:
+            Material: 3cbb50bd-bf05-47d7-a103-efacc1a8d10d:Models/Material.001
+Modifiers: {}
+~SourceHashes:
+    75610e9c80e94ef4eb065706e26d4521~../../../../../blender/gamedev/ShitRobot.fbx: cfbb5e12e97f3fefeba1ef0e35597c25
