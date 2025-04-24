@@ -1,0 +1,15 @@
+!Model
+Id: 219dd650-ba15-4d56-98f9-bd56c371fab6
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../../../../../blender/Severance/Floor.fbx
+Skeleton: null
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+Materials:
+    709db25031eb47d9da9a1939c15f6938:
+        Name: WhiteWall
+        MaterialInstance:
+            Material: 71bd77ee-1689-4d13-b4d8-08f65c7b1af0:EdemAssets/Walls/WhiteWall
+Modifiers: {}
+~SourceHashes:
+    40a893e3290571aeb65964c09c823643~../../../../../../blender/Severance/Floor.fbx: b0f796198156093ec49f6907eee1d42c

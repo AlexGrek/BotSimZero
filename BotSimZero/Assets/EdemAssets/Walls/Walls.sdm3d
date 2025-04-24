@@ -1,0 +1,27 @@
+!Model
+Id: 4d011150-7426-4829-8714-19c4f8a8a276
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../../../../../blender/Severance/Walls.fbx
+Skeleton: null
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+Materials:
+    323a430842c5a4e93e7947086537a0f4:
+        Name: WhiteWall
+        MaterialInstance:
+            Material: 71bd77ee-1689-4d13-b4d8-08f65c7b1af0:EdemAssets/Walls/WhiteWall
+    63072e60b795efad2c994b8eeca72627:
+        Name: Gaps
+        MaterialInstance:
+            Material: ba01732c-6f92-4cd8-a810-80241c06d8f4:EdemAssets/Walls/Gaps
+    a2386472f8abf062373f06bec35db7f5:
+        Name: BottomWall
+        MaterialInstance:
+            Material: 358516d2-d95b-4ec7-975c-b2c36efa9eff:EdemAssets/Walls/BottomWall
+    1a24303cd959281e19d922bf58ccd213:
+        Name: TopWall
+        MaterialInstance:
+            Material: 818c4fbb-e440-49d3-a04b-3dbc39dd952f:EdemAssets/Walls/TopWall
+Modifiers: {}
+~SourceHashes:
+    60903105142241b8368949a48e2e7825~../../../../../../blender/Severance/Walls.fbx: d882ab6c63bf5919c45c571f908a7f00

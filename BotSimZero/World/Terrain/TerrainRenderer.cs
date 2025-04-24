@@ -12,6 +12,7 @@ using SharpFont.PostScript;
 using SimuliEngine.World;
 using SimuliEngine.Tiles;
 using BotSimZero.Core;
+using SimuliEngine.Interop;
 
 namespace BotSimZero.World.Terrain
 {
@@ -28,12 +29,16 @@ namespace BotSimZero.World.Terrain
             WorldMatrix = new int[SizeX, SizeY];
             //var rand = new Random();
 
+            var dataSource = new CellDataStringProvider(WorldState);
+            GlobalGameContext.Instance.RegisterDataSource("Cells", dataSource);
+
             for (int x = 0; x < SizeX; x++)
             {
                 for (int y = 0; y < SizeY; y++)
                 {
                     //WorldState.TileTypeMap[x, y] = rand.NextDouble() < WallChance ? new TileType.Wall() : new TileType.Space(); // Initialize tile type
                     WorldMatrix[x, y] = WorldState.TileTypeMap[x, y] is TileType.Wall ? 1 : 0;
+                    
                 }
             }
         }
@@ -57,10 +62,57 @@ namespace BotSimZero.World.Terrain
                     var isWall = matrix[x, y] == 1;
 
                     float cubeHeight = isWall ? 2f : 0.2f;
-                    var cube = CreateCube(new Vector3(x, cubeHeight / 2f, y), cubeHeight, isWall);
-                    Entity.Scene.Entities.Add(cube);
+
+                    if (isWall)
+                    {
+                        CreateWall(x, y);
+                    }
+                    else
+                    {
+                        CreateFloor(x, y);
+                    }
+                    
                 }
             }
+        }
+
+        private void CreateWall(int x, int y)
+        {
+            var modelAssetName = @"EdemAssets/Walls/Walls";
+            var asset = Content.Load<Model>(modelAssetName);
+            var wallEntity = new Entity($"Wall_{x}_{y}", position: new Vector3(x, 0, y), scale: new Vector3(1, 1, 1));
+            var modelComponent = new ModelComponent
+            {
+                Model = asset
+            };
+            wallEntity.Add(modelComponent);
+            Entity.AddChild(wallEntity);
+        }
+
+        private void CreateFloor(int x, int y)
+        {
+            var modelAssetName = @"EdemAssets/Walls/Floor";
+            var asset = Content.Load<Model>(modelAssetName);
+            var cubeEntity = new Entity($"Cell_{x}_{y}", position: new Vector3(x, 0, y), scale: new Vector3(1, 1, 1));
+            var modelComponent = new ModelComponent
+            {
+                Model = asset
+            };
+            cubeEntity.Add(modelComponent);
+            var cell = new CellComponent { Xlocation = x, Ylocation = y };
+            cubeEntity.Add(cell);
+            var colliderShape = new BoxColliderShapeDesc
+            {
+                Size = new Vector3(1, 0, 1)
+            };
+            var collider = new StaticColliderComponent
+            {
+                CollisionGroup = CollisionFilterGroups.CustomFilter1, // Grid-specific group
+                ColliderShapes = { colliderShape },
+                IsTrigger = false
+            };
+            cubeEntity.Add(collider);
+            Entity.AddChild(cubeEntity);
         }
 
         private Entity CreateCube(Vector3 position, float height, bool isWall)
@@ -85,7 +137,7 @@ namespace BotSimZero.World.Terrain
                 cubeEntity.Add(cell);
                 var colliderShape = new BoxColliderShapeDesc
                 {
-                    Size = new Vector3(1, 1, 1)
+                    Size = new Vector3(1, height, 1)
                 };
                 var collider = new StaticColliderComponent
                 {
@@ -93,7 +145,7 @@ namespace BotSimZero.World.Terrain
                     ColliderShapes = { colliderShape },
                     IsTrigger = false
                 };
-                cubeEntity.Add(collider);
+                //cubeEntity.Add(collider);
             }
             return cubeEntity;
         }

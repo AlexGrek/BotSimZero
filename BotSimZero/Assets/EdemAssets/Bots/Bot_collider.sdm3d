@@ -1,0 +1,16 @@
+!Model
+Id: b74f3226-1d52-42c7-943c-772e6bdf2596
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../../../../../blender/Severance/Bot_collider.fbx
+Skeleton: null
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+Materials:
+    d6d6f5327c20ba6e074df56faea0d3ce:
+        Name: DefaultMaterial
+        MaterialInstance:
+            Material: null
+DeduplicateMaterials: false
+Modifiers: {}
+~SourceHashes:
+    352be51a0fd36a944702c276d7903401~../../../../../../blender/Severance/Bot_collider.fbx: 7602fedb0542a554bf6a6cb4aebe0bbf

@@ -1,0 +1,27 @@
+!Model
+Id: b20b70cf-5680-4278-9f0a-d1fd459bef35
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../../../../../blender/Severance/Terminal_high.fbx
+Skeleton: null
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+Materials:
+    bef75aa610427f6e3f800f2190b040ad:
+        Name: Material
+        MaterialInstance:
+            Material: c4bb1fce-3416-43e8-8e4d-ef765f3ae012:EdemAssets/OfficeStuff/Material
+    36f9ee482e0de3acc1420b3c53a139b6:
+        Name: BlackMetalFrame
+        MaterialInstance:
+            Material: 30a7d48b-df83-4cff-b933-5610aad13b93:EdemAssets/OfficeStuff/BlackMetalFrame
+    434e731838fedf468d60d378fc3ed5fa:
+        Name: SEAL
+        MaterialInstance:
+            Material: 5309e827-c79a-48ec-b274-72763c476fe7:EdemAssets/OfficeStuff/SEAL
+    f69f945a357a112ec05ac809aeb50009:
+        Name: Screen
+        MaterialInstance:
+            Material: 136b24f3-80f8-4d7e-b3fa-9c2de070dc18:EdemAssets/OfficeStuff/Screen
+Modifiers: {}
+~SourceHashes:
+    283bebf4a848d545c77ae60f1599aacd~../../../../../../blender/Severance/Terminal_high.fbx: e69dd83aca2bdf5da72bc726e4cb0175

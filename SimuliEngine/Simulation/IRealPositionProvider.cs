@@ -11,7 +11,7 @@ namespace SimuliEngine.Simulation
     {
         public void Move(float s, Vector2 direction);
         public Vector2 GetRelativePosition(Vector2 center);
-        public Vector2 GetNormalizedPosition();
-        public void SetNormalizedPosition(Vector2 pos);
+        public Vector2 GetWorldCoordinates();
+        public void SetWorldCoordinates(Vector2 pos);
     }
 }

@@ -1,0 +1,15 @@
+!Model
+Id: 56d6423c-ea92-445e-9c60-8a551b46da50
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../../../../../blender/Severance/Terminal_Screen.fbx
+Skeleton: null
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+Materials:
+    f5ac7ac10fde25c3b08abc5c57f9b938:
+        Name: Material
+        MaterialInstance:
+            Material: 006bccb2-7419-48dc-a349-26881b09a52d:EdemAssets/OfficeStuff/Material_2
+Modifiers: {}
+~SourceHashes:
+    31b2f3534d8e0f39a8ab7324fec2020c~../../../../../../blender/Severance/Terminal_Screen.fbx: b6a228cc92b3eb0f5d817b09fdb24825

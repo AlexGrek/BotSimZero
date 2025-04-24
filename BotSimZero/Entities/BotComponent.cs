@@ -1,11 +1,6 @@
 ﻿using BotSimZero.Core;
-using SimuliEngine.Simulation.Actor;
+using SimuliEngine.Simulation.ActorSystem;
 using Stride.Engine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BotSimZero.Entities
 {
@@ -25,7 +20,7 @@ namespace BotSimZero.Entities
         public void Initialize()
         {
             var controller = GlobalController.FindGlobalWorldController(this);
-            Actor = new StaticActor(controller.WorldState, new BotRealPositionProvider(Entity));
+            Actor = new MovingActor(controller.WorldState, new BotRealPositionProvider(Entity));
         }
     }
 }

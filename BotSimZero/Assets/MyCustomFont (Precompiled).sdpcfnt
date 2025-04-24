@@ -1,0 +1,588 @@
+!PregeneratedSpriteFont
+Id: 26cf6525-93e3-4467-ae20-3f5c29a9182b
+SerializedVersion: {Stride: 1.7.0-alpha01}
+Tags: []
+OriginalFont: ae863585-370d-44e6-b8e3-f37f41e35eb7:MyCustomFont
+FontDataFile: !file ../../BotSimZero.Windows/Resources/MyCustomFont (Precompiled).png
+BaseOffset: 16.363636
+DefaultLineSpacing: 20.0
+Glyphs:
+    a44036fb915ace15f22a2acaa8a4aa4d:
+        Character: 32
+        Subrect: {X: 43, Y: 65, Width: 1, Height: 1}
+        Offset: {X: -1.0, Y: -1.0}
+        XAdvance: 5.4545455
+        BitmapIndex: 0
+    9ebcd0c22ca39804eb5cdf0906d97aa8:
+        Character: 33
+        Subrect: {X: 15, Y: 65, Width: 3, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 2.7272727
+        BitmapIndex: 0
+    6f417b53e6caef9e6f4acb2c16fa4d0f:
+        Character: 34
+        Subrect: {X: 35, Y: 87, Width: 4, Height: 3}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 4.090909
+        BitmapIndex: 0
+    5f80f802c6cab908dad7f830c01c157c:
+        Character: 35
+        Subrect: {X: 93, Y: 18, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.181818
+        BitmapIndex: 0
+    f321f4501bec5a3349c537e271160c42:
+        Character: 36
+        Subrect: {X: 41, Y: 1, Width: 8, Height: 17}
+        Offset: {X: 0.0, Y: -15.0}
+        XAdvance: 8.181818
+        BitmapIndex: 0
+    3406b00fb68c2171adf2750027505709:
+        Character: 37
+        Subrect: {X: 104, Y: 1, Width: 15, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 15.454545
+        BitmapIndex: 0
+    fc1e24a8295957003d11506bd8bf65df:
+        Character: 38
+        Subrect: {X: 58, Y: 18, Width: 10, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 10.0
+        BitmapIndex: 0
+    295807447faaaef53f297bc57bdc6ada:
+        Character: 39
+        Subrect: {X: 46, Y: 58, Width: 3, Height: 3}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 2.2727273
+        BitmapIndex: 0
+    7d68c6080e3d61a77268e671e50d6e99:
+        Character: 40
+        Subrect: {X: 70, Y: 1, Width: 3, Height: 15}
+        Offset: {X: 0.0, Y: -14.0}
+        XAdvance: 3.6363637
+        BitmapIndex: 0
+    ec3e5ac6fc663711e6f99d5fdb67f767:
+        Character: 41
+        Subrect: {X: 75, Y: 1, Width: 3, Height: 15}
+        Offset: {X: 0.0, Y: -14.0}
+        XAdvance: 3.6363637
+        BitmapIndex: 0
+    25e0233182f80a79d726eb47bba16970:
+        Character: 42
+        Subrect: {X: 96, Y: 87, Width: 6, Height: 5}
+        Offset: {X: 1.0, Y: -13.0}
+        XAdvance: 8.181818
+        BitmapIndex: 0
+    314a210bb6a2dee311cc7ca3543a0a3d:
+        Character: 43
+        Subrect: {X: 17, Y: 80, Width: 7, Height: 5}
+        Offset: {X: 0.0, Y: -7.0}
+        XAdvance: 6.363636
+        BitmapIndex: 0
+    0714bd7295df252c0b762d7af6f055f5:
+        Character: 44
+        Subrect: {X: 121, Y: 87, Width: 3, Height: 3}
+        Offset: {X: 0.0, Y: -1.0}
+        XAdvance: 2.7272727
+        BitmapIndex: 0
+    60f22939a862011104ab6db9189b1da7:
+        Character: 45
+        Subrect: {X: 67, Y: 89, Width: 7, Height: 1}
+        Offset: {X: 0.0, Y: -5.0}
+        XAdvance: 6.363636
+        BitmapIndex: 0
+    ede76a3efd1c3ceceb046d1c8ed1a5c2:
+        Character: 46
+        Subrect: {X: 51, Y: 30, Width: 3, Height: 1}
+        Offset: {X: 0.0, Y: -1.0}
+        XAdvance: 2.7272727
+        BitmapIndex: 0
+    be3922eab2d1ce3928d9c528e9242208:
+        Character: 47
+        Subrect: {X: 17, Y: 1, Width: 10, Height: 17}
+        Offset: {X: 0.0, Y: -15.0}
+        XAdvance: 10.0
+        BitmapIndex: 0
+    3674d7321dd209992112e3faad31e356:
+        Character: 48
+        Subrect: {X: 1, Y: 20, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.181818
+        BitmapIndex: 0
+    e51ab0cfaa17f3a2cdeae986ee4879d0:
+        Character: 49
+        Subrect: {X: 91, Y: 63, Width: 5, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 5.0
+        BitmapIndex: 0
+    1b1c2648ed880ab28c540ca93156edfa:
+        Character: 50
+        Subrect: {X: 11, Y: 20, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.181818
+        BitmapIndex: 0
+    064aca569b520284bd1d62d52540a8c5:
+        Character: 51
+        Subrect: {X: 91, Y: 48, Width: 7, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 7.2727275
+        BitmapIndex: 0
+    f636663d0cb09df92cc6111fdd496afc:
+        Character: 52
+        Subrect: {X: 21, Y: 20, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.181818
+        BitmapIndex: 0
+    91697fe164f53383304e043f785af848:
+        Character: 53
+        Subrect: {X: 1, Y: 50, Width: 7, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 7.2727275
+        BitmapIndex: 0
+    d4f23da7aad5e6a6b02af6ac6bc7ab7a:
+        Character: 54
+        Subrect: {X: 31, Y: 20, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.181818
+        BitmapIndex: 0
+    95a038b1ef6b3cc9e0e8c881d4af126f:
+        Character: 55
+        Subrect: {X: 41, Y: 20, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 7.4545455
+        BitmapIndex: 0
+    e1ec658ebdc1ba0608dfe651fc3b735a:
+        Character: 56
+        Subrect: {X: 103, Y: 31, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.181818
+        BitmapIndex: 0
+    6b2505ebecab97f6b405e01d7edf687c:
+        Character: 57
+        Subrect: {X: 113, Y: 31, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.181818
+        BitmapIndex: 0
+    425536baa41feeb86446f8d62f313a63:
+        Character: 58
+        Subrect: {X: 46, Y: 50, Width: 3, Height: 6}
+        Offset: {X: 0.0, Y: -6.0}
+        XAdvance: 2.7272727
+        BitmapIndex: 0
+    799e7b9556c28d295630688e599a97c1:
+        Character: 59
+        Subrect: {X: 51, Y: 20, Width: 3, Height: 8}
+        Offset: {X: 0.0, Y: -6.0}
+        XAdvance: 2.7272727
+        BitmapIndex: 0
+    e5303606cd0726d206b0313e1d8c0d71:
+        Character: 60
+        Subrect: {X: 17, Y: 87, Width: 7, Height: 5}
+        Offset: {X: 0.0, Y: -7.0}
+        XAdvance: 7.2727275
+        BitmapIndex: 0
+    4e0b25bb3c1a8c6b9c723bb5aa130494:
+        Character: 61
+        Subrect: {X: 104, Y: 87, Width: 7, Height: 3}
+        Offset: {X: 0.0, Y: -6.0}
+        XAdvance: 6.363636
+        BitmapIndex: 0
+    0c56ab306218f32f60759780a58c67ff:
+        Character: 62
+        Subrect: {X: 26, Y: 87, Width: 7, Height: 5}
+        Offset: {X: 0.0, Y: -7.0}
+        XAdvance: 7.2727275
+        BitmapIndex: 0
+    6da8b3200bb4bb9bc2dfd346a0730527:
+        Character: 63
+        Subrect: {X: 10, Y: 50, Width: 7, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 7.2727275
+        BitmapIndex: 0
+    e7f86d38d55aff82178a0a3883ce5bde:
+        Character: 64
+        Subrect: {X: 1, Y: 1, Width: 14, Height: 17}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 14.545455
+        BitmapIndex: 0
+    de8c5c593cb3b78cf9748750424e1a27:
+        Character: 65
+        Subrect: {X: 51, Y: 33, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.181818
+        BitmapIndex: 0
+    58e40579bfe10c38ac9d875a2091f81c:
+        Character: 66
+        Subrect: {X: 61, Y: 33, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 7.909091
+        BitmapIndex: 0
+    5d52076fa75d2a724ff21d3dac0e3b47:
+        Character: 67
+        Subrect: {X: 19, Y: 50, Width: 7, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 6.909091
+        BitmapIndex: 0
+    048201f28eb487922b076a07f2b1290b:
+        Character: 68
+        Subrect: {X: 71, Y: 33, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.090909
+        BitmapIndex: 0
+    2365db709bc4bb5ff6da9886647c5b32:
+        Character: 69
+        Subrect: {X: 28, Y: 50, Width: 7, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 7.090909
+        BitmapIndex: 0
+    b7eb95a5d29c8e2c38160c8a50be40d0:
+        Character: 70
+        Subrect: {X: 37, Y: 50, Width: 7, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 7.090909
+        BitmapIndex: 0
+    7c9f2faa7b943258229b5c4ac0c6b55b:
+        Character: 71
+        Subrect: {X: 81, Y: 33, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.090909
+        BitmapIndex: 0
+    daf1330c7856c0ade63704f10d054827:
+        Character: 72
+        Subrect: {X: 91, Y: 33, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.181818
+        BitmapIndex: 0
+    ccd83952c4f869f48069b73a4bb29c03:
+        Character: 73
+        Subrect: {X: 20, Y: 65, Width: 3, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 2.7272727
+        BitmapIndex: 0
+    9e894d3d1ac52e254c930c408692324e:
+        Character: 74
+        Subrect: {X: 121, Y: 1, Width: 6, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 5.8181815
+        BitmapIndex: 0
+    05a0543f70a76dbb30338d2207317cd2:
+        Character: 75
+        Subrect: {X: 1, Y: 35, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.0
+        BitmapIndex: 0
+    60c532ddb5bf06d49dd2353f4a19603f:
+        Character: 76
+        Subrect: {X: 121, Y: 46, Width: 6, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 5.9090905
+        BitmapIndex: 0
+    9c2c02736827f10cfa1b220ad6a321ac:
+        Character: 77
+        Subrect: {X: 70, Y: 18, Width: 10, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 10.0
+        BitmapIndex: 0
+    84cdf46729ec066fe8279a91ba4a0ce7:
+        Character: 78
+        Subrect: {X: 11, Y: 35, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.181818
+        BitmapIndex: 0
+    4ce320bc61d974cf4dd4c693ad1678ab:
+        Character: 79
+        Subrect: {X: 21, Y: 35, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.0
+        BitmapIndex: 0
+    cd1c8f4548a63b6378615883b0b02cf4:
+        Character: 80
+        Subrect: {X: 31, Y: 35, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 7.909091
+        BitmapIndex: 0
+    40b1ff891a238df59bf4293e394a3020:
+        Character: 81
+        Subrect: {X: 118, Y: 16, Width: 9, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.090909
+        BitmapIndex: 0
+    5ef7bef86fd8b0f21f47d03c3cc21ba3:
+        Character: 82
+        Subrect: {X: 41, Y: 35, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.0
+        BitmapIndex: 0
+    11735d87d9d27e9ade680afb57c36ff4:
+        Character: 83
+        Subrect: {X: 101, Y: 46, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 7.7272725
+        BitmapIndex: 0
+    95eafeb357010106eda17c1dce436461:
+        Character: 84
+        Subrect: {X: 111, Y: 46, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 7.6363635
+        BitmapIndex: 0
+    29e9536cc3aa8b979ced518f13a70422:
+        Character: 85
+        Subrect: {X: 51, Y: 48, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.181818
+        BitmapIndex: 0
+    fa02658a9551e4565153caf0f4f08bd1:
+        Character: 86
+        Subrect: {X: 61, Y: 48, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.181818
+        BitmapIndex: 0
+    633991ab9a64c0bde9ec846647bbf0b9:
+        Character: 87
+        Subrect: {X: 104, Y: 16, Width: 12, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 12.0
+        BitmapIndex: 0
+    4f5e19fcf36ee43340e414ced01801c6:
+        Character: 88
+        Subrect: {X: 82, Y: 18, Width: 9, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.727273
+        BitmapIndex: 0
+    f05b7421f641042471021b3c26102d05:
+        Character: 89
+        Subrect: {X: 71, Y: 48, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 8.181818
+        BitmapIndex: 0
+    3d7f4cb4be4f8940b2ecdaa60444d6d7:
+        Character: 90
+        Subrect: {X: 81, Y: 48, Width: 8, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 7.6363635
+        BitmapIndex: 0
+    b407562bd11af8096ecd01624fdc5bd1:
+        Character: 91
+        Subrect: {X: 80, Y: 1, Width: 3, Height: 15}
+        Offset: {X: 0.0, Y: -14.0}
+        XAdvance: 3.6363637
+        BitmapIndex: 0
+    a4c3cef3cdb3fd4b4813f5d80ae34bc6:
+        Character: 92
+        Subrect: {X: 29, Y: 1, Width: 10, Height: 17}
+        Offset: {X: 0.0, Y: -15.0}
+        XAdvance: 10.0
+        BitmapIndex: 0
+    2e086f7109b9b1f50c9393e7a140e04a:
+        Character: 93
+        Subrect: {X: 85, Y: 1, Width: 3, Height: 15}
+        Offset: {X: 0.0, Y: -14.0}
+        XAdvance: 3.6363637
+        BitmapIndex: 0
+    671dc6fdbe224b10385e9301dd8f4cdb:
+        Character: 94
+        Subrect: {X: 113, Y: 87, Width: 6, Height: 3}
+        Offset: {X: 0.0, Y: -15.0}
+        XAdvance: 5.4545455
+        BitmapIndex: 0
+    a5efe7a952d031f1af0836d436c84fea:
+        Character: 95
+        Subrect: {X: 46, Y: 89, Width: 9, Height: 1}
+        Offset: {X: -1.0, Y: 1.0}
+        XAdvance: 7.2727275
+        BitmapIndex: 0
+    816dbf61fc6309cc607c0bd8e9d812e5:
+        Character: 96
+        Subrect: {X: 41, Y: 89, Width: 3, Height: 2}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 2.7272727
+        BitmapIndex: 0
+    7c2a68488ba46eb80944506deb54c523:
+        Character: 97
+        Subrect: {X: 98, Y: 76, Width: 8, Height: 9}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 7.4545455
+        BitmapIndex: 0
+    e63e33cf324df5130b376519ea6450f1:
+        Character: 98
+        Subrect: {X: 100, Y: 61, Width: 7, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 7.181818
+        BitmapIndex: 0
+    b91b1b280ea5b373c9bdff487ddd9933:
+        Character: 99
+        Subrect: {X: 1, Y: 80, Width: 6, Height: 9}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 6.090909
+        BitmapIndex: 0
+    a10a516e9eac35b72f565f7ea2e57f58:
+        Character: 100
+        Subrect: {X: 109, Y: 61, Width: 7, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 7.181818
+        BitmapIndex: 0
+    608eecf5243a1358e256ef6309ae8b86:
+        Character: 101
+        Subrect: {X: 108, Y: 76, Width: 7, Height: 9}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 7.090909
+        BitmapIndex: 0
+    723b6fe12a76208eef9632ab57530b9d:
+        Character: 102
+        Subrect: {X: 1, Y: 65, Width: 5, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 4.5454545
+        BitmapIndex: 0
+    849a3a77c70b3edde4c0c357fb917cea:
+        Character: 103
+        Subrect: {X: 118, Y: 61, Width: 7, Height: 13}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 7.181818
+        BitmapIndex: 0
+    65ab6c30af56b72dd59cdc506aecbcee:
+        Character: 104
+        Subrect: {X: 46, Y: 63, Width: 7, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 7.2727275
+        BitmapIndex: 0
+    4cc930841fe4b3b37945809cec00d683:
+        Character: 105
+        Subrect: {X: 25, Y: 65, Width: 3, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 2.7272727
+        BitmapIndex: 0
+    de324b62451739d2ddbaa423050a9a2d:
+        Character: 106
+        Subrect: {X: 51, Y: 1, Width: 5, Height: 17}
+        Offset: {X: -2.0, Y: -13.0}
+        XAdvance: 2.7272727
+        BitmapIndex: 0
+    534ea8ee15d78994b9f4d60027b5aaf9:
+        Character: 107
+        Subrect: {X: 55, Y: 63, Width: 7, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 7.0
+        BitmapIndex: 0
+    edd0da091ecd397bcd746420b52159c0:
+        Character: 108
+        Subrect: {X: 123, Y: 31, Width: 4, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 4.0
+        BitmapIndex: 0
+    915f288c11ebb5b68a11c377d050b8b1:
+        Character: 109
+        Subrect: {X: 30, Y: 76, Width: 10, Height: 9}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 10.0
+        BitmapIndex: 0
+    c944f4f34f319161c5dff134593d67a8:
+        Character: 110
+        Subrect: {X: 117, Y: 76, Width: 7, Height: 9}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 7.2727275
+        BitmapIndex: 0
+    255a277afee98e82429c7a1a7dc5fee2:
+        Character: 111
+        Subrect: {X: 42, Y: 78, Width: 7, Height: 9}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 7.090909
+        BitmapIndex: 0
+    14ae4e61b060b669c756b96e7464cec0:
+        Character: 112
+        Subrect: {X: 64, Y: 63, Width: 7, Height: 13}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 7.181818
+        BitmapIndex: 0
+    dc7ec40f1d5790699c0bbf09d4e3b40f:
+        Character: 113
+        Subrect: {X: 73, Y: 63, Width: 7, Height: 13}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 7.181818
+        BitmapIndex: 0
+    40d9d44c63201aff83040e7b703f265a:
+        Character: 114
+        Subrect: {X: 9, Y: 80, Width: 6, Height: 9}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 5.9090905
+        BitmapIndex: 0
+    a51538de7ebe9bfdd459adb4337beacd:
+        Character: 115
+        Subrect: {X: 51, Y: 78, Width: 7, Height: 9}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 6.818182
+        BitmapIndex: 0
+    e7ac0f031573e91cc2c11b7fdd33d697:
+        Character: 116
+        Subrect: {X: 8, Y: 65, Width: 5, Height: 13}
+        Offset: {X: 0.0, Y: -13.0}
+        XAdvance: 4.5454545
+        BitmapIndex: 0
+    ee3b5eea57af90a0a38c30e443c7ec68:
+        Character: 117
+        Subrect: {X: 60, Y: 78, Width: 7, Height: 9}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 7.2727275
+        BitmapIndex: 0
+    18552aeaf7dc6ee94e92ef8188bf6d00:
+        Character: 118
+        Subrect: {X: 69, Y: 78, Width: 7, Height: 9}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 6.727273
+        BitmapIndex: 0
+    0c6b59dfc4eb3bcf1541faf2296ad282:
+        Character: 119
+        Subrect: {X: 30, Y: 65, Width: 11, Height: 9}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 10.545454
+        BitmapIndex: 0
+    f127d5aa3816c35faf67fb80f6f595be:
+        Character: 120
+        Subrect: {X: 78, Y: 78, Width: 7, Height: 9}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 6.909091
+        BitmapIndex: 0
+    a35bcb9a35adf0148abce0a0e77b3f9d:
+        Character: 121
+        Subrect: {X: 82, Y: 63, Width: 7, Height: 13}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 6.818182
+        BitmapIndex: 0
+    6d98d645b217b74cf7c3d5d3be9b5965:
+        Character: 122
+        Subrect: {X: 87, Y: 78, Width: 7, Height: 9}
+        Offset: {X: 0.0, Y: -9.0}
+        XAdvance: 6.909091
+        BitmapIndex: 0
+    51dba52a2a754e3202e62e2c3ff7cdcd:
+        Character: 123
+        Subrect: {X: 58, Y: 1, Width: 4, Height: 15}
+        Offset: {X: 0.0, Y: -14.0}
+        XAdvance: 4.5454545
+        BitmapIndex: 0
+    7be4a66f257541eec2e0bb6b942631bf:
+        Character: 124
+        Subrect: {X: 90, Y: 1, Width: 3, Height: 15}
+        Offset: {X: 0.0, Y: -14.0}
+        XAdvance: 2.7272727
+        BitmapIndex: 0
+    7bd9228daa32568ee58ada337fcdc7f7:
+        Character: 125
+        Subrect: {X: 64, Y: 1, Width: 4, Height: 15}
+        Offset: {X: 0.0, Y: -14.0}
+        XAdvance: 4.5454545
+        BitmapIndex: 0
+    0d89be211fb898c23acc4d5f11249b0d:
+        Character: 126
+        Subrect: {X: 57, Y: 89, Width: 8, Height: 1}
+        Offset: {X: 0.0, Y: -5.0}
+        XAdvance: 8.181818
+        BitmapIndex: 0
+    09cb0034745bd96ebad3ba95e79c20de:
+        Character: 127
+        Subrect: {X: 95, Y: 1, Width: 7, Height: 14}
+        Offset: {X: 0.0, Y: -14.0}
+        XAdvance: 7.309091
+        BitmapIndex: 0
+Kernings: {}
+FontName: OpenGostTypeA-Regular
+Size: 20.0

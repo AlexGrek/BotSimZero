@@ -1,5 +1,6 @@
 ﻿using SimuliEngine.Basic;
 using SimuliEngine.Simulation.ActorSystem;
+using SimuliEngine.World;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -16,6 +17,7 @@ namespace SimuliEngine.Simulation.Obstacles
         private (int, int) size;
 
         private float _cellSize;
+        private float _halfCellSize;
         public int SubdivisionCount { get; private set; }
         public HyperMap<SubdivisionCell<IObstacle>> Map { get; private set; }
 
@@ -31,6 +33,7 @@ namespace SimuliEngine.Simulation.Obstacles
             Map.PreInit(size);
             Map.Fill(() => new SubdivisionCell<IObstacle>(subdivisions));
             _cellSize = cellSize;
+            _halfCellSize = _cellSize / 2;
         }
 
         public ObstacleTracker((int, int) size, int subdivisions, int hypercellChunkSize)
@@ -38,12 +41,20 @@ namespace SimuliEngine.Simulation.Obstacles
         {
         }
 
-        public bool CheckMoveHitObstacle(Actor obj, Vector2 newPosition)
+        public IObstacle? CheckMoveHitObstacle(Actor obj, Vector2 newPosition)
         {
+            if (HitPlayzoneBounds(newPosition))
+            {
+                return new PlayzoneBoundaryObstacle(); // Hit the playzone bounds
+            }
             var pos = newPosition;
             HashSet<(int x, int y)> touchedCells = GetTouchedCells(obj, pos, out var bounds);
             foreach (var cellPos in touchedCells)
             {
+                if (HitPlayzoneBounds(cellPos))
+                {
+                    continue; // Skip if out of bounds
+                }
                 SubdivisionCell<IObstacle> cell = Map[cellPos.x, cellPos.y];
                 if (cell.IsSubdivided)
                 {
@@ -54,13 +65,127 @@ namespace SimuliEngine.Simulation.Obstacles
                         var obstacle = cell[subcell.x, subcell.y];
                         if (obstacle != null && obstacle != obj)
                         {
-                            return true; // Hit an obstacle
+                            return obstacle; // Hit an obstacle
                         }
                     }
                 }
             }
+            return null; // No hit detected
+        }
+
+        public bool CheckMoveTouchesImpassableCell(Actor obj, WorldState state, Vector2 newPosition)
+        {
+            HashSet<(int x, int y)> touchedCells = GetTouchedCells(obj, newPosition, out var bounds);
+            return CheckMoveTouchesImpassableCell(obj, state, newPosition, touchedCells);
+        }
+
+        public bool CheckMoveTouchesImpassableCell(Actor obj, WorldState state, Vector2 newPosition, HashSet<(int x, int y)> touchedCells)
+        {
+            foreach (var cell in touchedCells)
+            {
+                if (!HitPlayzoneBounds(cell))
+                {
+                    var passable = obj.IsPassable(state, cell);
+                    if (!passable)
+                    {
+                        return true; // Hit an impassable cell
+                    }
+                } 
+                else
+                {
+                    return true; // Hit the playzone bounds
+                }
+            }
             return false; // No hit detected
         }
+
+        public IObstacle? CheckMove(Actor obj, WorldState state, Vector2 newPosition)
+        {
+            HashSet<(int x, int y)> touchedCells = GetTouchedCells(obj, newPosition, out var bounds);
+            var obst = CheckMoveHitObstacleOrBounds(obj, newPosition, touchedCells, bounds);
+            if (obst != null)
+            {
+                return obst; // Hit an obstacle
+            }
+            var wallHit = CheckMoveTouchesImpassableCell(obj, state, newPosition, touchedCells);
+            if (wallHit)
+            {
+                return new WallObstacle((0, 0)); // Hit the wall, I don't care where
+            }
+            return null; // No hit detected
+        }
+
+
+        public IObstacle? CheckMoveHitObstacleOrBounds(Actor obj, Vector2 newPosition)
+        {
+            HashSet<(int x, int y)> touchedCells = GetTouchedCells(obj, newPosition, out var bounds);
+            return this.CheckMoveHitObstacleOrBounds(obj, newPosition, touchedCells, bounds);
+        }
+
+        public IObstacle? CheckMoveHitObstacleOrBounds(Actor obj, Vector2 newPosition, HashSet<(int x, int y)> touchedCells, (float minX, float minY, float maxX, float maxY) bounds)
+        {
+            if (HitPlayzoneBounds(newPosition))
+            {
+                return new PlayzoneBoundaryObstacle(); // Hit the playzone bounds
+            }
+            var pos = newPosition;
+            
+            foreach (var cellPos in touchedCells)
+            {
+                if (HitPlayzoneBounds(cellPos))
+                {
+                    return new PlayzoneBoundaryObstacle(); // Hit the playzone bounds
+                }
+                SubdivisionCell<IObstacle> cell = Map[cellPos.x, cellPos.y];
+                if (cell.IsSubdivided)
+                {
+                    // Check if the object is touching any subcells in this cell
+                    var touchedSubcells = GetTouchedSubcells(obj, cellPos, bounds);
+                    foreach (var subcell in touchedSubcells)
+                    {
+                        var obstacle = cell[subcell.x, subcell.y];
+                        if (obstacle != null && obstacle != obj)
+                        {
+                            return obstacle; // Hit an obstacle
+                        }
+                    }
+                }
+            }
+            return null; // No hit detected
+        }
+
+        private bool HitPlayzoneBounds(Vector2 newPosition)
+        {
+            // Extract the playzone dimensions
+            int playzoneWidth = size.Item1;
+            int playzoneHeight = size.Item2;
+
+            // Check if the position is outside the playzone bounds
+            if (newPosition.X < 0 || newPosition.X >= playzoneWidth ||
+                newPosition.Y < 0 || newPosition.Y >= playzoneHeight)
+            {
+                return true; // Position is out of bounds
+            }
+
+            return false; // Position is within bounds
+        }
+
+        private bool HitPlayzoneBounds((int X, int Y) newPosition)
+        {
+            // Extract the playzone dimensions
+            int playzoneWidth = size.Item1;
+            int playzoneHeight = size.Item2;
+
+            // Check if the position is outside the playzone bounds
+            if (newPosition.X < 0 || newPosition.X >= playzoneWidth ||
+                newPosition.Y < 0 || newPosition.Y >= playzoneHeight)
+            {
+                return true; // Position is out of bounds
+            }
+
+            return false; // Position is within bounds
+        }
+
 
         public void ConfirmMove(Actor obj)
         {
@@ -69,9 +194,14 @@ namespace SimuliEngine.Simulation.Obstacles
 
             // Update the actor's main position
             var pos = obj.GetNormalizedPosition();
-
+            var prevCenterCell = obj.MainPosition;
             var centerCell = GetCenterCell(pos);
-            obj.MainPosition = centerCell;
+            if (centerCell != prevCenterCell)
+            {
+                // If the center cell has changed, update it
+                obj.MainPosition = centerCell;
+                obj.SetCenterPositionChanged(prevCenterCell);
+            }
             ClearActorSubcells(obj);
             UpdateActorSubcells(obj, pos);
         }
@@ -79,7 +209,7 @@ namespace SimuliEngine.Simulation.Obstacles
         // Calculate and return the center cell for an actor at a given position
         public (int x, int y) GetCenterCell(Vector2 position)
         {
-            return ((int)Math.Floor(position.X), (int)Math.Floor(position.Y));
+            return ((int)Math.Round(position.X / _cellSize), (int)Math.Round(position.Y / _cellSize));
         }
 
         // Remove actor from all subcells it currently occupies using cached subcell information
@@ -128,6 +258,10 @@ namespace SimuliEngine.Simulation.Obstacles
 
             foreach (var cellPos in touchedCells)
             {
+                if (HitPlayzoneBounds(cellPos))
+                {
+                    continue; // Skip if out of bounds
+                }
                 SubdivisionCell<IObstacle> cell = Map[cellPos.x, cellPos.y];
 
                 // Calculate which subcells are touched in this cell
@@ -157,10 +291,10 @@ namespace SimuliEngine.Simulation.Obstacles
             bounds = (minX, minY, maxX, maxY);
 
             // Convert to cell coordinates and add all cells
-            int startCellX = (int)Math.Floor(minX);
-            int endCellX = (int)Math.Floor(maxX);
-            int startCellY = (int)Math.Floor(minY);
-            int endCellY = (int)Math.Floor(maxY);
+            int startCellX = (int)Math.Round(minX / _cellSize);
+            int endCellX = (int)Math.Round(maxX / _cellSize);
+            int startCellY = (int)Math.Round(minY / _cellSize);
+            int endCellY = (int)Math.Round(maxY / _cellSize);
 
             for (int x = startCellX; x <= endCellX; x++)
             {
@@ -181,20 +315,21 @@ namespace SimuliEngine.Simulation.Obstacles
             // Convert to subcell coordinates within this cell
             float subCellSize = _cellSize / SubdivisionCount;
 
-            float cellMinX = cellPos.x;
-            float cellMinY = cellPos.y;
+            // Adjust cell position to align with the new center-based coordinate system
+            float cellCenterX = cellPos.x * _cellSize;
+            float cellCenterY = cellPos.y * _cellSize;
 
             // Calculate subcell range that the object touches
-            int startSubX = Math.Max(0, (int)Math.Floor((bounds.minX - cellMinX) / subCellSize));
-            int endSubX = Math.Min(SubdivisionCount - 1, (int)Math.Floor((bounds.maxX - cellMinX) / subCellSize));
-            int startSubY = Math.Max(0, (int)Math.Floor((bounds.minY - cellMinY) / subCellSize));
-            int endSubY = Math.Min(SubdivisionCount - 1, (int)Math.Floor((bounds.maxY - cellMinY) / subCellSize));
+            int startSubX = Math.Max(0, (int)Math.Round((bounds.minX - (cellCenterX - _halfCellSize)) / subCellSize));
+            int endSubX = Math.Min(SubdivisionCount - 1, (int)Math.Round((bounds.maxX - (cellCenterX - _halfCellSize)) / subCellSize));
+            int startSubY = Math.Max(0, (int)Math.Round((bounds.minY - (cellCenterY - _halfCellSize)) / subCellSize));
+            int endSubY = Math.Min(SubdivisionCount - 1, (int)Math.Round((bounds.maxY - (cellCenterY - _halfCellSize)) / subCellSize));
 
             for (int x = startSubX; x <= endSubX; x++)
             {
                 for (int y = startSubY; y <= endSubY; y++)
                 {
-                    touchedSubcells.Add((y, x)); // Note: row = y, column = x
+                    touchedSubcells.Add((x, y));
                 }
             }
 

@@ -34,11 +34,15 @@ namespace SimuliEngine.Simulation.Subsystems
 
         private void SimulateParallelThinkProcess(float dt, WorldState world)
         {
-            world.Actors.AsParallel()
-                .ForAll(actor =>
-                {
-                    actor.Think(dt);
-                });
+            foreach (var actor in world.Actors)
+            {
+                actor.Think(dt);
+            }
+            //world.Actors.AsParallel()
+            //    .ForAll(actor =>
+            //    {
+            //        actor.Think(dt);
+            //    });
         }
     }
 }

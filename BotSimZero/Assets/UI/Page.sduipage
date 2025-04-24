@@ -1,0 +1,65 @@
+!UIPageAsset
+Id: e9b770c1-7b74-4524-ae26-437189cd6262
+SerializedVersion: {Stride: 2.1.0.1}
+Tags: []
+Design:
+    Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
+Hierarchy:
+    RootParts:
+        - !Grid ref!! fee33132-1e00-4111-8128-5ca188f4c29d
+    Parts:
+        -   UIElement: !Button
+                Id: 1a7bcab7-0e7f-4b1d-b810-5d83d6f8e0f9
+                DependencyProperties: {}
+                BackgroundColor: {R: 52, G: 131, B: 61, A: 50}
+                DrawLayerNumber: 2
+                Width: 1280.0
+                Height: 191.0
+                VerticalAlignment: Bottom
+                Margin: {}
+                Content: !TextBlock ref!! 3e7d25d8-9944-4417-84cd-5c04b0f2554e
+                PressedImage: !SpriteFromSheet
+                    Sheet: 1be3340c-b797-4557-bff7-d9be92dfdb42:StrideUIDesigns
+                    CurrentFrame: 2
+                NotPressedImage: !SpriteFromSheet
+                    Sheet: 1be3340c-b797-4557-bff7-d9be92dfdb42:StrideUIDesigns
+                    CurrentFrame: 1
+                MouseOverImage: !SpriteFromSheet
+                    Sheet: 1be3340c-b797-4557-bff7-d9be92dfdb42:StrideUIDesigns
+        -   UIElement: !TextBlock
+                Id: 1b0f0d07-8e71-451c-b2ab-ae9cc405e7cb
+                DependencyProperties: {}
+                BackgroundColor: {R: 204, G: 55, B: 55, A: 50}
+                Width: 626.0
+                Height: 255.0
+                Margin: {Left: 305.0, Top: 254.0, Right: 349.0, Bottom: 211.0}
+                Text: Hello from UI!
+                Font: c90f3988-0544-4cbe-993f-13af7d9c23c6:StrideDefaultFont
+                TextSize: 20.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
+                OutlineColor: {R: 0, G: 0, B: 0, A: 255}
+                OutlineThickness: 0.0
+        -   UIElement: !TextBlock
+                Id: 3e7d25d8-9944-4417-84cd-5c04b0f2554e
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                HorizontalAlignment: Center
+                VerticalAlignment: Center
+                Margin: {}
+                Text: Click me!
+                Font: c90f3988-0544-4cbe-993f-13af7d9c23c6:StrideDefaultFont
+                TextSize: 20.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
+                OutlineColor: {R: 0, G: 0, B: 0, A: 255}
+                OutlineThickness: 0.0
+        -   UIElement: !Grid
+                Id: fee33132-1e00-4111-8128-5ca188f4c29d
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {}
+                Children:
+                    eb16c1a34693652ebac5e60deaaadf9b: !TextBlock ref!! 1b0f0d07-8e71-451c-b2ab-ae9cc405e7cb
+                    854a1f5740a82577b130d6d0aa460c6e: !Button ref!! 1a7bcab7-0e7f-4b1d-b810-5d83d6f8e0f9
+                RowDefinitions: {}
+                ColumnDefinitions: {}
+                LayerDefinitions: {}

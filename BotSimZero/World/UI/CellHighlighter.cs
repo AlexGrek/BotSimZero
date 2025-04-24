@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using BotSimZero.Core;
 using BotSimZero.World.Terrain;
+using SimuliEngine.World;
 using Stride.Core.Mathematics;
 using Stride.Engine;
 using Stride.Engine.Events;
@@ -23,6 +25,23 @@ namespace BotSimZero.World.UI
         public float FadeSpeed { get; set; } = 2.0f;
         public Prefab HighlightPrefab;
 
+        public Prefab GreenHighlightPrefab;
+
+        public List<Entity> CreatedHighlights = new List<Entity>();
+
+        public Prefab GetHighlighterByName(string name)
+        {
+            switch (name)
+            {
+                case "Green":
+                    return GreenHighlightPrefab;
+                case "Main":
+                    return HighlightPrefab;
+                default:
+                    throw new ArgumentException($"Unknown highlighter name: {name}");
+            }
+        }
+
         public float CellSize = 1;
         public float HighlightGroundLevel = 1f;
 
@@ -30,6 +49,7 @@ namespace BotSimZero.World.UI
         private Vector3 targetPosition;
         private bool isHighlightActive = false;
         EventReceiver<CellComponent> highlightReceiver;
+        EventReceiver<(WorldState state, int x, int y, string highlighter)> showReceiver;
 
         // Create and initialize the highlight entity
         public override void Start()
@@ -37,6 +57,7 @@ namespace BotSimZero.World.UI
             base.Start();
             GlobalEvents.Initialize();
             highlightReceiver = new EventReceiver<CellComponent>(GlobalEvents.HighlightCellEventKey);
+            showReceiver = new EventReceiver<(WorldState state, int x, int y, string highlighter)>(GlobalEvents.ShowCell);
 
             // Create the highlight entity
             //highlightEntity = CreateHighlightCube();
@@ -117,6 +138,26 @@ namespace BotSimZero.World.UI
             {
                 HighlightCell(data);
             }
+            if (showReceiver.TryReceive(out var show))
+            {
+                if (show.state != null)
+                {
+                    HighlightCellWithHighlighter(show.x, show.y, show.state, show.highlighter);
+                }
+            }
+        }
+
+        private void HighlightCellWithHighlighter(int x, int y, WorldState state, string highlighter)
+        {
+            foreach (var highlight in CreatedHighlights)
+            {
+                highlight.SetParent(null); // Remove from scene
+            }
+            var prefab = GetHighlighterByName(highlighter);
+            highlightEntity = prefab.Instantiate()[0];
+            highlightEntity.Transform.Position = new Vector3(x * CellSize, HighlightGroundLevel, y * CellSize);
+            Entity.Scene.Entities.Add(highlightEntity);
+            CreatedHighlights.Add(highlightEntity);
         }
 
         // Call this to hide the highlight

@@ -4,11 +4,8 @@ using SimuliEngine.World;
 using Stride.Core;
 using Stride.Engine;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BotSimZero.Core
 {

@@ -1,12 +1,7 @@
-﻿using SharpDX.D3DCompiler;
-using SimuliEngine.World;
-using Stride.Core;
+﻿using SimuliEngine.World;
 using Stride.Engine;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BotSimZero.Core
 {

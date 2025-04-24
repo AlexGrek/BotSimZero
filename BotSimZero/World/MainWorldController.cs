@@ -19,6 +19,7 @@ namespace BotSimZero.World
         
         public float HighlighterFadeSpeed = 0.1f;
         public Prefab HighlightPrefab;
+        public Prefab GreenHighlightPrefab;
         private ProceduralMapGenerator _generator;
         public Prefab VisibleWorldManagerPrefab;
         public float TimeShift = 1f;
@@ -43,7 +44,8 @@ namespace BotSimZero.World
                 GlowColor = Color.Yellow,
                 GlowIntensity = 5.0f,
                 FadeSpeed = HighlighterFadeSpeed,
-                HighlightPrefab = HighlightPrefab
+                HighlightPrefab = HighlightPrefab,
+                GreenHighlightPrefab = GreenHighlightPrefab,
             };
             Entity.Add(Highlighter);
             Entity.Scene.Entities.AddRange(VisibleWorldManagerPrefab.Instantiate());

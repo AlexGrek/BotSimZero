@@ -1,0 +1,39 @@
+!Model
+Id: c20f8de1-b1d1-4e78-b2bf-80c41f8bf9a7
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../../../../../blender/Severance/Megaterm.fbx
+Skeleton: null
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+Materials:
+    797129c5d7c8605c7f58a96a972073df:
+        Name: Material
+        MaterialInstance:
+            Material: 56128837-71e8-4bfe-8018-b04fbfe34c9a:EdemAssets/Megaterm/Material
+    7a69ae694cfd2240c95ad29c115d888c:
+        Name: SEAL
+        MaterialInstance:
+            Material: add070a3-ea9c-4743-8f36-cbc84508292f:EdemAssets/Megaterm/SEAL
+    30a266e1fe7de3cfae1fffba2c8ae620:
+        Name: BlackMetalFrame
+        MaterialInstance:
+            Material: f897f503-5cba-4a3d-8cae-2331b2b94257:EdemAssets/Megaterm/BlackMetalFrame
+    bf6ae57aaa2e5674b603ada11707d81b:
+        Name: Rubber
+        MaterialInstance:
+            Material: e2b37b30-1451-4d7a-9941-47682b2fdb02:EdemAssets/Megaterm/Rubber
+    b6f0f3a04555e5725fbac3f23dff9ff5:
+        Name: Screen
+        MaterialInstance:
+            Material: a6245a08-ebdf-4ea4-8446-3477313f4067:EdemAssets/Megaterm/Screen
+    10aecd8edb24e9507d4111ce36ad0693:
+        Name: Metallic
+        MaterialInstance:
+            Material: 52a166ca-590e-43a2-93a6-8ff163ef16d0:EdemAssets/Megaterm/Metallic
+    81140a2c75e595f14bd444e352102721:
+        Name: RedDot
+        MaterialInstance:
+            Material: 21caa731-6197-48cf-90cd-ee45def02211:EdemAssets/Megaterm/RedDot
+Modifiers: {}
+~SourceHashes:
+    1b82d4ac79a25d18613e3ec10b1d15f1~../../../../../../blender/Severance/Megaterm.fbx: b68feb54d6570624e618c68598f9e74b

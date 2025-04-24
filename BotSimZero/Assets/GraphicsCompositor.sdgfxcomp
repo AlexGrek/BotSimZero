@@ -7,6 +7,9 @@ Cameras:
     de2e75c3b2b23e54162686363f3f138e:
         Id: 96aa70f4-f6ab-4550-930d-6b9caa97275e
         Name: Main
+    506cb9cc9e3ffb2e1056d7fa17b27cd2*:
+        Id: 90368c05-328c-44a8-81be-33d322d1c058
+        Name: UiSlot
 RenderStages:
     47116750c1a5d449b4ad3625f71439b3:
         Id: c9e838ff-95b1-4568-a55b-e5f2651d590d
@@ -138,7 +141,7 @@ SharedRenderers:
             Overlays: {}
             RequestPassthrough: false
         SubsurfaceScatteringBlurEffect: null
-        MSAALevel: None
+        MSAALevel*: X2
         MSAAResolver: {}
     d5b2e71c088247e21556decdce138d96: !Stride.Rendering.Compositing.ForwardRenderer,Stride.Engine
         Id: d9aaabe9-41a9-465c-89b3-616386965745
@@ -161,7 +164,7 @@ SharedRenderers:
             Overlays: {}
             RequestPassthrough: false
         SubsurfaceScatteringBlurEffect: null
-        MSAALevel: None
+        MSAALevel*: X2
         MSAAResolver: {}
     34ecb9b2633eacfc439ba8744fe05102: !PostProcessingEffects
         Id: 20a0a033-1295-4a28-9a45-21b992ad4d69
@@ -177,9 +180,9 @@ SharedRenderers:
             FogStart: 10.0
             SkipBackground: false
         AmbientOcclusion:
-            Enabled: false
+            Enabled*: true
         LocalReflections:
-            Enabled: false
+            Enabled*: true
             ResolvePassResolution: Full
             DepthResolution: Half
         DepthOfField:
@@ -207,15 +210,22 @@ SharedRenderers:
     ee80a20a9bd99f2d70711114e15fe7ca: !Stride.Rendering.Compositing.DebugRenderer,Stride.Rendering
         Id: 5ae61e86-ce11-4483-a136-77198856e6ea
         DebugRenderStages: {}
-Game: !Stride.Rendering.Compositing.SceneCameraRenderer,Stride.Engine
-    Id: 76fe87cf-f574-4ad6-85b8-e9a9586be0e2
-    Camera: ref!! 96aa70f4-f6ab-4550-930d-6b9caa97275e
-    Child: !Stride.Rendering.Compositing.SceneRendererCollection,Stride.Rendering
-        Id: 82568e46-92e7-421a-8dca-114a74e0cd69
-        Children:
-            d39c5ddbf8b7d5ca02bafb6496b1cc3c: !Stride.Rendering.Compositing.ForwardRenderer,Stride.Engine ref!! 1680f7ea-a498-4259-bf2f-e84f4c49e8be
-            01d338078e9b21121ead0868932613dd: !Stride.Rendering.Compositing.DebugRenderer,Stride.Rendering ref!! 5ae61e86-ce11-4483-a136-77198856e6ea
-    RenderMask: All
+Game*: !Stride.Rendering.Compositing.SceneRendererCollection,Stride.Rendering
+    Id: 17d0a9da-2cce-4563-b02d-a5e5c0a9c099
+    Children:
+        21ca975f513428a347efbf53ffc76c5e: !Stride.Rendering.Compositing.SceneCameraRenderer,Stride.Engine
+            Id: 5500dc68-2563-4107-a924-2d6fd67e898b
+            Camera: ref!! 96aa70f4-f6ab-4550-930d-6b9caa97275e
+            Child: !Stride.Rendering.Compositing.ForwardRenderer,Stride.Engine ref!! 1680f7ea-a498-4259-bf2f-e84f4c49e8be
+            RenderMask: Group0, Group1, Group2, Group3, Group4, Group5, Group6, Group7, Group8, Group10, Group11, Group12, Group13, Group14, Group15, Group16, Group17, Group18, Group19, Group20, Group21, Group22, Group23, Group24, Group25, Group26, Group27, Group28, Group29
+        60690541d0e2221640217f03e5c10231: !Stride.Rendering.Compositing.SceneCameraRenderer,Stride.Engine
+            Id: 3e9f78d6-f61b-4d5f-9c72-7f92b3bea107
+            Camera: ref!! 90368c05-328c-44a8-81be-33d322d1c058
+            Child: !Stride.Rendering.Compositing.RenderTextureSceneRenderer,Stride.Rendering
+                Id: 6a6eb242-ff3d-421c-92b4-23176ce34376
+                RenderTexture: 98005fd0-03e2-4cc6-adf2-97638ebb26ee:Textures/CustomUiRenderTexture
+                Child: !Stride.Rendering.Compositing.ForwardRenderer,Stride.Engine ref!! 1680f7ea-a498-4259-bf2f-e84f4c49e8be
+            RenderMask: Group9
 SingleView: !Stride.Rendering.Compositing.ForwardRenderer,Stride.Engine ref!! d9aaabe9-41a9-465c-89b3-616386965745
 Editor: !Stride.Rendering.Compositing.ForwardRenderer,Stride.Engine ref!! 1680f7ea-a498-4259-bf2f-e84f4c49e8be
 BlockPositions: {}

@@ -17,15 +17,18 @@ namespace SimuliEngine.Simulation.ActorSystem
         private bool _instantiated = false;
         private bool _removed = false;
         protected Switch CenterPositionChanged = new Switch();
+        public (int x, int y) PrevMainPosition { get; protected set; } = (0, 0);
+        public (int x, int y)? MovementTargetPosition { get; protected set; } = null;
 
         public Vector2 GetNormalizedPosition()
         {
-            return _positionProvider.GetNormalizedPosition();
+            return _positionProvider.GetWorldCoordinates();
         }
 
-        public void SetCenterPositionChanged()
+        public virtual void SetCenterPositionChanged((int x, int y) prevCenterCell)
         {
             CenterPositionChanged.Set(true);
+            PrevMainPosition = prevCenterCell;
         }
 
         public abstract float Size { get; }
@@ -56,6 +59,7 @@ namespace SimuliEngine.Simulation.ActorSystem
                 throw new InvalidOperationException("Actor is already instantiated.");
             // instantiate this entity
             _stateReference.InstantiateActor(this, x, y);
+            this._positionProvider.SetWorldCoordinates(new Vector2(x, y));
             _instantiated = true;
         }
 
@@ -75,5 +79,10 @@ namespace SimuliEngine.Simulation.ActorSystem
         public abstract bool TryMove(float deltaTime);
 
         public abstract void MovePosition(float deltaTime);
+
+        public virtual bool IsPassable(WorldState state, (int x, int y) coordinates)
+        {
+            return false;
+        }
     }
 }

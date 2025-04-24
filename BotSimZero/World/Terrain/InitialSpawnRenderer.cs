@@ -13,6 +13,9 @@ using SimuliEngine.World;
 using SimuliEngine.Tiles;
 using BotSimZero.Core;
 using BotSimZero.Entities;
+using SimuliEngine.Simulation.ActorSystem;
+using SimuliEngine;
+using BotSimZero.VirtualUI;
 
 namespace BotSimZero.World.Terrain
 {
@@ -25,15 +28,28 @@ namespace BotSimZero.World.Terrain
         public override void Start()
         {
             base.Start();
-            WorldState.InitialSpawnPositions.ForEach(SpawnBot);
+
+            int botIndex = 0;
+            foreach (var spawnPosition in WorldState.InitialSpawnPositions)
+            {
+                SpawnBot(spawnPosition, botIndex);
+                botIndex++;
+            }
         }
 
-        public void SpawnBot((int x, int y) pos)
+        public void SpawnBot((int x, int y) pos, int i)
         {
-            var position = new Vector3(pos.x, 1f, pos.y);
+            var position = new Vector3(pos.x, 0f, pos.y);
             var bot = BotPrefab.Instantiate()[0];
             bot.Transform.Position = position;
-            bot.Get<BotComponent>().SpawnPosition = pos;
+            var botComponent = bot.Get<BotComponent>();
+            botComponent.SpawnPosition = pos;
+            var screen = bot.GetChild(0);
+            var screenComponent = screen.Get<UiDisplayAsyncScript>();
+            screenComponent.DataProvider = new BotNumberProvider();
+            screenComponent.FontSize = 400f;
+            screenComponent.UpdateEveryNFrames = 1024;
+            bot.Name = $"Bot_{i}_{pos.x}_{pos.y}";
             Entity.Scene.Entities.Add(bot);
         }
 

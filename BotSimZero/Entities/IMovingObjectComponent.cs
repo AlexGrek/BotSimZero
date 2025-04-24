@@ -1,15 +1,12 @@
 ﻿using Stride.Core;
 using Stride.Engine.FlexibleProcessing;
-using Stride.Engine;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Stride.Engine.Design;
 using Stride.Games;
 using SimuliEngine.Simulation.ActorSystem;
 using System.Collections.Concurrent;
+using SimuliEngine.World;
+using System;
+using SimuliEngine;
 
 namespace BotSimZero.Entities
 {
@@ -23,6 +20,7 @@ namespace BotSimZero.Entities
             public List<IMovingEntity> Components = new();
             public ConcurrentQueue<IMovingEntity> ComponentsToAdd = new();
             public ConcurrentQueue<IMovingEntity> ComponentsToRemove = new();
+            private readonly Random _rnd;
 
             public void SystemAdded(IServiceRegistry registryParam) { }
             public void SystemRemoved() { }

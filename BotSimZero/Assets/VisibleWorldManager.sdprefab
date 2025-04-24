@@ -21,8 +21,8 @@ Hierarchy:
                         SizeX: 64
                         SizeY: 64
                         WallChance: 0.2
-                    e08be45c618ef95bf393f0ac0803fc14: !BotSimZero.World.Terrain.InitialSpawnRenderer,BotSimZero
-                        Id: 9de37bba-8947-4793-9b65-1644c118dc1c
+                    00efe9b8eca3d086e7f1c7f370bb9805: !BotSimZero.World.Terrain.InitialSpawnRenderer,BotSimZero
+                        Id: 9de10c82-6634-4795-bf58-380e7d8d396c
                         SizeX: 64
                         SizeY: 64
-                        BotPrefab: 1f8227eb-1b2b-49f9-9806-7d914be41ba5:ShitRobot
+                        BotPrefab: 4aa701f6-bf53-4c35-8989-6fce8b98d6bf:Bot_stupido

@@ -22,17 +22,17 @@ namespace SimuliEngine.Simulation.ActorSystem
 
         public override void MovePosition(float deltaTime)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public override void Think(float deltaTime)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public override bool TryMove(float deltaTime)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

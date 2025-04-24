@@ -4,6 +4,8 @@ using Stride.Input;
 using Stride.Extensions;
 using System;
 using Stride.Core.Diagnostics;
+using BotSimZero.Core;
+using System.Linq;
 
 namespace BotSimZero.Camera
 {
@@ -105,6 +107,15 @@ namespace BotSimZero.Camera
             var yawRotation = Quaternion.RotationY(MathUtil.DegreesToRadians(orbitAngle));
             Entity.Transform.Rotation = tiltDown * yawRotation;
             //Entity.Transform.Rotation = Quaternion.Lerp(Entity.Transform.Rotation, (yawRotation * Quaternion.BetweenDirections(focusPoint, cameraPosition)), CameraAngle);
+
+            var ui = Entity.Scene.Entities
+                .FirstOrDefault(e => e.Get<UIComponent>() != null)
+                ?.Get<UIComponent>();
+
+            if ( ui != null)
+            {
+                
+            }
         }
     }
 

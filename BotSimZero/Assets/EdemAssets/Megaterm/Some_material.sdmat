@@ -1,0 +1,27 @@
+!MaterialAsset
+Id: c03be48c-f693-40d4-8c95-d893d03b50d6
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Attributes:
+    Diffuse: !MaterialDiffuseMapFeature
+        DiffuseMap: !ComputeTextureColor
+            Texture: 541508d2-f737-4eb2-b98a-5b4377338503:EdemAssets/OfficeStuff/TextureToRender
+            FallbackValue:
+                Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
+            Scale: {X: 1.0, Y: 1.0}
+            Offset: {X: 0.0, Y: 0.0}
+            Swizzle: null
+    DiffuseModel: !MaterialDiffuseLambertModelFeature {}
+    Emissive: !MaterialEmissiveMapFeature
+        EmissiveMap: !ComputeTextureColor
+            Texture: 541508d2-f737-4eb2-b98a-5b4377338503:EdemAssets/OfficeStuff/TextureToRender
+            FallbackValue:
+                Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
+            Scale: {X: 1.0, Y: 1.0}
+            Offset: {X: 0.0, Y: 0.0}
+            Swizzle: null
+        Intensity: !ComputeFloat
+            Value: 100.0
+    Overrides:
+        UVScale: {X: 1.0, Y: 1.0}
+Layers: {}

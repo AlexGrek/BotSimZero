@@ -1,0 +1,31 @@
+!Model
+Id: 64ba7f27-7eac-44bb-8782-25a1afb76f4e
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../../../../../blender/Severance/Bot_high.fbx
+Skeleton: null
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+Materials:
+    68022d3d81684335f470cd4d19993c65:
+        Name: SEAL
+        MaterialInstance:
+            Material: 33656ba5-ac20-4e7f-a187-7a48ffddaca6:EdemAssets/Bots/SEAL
+    eda377a51e28312af6da5fa637c08148:
+        Name: Material
+        MaterialInstance:
+            Material: a1df5482-ddd0-4ede-8307-744b09d3cb3e:EdemAssets/Bots/Material
+    5cddbbc2bf6709cae62d038613a2c071:
+        Name: BlackMetalFrame
+        MaterialInstance:
+            Material: ec020f98-d928-4b16-8afb-1965ca72fb89:EdemAssets/Bots/BlackMetalFrame
+    fdba8ca771203ec4af08c0e9b3db9e31:
+        Name: Screen
+        MaterialInstance:
+            Material: ad1db359-38f8-4fc2-a43a-68ada7db8a16:EdemAssets/Bots/Screen
+    68972e11cfb0599b7227cd3116a91595:
+        Name: Rubber
+        MaterialInstance:
+            Material: bb249efe-9146-44a9-b179-8479f365ee17:EdemAssets/Bots/Rubber
+Modifiers: {}
+~SourceHashes:
+    363ae636284be3caaafd9a6b56b62e19~../../../../../../blender/Severance/Bot_high.fbx: 6e162ddf23d90214184023dab8cbcaf0

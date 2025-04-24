@@ -1,0 +1,7 @@
+!SpriteFont
+Id: ae863585-370d-44e6-b8e3-f37f41e35eb7
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+FontSource: !FileFontProvider
+    Source: !file OpenGostTypeA-Regular.ttf
+FontType: !RuntimeRasterizedSpriteFontType {}

@@ -10,10 +10,10 @@ Hierarchy:
         - ref!! dfe457cb-16a3-4a66-8739-c8a951197938
         - ref!! 03386349-8b79-4ae7-bf72-0a6ae7231463
         - ref!! 232b5528-7b47-4936-9ace-50aca78bfeb0
-        - ref!! 469acee0-fbcf-4325-95b9-8e924fbf35e5
         - ref!! ddf852e2-641c-4ec1-9fd6-601153a98f36
         - ref!! fbd5896e-b303-4fb6-a65d-ccf8fe440569
         - ref!! fd4effc9-8347-440a-8999-97d3de2d411e
+        - ref!! e6717c08-e204-41dd-8a3d-2b7e691f37fb
     Parts:
         -   Entity:
                 Id: 03386349-8b79-4ae7-bf72-0a6ae7231463
@@ -29,6 +29,31 @@ Hierarchy:
                         Id: 6e34e0fa-7936-4a23-8277-30c0f61d2245
                         Texture: ba6c7902-0af0-4fbc-8507-ffce4508b5b4:Skybox texture
         -   Entity:
+                Id: 176503db-f479-4311-85c7-63b079a1af60
+                Name: Megaterm_screen_top
+                Components:
+                    9d83f24f9990960247635cfdfd91e1d8: !TransformComponent
+                        Id: 15fc3908-c393-4cb7-a391-d22c13f401ac
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    3091dfce7fab70a8803dcb4dac04a82b: !ModelComponent
+                        Id: 382bc952-33e4-4e44-8744-1102ec325235
+                        Model: 0c0be585-0c57-4ad5-95dd-d98e09950819:EdemAssets/Megaterm/Megaterm_screen_top
+                        Materials:
+                            afafa540e93b86e4cf785e40db0f0a8d~0: 18048d30-75d1-4dbc-b3b9-96146ba574ed:EdemAssets/OfficeStuff/Some_material
+                    309520642185096605994fc939c0d7ba: !BotSimZero.VirtualUI.UiTerminalAsyncScript,BotSimZero
+                        Id: 5d319eea-e6e7-450d-8b1f-2f47cb3ce254
+                        AppName: HelloWorld
+                        Font: ae863585-370d-44e6-b8e3-f37f41e35eb7:MyCustomFont
+                        PlaneEntity: null
+                        TextureWidth: 1024
+                        TextureHeight: 1024
+                        BgColor: {R: 0, G: 0, B: 0, A: 255}
+                        FontSize: 100.0
+                        UpdateEveryNFrames: 10
+        -   Entity:
                 Id: 232b5528-7b47-4936-9ace-50aca78bfeb0
                 Name: CellUiSystem
                 Components:
@@ -39,20 +64,7 @@ Hierarchy:
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children:
                             f378351950dbb3fc1b3d4b1210c57128: ref!! 040dd57a-b8b1-4f48-9847-f64e01317de2
-        -   Entity:
-                Id: 469acee0-fbcf-4325-95b9-8e924fbf35e5
-                Name: Cube
-                Components:
-                    51e4cd28113fb1a6dc56bdfe0cec2ee2: !TransformComponent
-                        Id: 9e8155eb-e305-4df3-9617-a713649f560a
-                        Position: {X: 0.7005043, Y: 1.3753567, Z: -0.50893927}
-                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
-                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
-                        Children: {}
-                    fb073298fe408e294a531a8f8253da1e: !ModelComponent
-                        Id: 1c434bb5-8ec4-4d38-98bc-57df3412d797
-                        Model: 34bdcb4c-3ddf-42b2-b4d3-a45e7b0adbcb:Cube
-                        Materials: {}
+                            f1dd7735a5c8ca50f953269c80ebe888: ref!! 3685f355-ba5d-4552-9955-b5b6d9500f35
         -   Entity:
                 Id: 5e7c6bd1-9f0c-49d6-9ebc-60ca216f96ea
                 Name: MainWorldController
@@ -76,8 +88,40 @@ Hierarchy:
                         SizeY: 64
                         HighlighterFadeSpeed: 1.0
                         HighlightPrefab: 88221620-3692-4edd-b5b8-115fe2d21f71:BlockSelection
+                        GreenHighlightPrefab: 88221620-3692-4edd-b5b8-115fe2d21f71:BlockSelection
                         VisibleWorldManagerPrefab: 5874d41a-d0dc-4257-b149-b2c64f083c09:VisibleWorldManager
                         TimeShift: 1.0
+        -   Entity:
+                Id: 7de84281-dcc3-460b-8480-e4cceee105d9
+                Name: Megaterm
+                Components:
+                    98630e3413c943d60ae9383f14281b8b: !TransformComponent
+                        Id: b7956839-5dd1-4ac9-8d36-65fd3dad7e80
+                        Position: {X: 0.9774341, Y: -1.2536927, Z: -1.4794562}
+                        Rotation: {X: 0.0, Y: -0.07288622, Z: 0.0063767284, W: 0.9973199}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            d171d62a79a964ad1a464e7733eecd8a: ref!! ed2832ac-d39c-4008-91a9-9a2970db2690
+                            c3b7c78c3d60536b33a8be65716e01ce: ref!! 15fc3908-c393-4cb7-a391-d22c13f401ac
+                    75092f095160363e666e8913d050889a: !ModelComponent
+                        Id: 2dcec62a-27a7-447d-870a-68fc850529d0
+                        Model: c20f8de1-b1d1-4e78-b2bf-80c41f8bf9a7:EdemAssets/Megaterm/Megaterm
+                        Materials: {}
+        -   Entity:
+                Id: da3d12c4-0b9f-45e9-b59f-a472f523189a
+                Name: UiCamera
+                Components:
+                    cddbf79f6e394b8604cb9555e25b782b: !TransformComponent
+                        Id: 3685f355-ba5d-4552-9955-b5b6d9500f35
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    bf63e098c645ea4aaa90b5868683e3e4: !CameraComponent
+                        Id: b888ae54-cd61-4fdb-a36d-ea5dec6ee2da
+                        Name: THeUiCamera
+                        Projection: Orthographic
+                        Slot: 90368c05-328c-44a8-81be-33d322d1c058
         -   Folder: Studio
             Entity:
                 Id: ddf852e2-641c-4ec1-9fd6-601153a98f36
@@ -101,7 +145,7 @@ Hierarchy:
                 Components:
                     f3222188b1d3a1f415f9e0e5f7acc33f: !TransformComponent
                         Id: 6c4a7ee0-379a-4339-a167-a0feaef71a43
-                        Position: {X: 0.0, Y: 10.0, Z: 5.975412}
+                        Position: {X: -5.9666786, Y: -1.2684584, Z: -4.4356017}
                         Rotation: {X: -0.67559016, Y: 0.0, Z: 0.0, W: 0.7372773}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
@@ -116,9 +160,54 @@ Hierarchy:
                         MoveSpeed: 10.0
                         ZoomSpeed: 0.5
                         MinZoom: 0.5
-                        MaxZoom: 10.0
+                        MaxZoom: 70.0
                         CameraAngle: 40.0
                         OrbitSpeed: 90.0
+        -   Entity:
+                Id: e6717c08-e204-41dd-8a3d-2b7e691f37fb
+                Name: FloatingUi
+                Components:
+                    6331c1aaacd520e10fa94b1b88fa24ca: !TransformComponent
+                        Id: 0420b0eb-2ee1-494b-a45e-ccba77327070
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            e8d7f05f1eb5a1229f909f7bab82a624: ref!! b7956839-5dd1-4ac9-8d36-65fd3dad7e80
+                    c6f267b1acf8582588706be893306c25: !BotSimZero.VirtualUI.BotSimZero.Camera.FollowerWithInertiaLimited,BotSimZero
+                        Id: 0e70cbb9-367e-42d2-b719-7e20589440ca
+                        FollowsEntity: ref!! dfe457cb-16a3-4a66-8739-c8a951197938
+                        MaxDistance: 5.0
+                        CatchupSpeed: 40.0
+                        RotationSpeed: 0.1
+                        SmoothingFactor: 0.85
+                        DeadZone: 0.005
+                        VelocityDamping: 0.9
+        -   Entity:
+                Id: eadb3aad-d688-444c-b8ab-b9fb93799f1e
+                Name: Megaterm_screen_bottom
+                Components:
+                    7acd071e1978eb241858e0af46b0bc5c: !TransformComponent
+                        Id: ed2832ac-d39c-4008-91a9-9a2970db2690
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    c4e2b7d00101866519055d464677878c: !ModelComponent
+                        Id: dbea8085-ea77-429f-a34a-b3b9a099c587
+                        Model: cf52f52f-7f3d-4154-9952-f033c73540a0:EdemAssets/Megaterm/Megaterm_screen_bottom
+                        Materials:
+                            80ebf16b74e62638eabc2cf157dc534b~0: c03be48c-f693-40d4-8c95-d893d03b50d6:EdemAssets/Megaterm/Some_material
+                    772c2399838888cd8acc98d1310cb2b4: !BotSimZero.VirtualUI.UiTerminalAsyncScript,BotSimZero
+                        Id: e737318e-9862-49ba-ade1-d76fd917c4ec
+                        AppName: Random
+                        Font: ae863585-370d-44e6-b8e3-f37f41e35eb7:MyCustomFont
+                        PlaneEntity: null
+                        TextureWidth: 1024
+                        TextureHeight: 1024
+                        BgColor: {R: 0, G: 0, B: 0, A: 255}
+                        FontSize: 148.0
+                        UpdateEveryNFrames: 10
         -   Entity:
                 Id: f8b4c922-48b9-443c-8035-abce3d07fb3b
                 Name: HighlighterSystem
@@ -161,7 +250,7 @@ Hierarchy:
                 Components:
                     d8e7d3f11ed68d91e8b1f9cd6c8ecd72: !TransformComponent
                         Id: 23ca88c5-5640-4e5a-abd2-5e652d399cf7
-                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Position: {X: 0.0, Y: -1.5899076, Z: 0.0}
                         Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}

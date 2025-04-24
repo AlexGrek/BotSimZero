@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SimuliEngine
@@ -126,6 +127,63 @@ namespace SimuliEngine
             (x, y + 1),
             (x + 1, y),
                 ];
+        }
+
+        public static dynamic ParseTuple(string input)
+        {
+            // Remove parentheses and split by commas
+            string content = input.Trim();
+            if (content.StartsWith("(") && content.EndsWith(")"))
+            {
+                content = content.Substring(1, content.Length - 2);
+            }
+
+            // Split by commas, but not commas within quotes
+            var regex = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+            string[] parts = regex.Split(content);
+
+            // Parse each part and determine its type
+            var values = parts.Select<string, object>(part =>
+           {
+               part = part.Trim();
+
+               // Check if it's a quoted string
+               if ((part.StartsWith("\"") && part.EndsWith("\"")) ||
+                   (part.StartsWith("'") && part.EndsWith("'")))
+               {
+                   return part.Substring(1, part.Length - 2);
+               }
+
+               // Try parsing as integer
+               if (int.TryParse(part, out int intValue))
+               {
+                   return intValue;
+               }
+
+               // If not an integer or quoted string, treat as regular string
+               return part;
+           }).ToArray();
+
+            // Return dynamic tuple based on number of elements
+            switch (values.Length)
+            {
+                case 1:
+                    return Tuple.Create(values[0]);
+                case 2:
+                    return Tuple.Create(values[0], values[1]);
+                case 3:
+                    return Tuple.Create(values[0], values[1], values[2]);
+                case 4:
+                    return Tuple.Create(values[0], values[1], values[2], values[3]);
+                case 5:
+                    return Tuple.Create(values[0], values[1], values[2], values[3], values[4]);
+                case 6:
+                    return Tuple.Create(values[0], values[1], values[2], values[3], values[4], values[5]);
+                case 7:
+                    return Tuple.Create(values[0], values[1], values[2], values[3], values[4], values[5], values[6]);
+                default:
+                    throw new ArgumentException($"Cannot create tuple with {values.Length} elements. Maximum supported is 7.");
+            }
         }
     }
 }

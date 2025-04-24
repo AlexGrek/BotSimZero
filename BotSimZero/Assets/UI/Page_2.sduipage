@@ -1,0 +1,65 @@
+!UIPageAsset
+Id: cbceb678-0bf6-41f0-b07e-ce7f1b160bd7
+SerializedVersion: {Stride: 2.1.0.1}
+Tags: []
+Design:
+    Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
+Hierarchy:
+    RootParts:
+        - !Grid ref!! bd917944-5ff7-4234-8d4e-803fa56c8e1a
+    Parts:
+        -   UIElement: !ScrollingText
+                Id: 9fc6b5f1-283a-43d6-ac34-bfcc8063c298
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                DrawLayerNumber: 4
+                Width: 609.0
+                Height: 720.0
+                HorizontalAlignment: Right
+                Margin: {}
+                Text: Scrolllllling teeeeeext
+                Font: c90f3988-0544-4cbe-993f-13af7d9c23c6:StrideDefaultFont
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
+                OutlineColor: {R: 0, G: 0, B: 0, A: 255}
+                OutlineThickness: 0.0
+        -   UIElement: !TextBlock
+                Id: b5b95173-a33d-4ac0-ac24-be2181d0eed7
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                HorizontalAlignment: Center
+                VerticalAlignment: Center
+                Margin: {}
+                Text: Click me!
+                Font: c90f3988-0544-4cbe-993f-13af7d9c23c6:StrideDefaultFont
+                TextSize: 20.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
+                OutlineColor: {R: 0, G: 0, B: 0, A: 255}
+                OutlineThickness: 0.0
+        -   UIElement: !Grid
+                Id: bd917944-5ff7-4234-8d4e-803fa56c8e1a
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {}
+                Children:
+                    39b4955b084bd364b1cedc4c031a9a84: !Button ref!! f4fb67b9-1c81-46a9-908e-323860aa769a
+                    d8b31e19d6955e5a7c878c6551ba456d: !ScrollingText ref!! 9fc6b5f1-283a-43d6-ac34-bfcc8063c298
+                RowDefinitions: {}
+                ColumnDefinitions: {}
+                LayerDefinitions: {}
+        -   UIElement: !Button
+                Id: f4fb67b9-1c81-46a9-908e-323860aa769a
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                DrawLayerNumber: 2
+                Width: 656.0
+                Height: 720.0
+                Margin: {Right: 624.0}
+                Content: !TextBlock ref!! b5b95173-a33d-4ac0-ac24-be2181d0eed7
+                PressedImage: !SpriteFromSheet
+                    Sheet: 1be3340c-b797-4557-bff7-d9be92dfdb42:StrideUIDesigns
+                    CurrentFrame: 2
+                NotPressedImage: !SpriteFromSheet
+                    Sheet: 1be3340c-b797-4557-bff7-d9be92dfdb42:StrideUIDesigns
+                    CurrentFrame: 1
+                MouseOverImage: !SpriteFromSheet
+                    Sheet: 1be3340c-b797-4557-bff7-d9be92dfdb42:StrideUIDesigns

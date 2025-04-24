@@ -1,0 +1,15 @@
+!Model
+Id: 0c0be585-0c57-4ad5-95dd-d98e09950819
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../../../../../blender/Severance/Megaterm_screen_top.fbx
+Skeleton: null
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+Materials:
+    10923ddc32b1131c275bfcd99ffe2255:
+        Name: DefaultMaterial
+        MaterialInstance:
+            Material: 753cb61a-5fca-4e51-99fd-e43db1d53fee:EdemAssets/Megaterm/DefaultMaterial_2
+Modifiers: {}
+~SourceHashes:
+    5545b24c0d0ae67ffd6606e6c8586b8a~../../../../../../blender/Severance/Megaterm_screen_top.fbx: fbc7a6e966ccd0108138083ee497d893

@@ -1,0 +1,16 @@
+!Model
+Id: f1cdcb85-58b4-4f69-a4ef-b64dbd81e86f
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../../../../../blender/Severance/Bot_screen.fbx
+Skeleton: 61c6785d-074a-47f5-8d9b-6990f78b94a7:EdemAssets/Bots/Bot_screen Skeleton
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+Materials:
+    a607aa9ae24a43c6d2d19e8ef848fea2:
+        Name: Material
+        MaterialInstance:
+            Material: 18048d30-75d1-4dbc-b3b9-96146ba574ed:EdemAssets/OfficeStuff/Some_material
+DeduplicateMaterials: false
+Modifiers: {}
+~SourceHashes:
+    2a14c33c5906a00b11347b09fe212860~../../../../../../blender/Severance/Bot_screen.fbx: 9e57af998b7bffb57667a1c3b649d96e

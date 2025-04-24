@@ -16,6 +16,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Stride" Version="4.2.0.2381" />
+    <PackageReference Include="Stride.CommunityToolkit" Version="1.0.0-preview.56" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BotSimZero\BotSimZero.csproj" />
   </ItemGroup>
 

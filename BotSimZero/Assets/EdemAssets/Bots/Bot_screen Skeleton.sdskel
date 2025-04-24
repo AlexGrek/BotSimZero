@@ -1,0 +1,11 @@
+!Skeleton
+Id: 61c6785d-074a-47f5-8d9b-6990f78b94a7
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../../../../../blender/Severance/Bot_screen.fbx
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+Nodes:
+    2d88eaf86989298697dd751b1aec732f: {Name: RootNode, Depth: 0}
+    8ea0ec147efb5b6f49123631b14a18a1: {Name: Bot-screen, Depth: 1}
+~SourceHashes:
+    a92109b82c2188a926622fc5f215a81a~../../../../../../blender/Severance/Bot_screen.fbx: 9e57af998b7bffb57667a1c3b649d96e

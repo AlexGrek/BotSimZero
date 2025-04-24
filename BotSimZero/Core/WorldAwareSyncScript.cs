@@ -1,5 +1,4 @@
-﻿using BotSimZero.World;
-using BotSimZero.World.UI;
+﻿using BotSimZero.World.UI;
 using Stride.Engine;
 using Stride.Graphics.GeometricPrimitives;
 using Stride.Graphics;
@@ -7,13 +6,11 @@ using Stride.Rendering.Materials.ComputeColors;
 using Stride.Rendering.Materials;
 using Stride.Rendering;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Stride.Extensions;
 using Stride.Core.Mathematics;
 using SimuliEngine.World;
+using Stride.Physics;
 
 namespace BotSimZero.Core
 {
@@ -54,7 +51,7 @@ namespace BotSimZero.Core
 
         public void VisualizeRay(Vector3 unprojectedNear, Vector3 unprojectedFar)
         {
-            var cubeEntityNear = new Entity($"Ray_{unprojectedNear}", position: unprojectedNear, scale: new Vector3(10, 10, 10));
+            var cubeEntityNear = new Entity($"Ray_{unprojectedNear}", position: unprojectedNear, scale: new Vector3(1, 1, 1));
             var modelComponent = new ModelComponent
             {
                 Model = ModelFactory.CreateCube(GraphicsDevice)
@@ -77,20 +74,34 @@ namespace BotSimZero.Core
             Entity.Scene.Entities.Add(cubeEntityNear);
             Entity.Scene.Entities.Add(cubeEntityFar);
 
-            const int FRACTIONS = 30;
+            const int FRACTIONS = 300;
 
-            var differenceFraction = (unprojectedFar - unprojectedNear) / FRACTIONS;
+            var differenceFraction = (unprojectedFar - unprojectedNear) / (FRACTIONS * 50);
 
             for (int i = 0; i < FRACTIONS; i++)
             {
                 var intermediate = unprojectedNear + differenceFraction * i;
-                var intermediateEntity = new Entity($"Ray_interm_{unprojectedNear}x{i}", position: intermediate, scale: new Vector3(1, 1, 10));
+                var intermediateEntity = new Entity($"Ray_interm_{unprojectedNear}x{i}", position: intermediate, scale: new Vector3(0.1f, 0.1f, 0.1f));
                 var imodel = new ModelComponent
                 {
                     Model = ModelFactory.CreateCube(GraphicsDevice)
                 };
                 imodel.Materials.Add(new(0, material));
                 intermediateEntity.Components.Add(imodel);
+                // Add physics for collision detection
+                var colliderShape = new BoxColliderShapeDesc
+                {
+                    Size = new Vector3(0.1f, 0.1f, 0.1f)
+                };
+                var collider = new RigidbodyComponent
+                {
+                    Mass = 0.1f,
+                    CollisionGroup = CollisionFilterGroups.CustomFilter1, // Grid-specific group
+                    ColliderShapes = { colliderShape },
+                    IsTrigger = false
+                };
+                //intermediateEntity.Add(collider);
+
                 Entity.Scene.Entities.Add(intermediateEntity);
             }
         }
@@ -100,6 +111,15 @@ namespace BotSimZero.Core
             public static Model CreateCube(GraphicsDevice device)
             {
                 var meshDraw = GeometricPrimitive.Cube.New(device).ToMeshDraw();
+                var mesh = new Mesh { Draw = meshDraw };
+                var model = new Model();
+                model.Meshes.Add(mesh);
+                return model;
+            }
+
+            public static Model CreateCyl(GraphicsDevice device, float height = 1f, float r = 0.1f)
+            {
+                var meshDraw = GeometricPrimitive.Cylinder.New(device, height, r).ToMeshDraw();
                 var mesh = new Mesh { Draw = meshDraw };
                 var model = new Model();
                 model.Meshes.Add(mesh);

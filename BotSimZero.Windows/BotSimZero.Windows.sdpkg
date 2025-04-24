@@ -15,5 +15,11 @@ ExplicitFolders: []
 Bundles: []
 TemplateFolders: []
 RootAssets:
+    - 219dd650-ba15-4d56-98f9-bd56c371fab6:EdemAssets/Walls/Floor
     - 2d580307-8a98-4dca-9b03-cc22f0b66ea8:Materials/Gold
+    - 4d011150-7426-4829-8714-19c4f8a8a276:EdemAssets/Walls/Walls
+    - 541508d2-f737-4eb2-b98a-5b4377338503:EdemAssets/OfficeStuff/TextureToRender
+    - 693e8b23-eaff-4897-8430-5a45fae91bee:Materials/UiMaterial
+    - ae863585-370d-44e6-b8e3-f37f41e35eb7:MyCustomFont
+    - bcce56f7-3f1b-4240-95dd-6f83bbbaf2ab:Textures/UiRenderTexture
     - c6f9218e-ae58-4d4d-9bb5-c83f722b9977:Materials/DarkStone
