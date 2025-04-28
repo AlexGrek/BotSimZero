@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SimuliEngine.World
 {
-    public class WorldState
+    public class WorldState: IDumpable
     {
         public (int, int) Size;
         public readonly int HypercellChunkSize = 16; // Size of the hypercell chunk in each dimension

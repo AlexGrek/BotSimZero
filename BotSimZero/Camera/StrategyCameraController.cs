@@ -58,8 +58,8 @@ namespace BotSimZero.Camera
             // --- Input ---
             Vector2 moveInput = Vector2.Zero;
 
-            // Keyboard
-            if (Input.IsKeyDown(Keys.Up) || Input.IsKeyDown(Keys.W)) moveInput.Y -= 1;
+                // Keyboard
+                if (Input.IsKeyDown(Keys.Up) || Input.IsKeyDown(Keys.W)) moveInput.Y -= 1;
             if (Input.IsKeyDown(Keys.Down) || Input.IsKeyDown(Keys.S)) moveInput.Y += 1;
             if (Input.IsKeyDown(Keys.Left) || Input.IsKeyDown(Keys.A)) moveInput.X -= 1;
             if (Input.IsKeyDown(Keys.Right) || Input.IsKeyDown(Keys.D)) moveInput.X += 1;

@@ -11,6 +11,7 @@ using Stride.Extensions;
 using Stride.Core.Mathematics;
 using SimuliEngine.World;
 using Stride.Physics;
+using BotSimZero.World;
 
 namespace BotSimZero.Core
 {
@@ -40,9 +41,7 @@ namespace BotSimZero.Core
 
         public override void Start()
         {
-            GlobalWorldController = Entity.Scene.Entities
-                .FirstOrDefault(e => e.Get<GlobalController>() != null)
-                ?.Get<GlobalController>();
+            GlobalWorldController = GameplayUtils.GetGlobalController(Entity);
             if ( GlobalWorldController == null)
             {
                 throw new InvalidOperationException("GlobalController not found in the scene.");

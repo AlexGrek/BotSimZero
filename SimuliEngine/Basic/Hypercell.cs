@@ -13,7 +13,7 @@ namespace SimuliEngine.Basic
     /// <summary>
     /// Base class for hypercells containing a 2D array of elements
     /// </summary>
-    public abstract class HypercellBase<T>
+    public abstract class HypercellBase<T>: IDumpable
     {
         protected readonly int size;
         protected readonly (int x, int y) coordinates;
@@ -229,7 +229,7 @@ namespace SimuliEngine.Basic
     /// <summary>
     /// Base implementation of a hypermap that manages hypercells
     /// </summary>
-    public abstract class HyperMapBase<TCellType, THypercellType> where THypercellType : HypercellBase<TCellType>
+    public abstract class HyperMapBase<TCellType, THypercellType> where THypercellType : HypercellBase<TCellType>, IDumpable
     {
         protected readonly int hypercellSize;
         protected readonly ConcurrentDictionary<(int, int), THypercellType> hypercells;

@@ -13,6 +13,8 @@ using SimuliEngine.World;
 using SimuliEngine.Tiles;
 using BotSimZero.Core;
 using SimuliEngine.Interop;
+using Stride.Input;
+using SimuliEngine.Basic;
 
 namespace BotSimZero.World.Terrain
 {
@@ -152,7 +154,10 @@ namespace BotSimZero.World.Terrain
 
         public override void Update()
         {
-            
+            if (Input.IsKeyPressed(Keys.F))
+            {
+                DebugUtils.DumpToFile("Data.txt", WorldState);
+            }
         }
     }
 

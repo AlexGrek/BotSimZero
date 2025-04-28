@@ -1,4 +1,5 @@
-﻿using SimuliEngine.Tiles;
+﻿using SimuliEngine.Basic;
+using SimuliEngine.Tiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SimuliEngine.World
 {
-    public readonly struct CellDigest
+    public readonly struct CellDigest: IDumpable
     {
         public float Temperature { get; init; }
         public TileType TileType { get; init; }
@@ -23,6 +24,11 @@ namespace SimuliEngine.World
 
             // Return the value as a string
             return value?.ToString() ?? string.Empty;
+        }
+
+        public override string ToString()
+        {
+            return (this as IDumpable).Dump();
         }
     }
 }

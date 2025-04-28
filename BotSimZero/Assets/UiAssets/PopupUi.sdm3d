@@ -1,0 +1,16 @@
+!Model
+Id: 863cef40-1005-44c9-b00b-b4af9039b6a7
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../../../../blender/Severance/PopupUi.fbx
+Skeleton: null
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+Materials:
+    f111546a2db72327d236294b4ed8b0a4:
+        Name: AlmostTransparent
+        MaterialInstance:
+            Material: null
+            IsShadowCaster: false
+Modifiers: {}
+~SourceHashes:
+    04bc317919bb368e887ebcfbe6a98a36~../../../../../blender/Severance/PopupUi.fbx: 2604b0224389419e068e2ef98d2f5f84

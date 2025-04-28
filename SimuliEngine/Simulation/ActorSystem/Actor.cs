@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SimuliEngine.Simulation.ActorSystem
 { 
-    public abstract class Actor: IObstacle
+    public abstract class Actor: IObstacle, IDumpable
     {
         private WorldState _stateReference;
         protected IRealPositionProvider _positionProvider;

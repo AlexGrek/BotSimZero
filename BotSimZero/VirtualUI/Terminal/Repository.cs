@@ -13,6 +13,7 @@ namespace BotSimZero.VirtualUI.Terminal
         {
             _apps.Add("HelloWorld", (options) => new HelloWorldTerminalApp());
             _apps.Add("Random", (options) => new RandomTerminalApp());
+            _apps.Add("HighlightedCellInfo", (options) => new HighlightedCellInfoApp());
         }
 
         public ITerminalApp CreateApp(string appName, dynamic options)

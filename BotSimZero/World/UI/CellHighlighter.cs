@@ -42,7 +42,7 @@ namespace BotSimZero.World.UI
             }
         }
 
-        public float CellSize = 1;
+        public float CellSize = GlobalGameContext.CellSize;
         public float HighlightGroundLevel = 1f;
 
         private Entity highlightEntity;

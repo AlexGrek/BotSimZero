@@ -1,0 +1,26 @@
+!MaterialAsset
+Id: de56d7c6-431b-4171-9a37-837a112bd91f
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Attributes:
+    Overrides:
+        UVScale: {X: 1.0, Y: 1.0}
+Layers:
+    fb1e2fb5fca39c5c026ef9c8338eaabd:
+        Material: db377979-552b-4b4b-9c8e-4f4d5de68f64:UiAssets/AlmostTransparent
+        BlendMap: !ComputeTextureScalar
+            FallbackValue:
+                Value: 1.0
+            Scale: {X: 1.0, Y: 1.0}
+            Offset: {X: 0.0, Y: 0.0}
+        Overrides:
+            UVScale: {X: 1.0, Y: 1.0}
+    355d51f8f303e9ab891cee595513976a:
+        Material: 8c0c54b4-a466-43ef-8f68-f50ca4a555d0:UiAssets/Rendermaterial
+        BlendMap: !ComputeTextureScalar
+            FallbackValue:
+                Value: 1.0
+            Scale: {X: 1.0, Y: 1.0}
+            Offset: {X: 0.0, Y: 0.0}
+        Overrides:
+            UVScale: {X: 1.0, Y: 1.0}

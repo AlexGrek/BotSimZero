@@ -3,7 +3,9 @@ using SimuliEngine.Simulation;
 using SimuliEngine.World;
 using Stride.Core;
 using Stride.Engine;
+using Stride.Input;
 using System;
+using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Linq;
 

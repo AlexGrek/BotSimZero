@@ -1,4 +1,5 @@
-﻿using SimuliEngine.Simulation.Subsystems;
+﻿using SimuliEngine.Basic;
+using SimuliEngine.Simulation.Subsystems;
 using SimuliEngine.World;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SimuliEngine.Simulation
 {
-    public class GlobalSimulation: SimulationSubsystem
+    public class GlobalSimulation: SimulationSubsystem, IDumpable
     {
         public List<SimulationSubsystem> Subsystems { get; private set; }
 

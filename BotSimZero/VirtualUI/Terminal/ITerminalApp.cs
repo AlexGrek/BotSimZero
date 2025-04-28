@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimuliEngine.World;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace BotSimZero.VirtualUI.Terminal
 {
     public interface ITerminalApp
     {
-        public string[] GetLines();
+        public string[] GetLines(WorldState worldState);
     }
 }

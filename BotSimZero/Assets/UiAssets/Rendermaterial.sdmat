@@ -1,0 +1,28 @@
+!MaterialAsset
+Id: 8c0c54b4-a466-43ef-8f68-f50ca4a555d0
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Attributes:
+    Diffuse: !MaterialDiffuseMapFeature
+        DiffuseMap: !ComputeTextureColor
+            Texture: 5747ff44-4683-4c4d-a4df-da59d865392d:UiAssets/FloatingUiRenderTexture
+            FallbackValue:
+                Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
+            Scale: {X: 1.0, Y: 1.0}
+            Offset: {X: 0.0, Y: 0.0}
+            Swizzle: null
+    DiffuseModel: !MaterialDiffuseLambertModelFeature {}
+    Emissive: !MaterialEmissiveMapFeature
+        EmissiveMap: !ComputeTextureColor
+            Texture: 5747ff44-4683-4c4d-a4df-da59d865392d:UiAssets/FloatingUiRenderTexture
+            FallbackValue:
+                Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
+            Scale: {X: 1.0, Y: 1.0}
+            Offset: {X: 0.0, Y: 0.0}
+            Swizzle: null
+        Intensity: !ComputeFloat
+            Value: 10.0
+        UseAlpha: true
+    Overrides:
+        UVScale: {X: 1.0, Y: 1.0}
+Layers: {}

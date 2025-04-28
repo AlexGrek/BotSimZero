@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimuliEngine.World;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace BotSimZero.VirtualUI.Terminal
 {
     public class RandomTerminalApp: ITerminalApp
     {
-        public string[] GetLines()
+        public string[] GetLines(WorldState worldState)
         {
             Random random = new Random();
             return new string[]

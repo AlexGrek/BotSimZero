@@ -12,9 +12,9 @@ using Utils = SimuliEngine.Utils;
 
 namespace BotSimZero.VirtualUI
 {
-    public class UiTerminalAsyncScript: AsyncScript
+    public class FloatingUiTerminalAsyncScript: AsyncScript
     {
-        public string AppName = "HelloWorld";
+        public string AppName = "Random";
         protected dynamic AppOptions = null;
 
         public SpriteFont Font; // Assign in editor
@@ -26,7 +26,7 @@ namespace BotSimZero.VirtualUI
         protected Texture depthTexture;
         protected SpriteBatch spriteBatch;
 
-        public Color BgColor = Color.Black;
+        public Color BgColor = Color.Transparent;
         public float FontSize = 48f; // Font size for the text
 
 
@@ -69,6 +69,7 @@ namespace BotSimZero.VirtualUI
             }
         }
 
+        
         protected async Task RunUpdateLoop(Func<CommandList, GraphicsContext, Task> userCode)
         {
             var ctx = Game.GraphicsContext;
@@ -135,6 +136,7 @@ namespace BotSimZero.VirtualUI
 
         private string[] _dataStrings = new[] { "Dummy data value" };
         private ITerminalApp _app = null;
+
         protected WorldState state = null;
 
         protected string[] UpdateData()

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace SimuliEngine.Simulation.Obstacles
 {
-    public class ObstacleTracker
+    public class ObstacleTracker: IDumpable
     {
         private (int, int) size;
 

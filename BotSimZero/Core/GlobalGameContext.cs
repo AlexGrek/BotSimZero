@@ -12,12 +12,16 @@ namespace BotSimZero.Core
         private static GlobalGameContext _instance;
         public static GlobalGameContext Instance => _instance ??= new GlobalGameContext(64, 64);
 
+        public static float CellSize = 1f;
+
         private Dictionary<string, IDisplayDataStringProvider> _dataSources = new();
 
         public Repository Repository = new Repository();
 
         public int SizeX { get; private set; }
         public int SizeY { get; private set; }
+
+        public UiContext UiContext { get; private set; } = new UiContext();
 
         private GlobalGameContext(int sizeX, int sizeY)
         {

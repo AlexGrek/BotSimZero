@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimuliEngine.Basic
 {
-    public class SubdivisionCell<T> where T : class
+    public class SubdivisionCell<T>: IDumpable where T : class
     {
         private T[,]? _data; // Internal 2D array, null if all cells are null
         private int _nonNullCount; // Tracks the number of non-null entries
