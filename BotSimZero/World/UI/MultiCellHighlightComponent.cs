@@ -12,7 +12,18 @@ namespace BotSimZero.World.UI
         public float ScalingFactor = 10f;
         public float Delay = 0f;
 
-        public bool Scaling = true;
+        public bool Scaling = false;
+
+        public override void Start()
+        {
+            if (!Scaling)
+            {
+                var scale = Entity.Transform.Scale;
+                scale.X = 1f;
+                scale.Z = 1f;
+                Entity.Transform.Scale = scale;
+            }
+        }
 
         public override void Update()
         {

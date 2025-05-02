@@ -30,6 +30,8 @@ namespace SimuliEngine.Simulation
 
         public override void Tick(float dt, WorldState world)
         {
+            if (Enabled == false)
+                return;
             foreach (var subsystem in GetEnabledSubsystems())
             {
                 subsystem.Tick(dt, world);

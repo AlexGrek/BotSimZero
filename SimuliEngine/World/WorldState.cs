@@ -14,7 +14,7 @@ namespace SimuliEngine.World
     {
         public (int, int) Size;
         public readonly int HypercellChunkSize = 16; // Size of the hypercell chunk in each dimension
-        public readonly int SubdivisionSize = 4; // Size of the hypercell chunk in each dimension
+        public static readonly int SubdivisionSize = 4; // Size of the hypercell chunk in each dimension
 
         public DoubleBufferedHyperMap<float> Temperature;
         public HyperMap<TileType> TileTypeMap; // Map of tile types
@@ -22,6 +22,8 @@ namespace SimuliEngine.World
         public ICollection<Actor> Actors = new List<Actor>(); // List of instantiated actors in the world
         public List<(int x, int y)> InitialSpawnPositions = new List<(int x, int y)>();
         public ObstacleTracker ObstacleTracker { get; private set; }
+
+        public TimeSpan InGameTime { get; set; } = TimeSpan.Zero; // In-game time
 
         public int SizeX => Size.Item1;
         public int SizeY => Size.Item2;
@@ -58,7 +60,6 @@ namespace SimuliEngine.World
             {
                 Temperature = Temperature[x, y],
                 TileType = TileTypeMap[x, y]
-
             };
         }
 

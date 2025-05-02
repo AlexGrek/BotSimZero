@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SimuliEngine.Basic
 {
@@ -18,17 +17,22 @@ namespace SimuliEngine.Basic
         /// </summary>
         /// <param name="depth">The indentation depth</param>
         /// <returns>A formatted string representation of the object</returns>
-        public string Dump(int depth = 0)
+        public virtual string Dump(HashSet<object>? visited, int depth = 0)
         {
+            visited ??= new HashSet<object>();
+            if (visited.Contains(this))
+                return $"{GetIndentation(depth)}[Circular reference]\n";
+
+            visited.Add(this);
             if (this == null)
-                return $"{GetIndentation(depth)}null";
+                return $"{GetIndentation(depth)}null\n";
 
             Type type = this.GetType();
             var properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
             var fields = type.GetFields(BindingFlags.Public | BindingFlags.Instance);
 
             if (properties.Length == 0 && fields.Length == 0)
-                return $"{GetIndentation(depth)}{type.Name}: [No public properties or fields]";
+                return $"{GetIndentation(depth)}{type.Name}: [No public properties or fields]\n";
 
             var result = new StringBuilder();
 
@@ -39,411 +43,149 @@ namespace SimuliEngine.Basic
             // Process properties
             foreach (var prop in properties)
             {
-                string tabs = GetIndentation(depth + 1);
-                string name = prop.Name;
-                object value;
-
-                try
-                {
-                    value = prop.GetValue(this);
-                }
-                catch (Exception ex)
-                {
-                    value = $"[Error getting value: {ex.Message}]";
-                }
-
-                result.Append($"{tabs}{name}: ");
-
-                if (value == null)
-                {
-                    result.AppendLine("null");
-                    continue;
-                }
-
-                if (value is IDumpable dumpable)
-                {
-                    result.AppendLine();
-                    result.Append(dumpable.Dump(depth + 1));
-                }
-                else if (IsTuple(value.GetType()))
-                {
-                    result.AppendLine(FormatTuple(value));
-                }
-                else if (IsIDictionary(value.GetType()))
-                {
-                    var dict = value as IDictionary;
-                    result.AppendLine(value.GetType().Name);
-
-                    foreach (DictionaryEntry entry in dict)
-                    {
-                        string dictTabs = GetIndentation(depth + 2);
-                        result.AppendLine($"{dictTabs}{entry.Key}: ");
-
-                        if (entry.Value == null)
-                        {
-                            result.AppendLine("null");
-                        }
-                        else if (entry.Value is IDumpable dumpableValue)
-                        {
-                            result.AppendLine();
-                            result.AppendLine(dumpableValue.Dump(depth + 2));
-                        }
-                        else
-                        {
-                            result.AppendLine(entry.Value.ToString());
-                        }
-                    }
-                }
-                else if (value is IEnumerable collection && !(value is string))
-                {
-                    result.AppendLine(value.GetType().Name);
-                    int index = 1;
-                    foreach (var item in collection)
-                    {
-                        string itemTabs = GetIndentation(depth + 2);
-
-                        result.AppendLine($"{itemTabs}{index}) ");
-
-                        if (item == null)
-                        {
-                            result.AppendLine("null");
-                        }
-                        else if (item is IDumpable dumpableItem)
-                        {
-                            result.AppendLine();
-                            result.Append(dumpableItem.Dump(depth + 2));
-                        }
-                        else
-                        {
-                            result.AppendLine(item.ToString());
-                        }
-
-                        index++;
-                    }
-                }
-                else
-                {
-                    result.AppendLine(value.ToString());
-                }
+                result.Append(DumpProperty(prop.Name, () => prop.GetValue(this), visited, depth + 1));
             }
 
             // Process fields
             foreach (var field in fields)
             {
-                string tabs = GetIndentation(depth + 1);
-                string name = field.Name;
-                object value;
-
-                try
-                {
-                    value = field.GetValue(this);
-                }
-                catch (Exception ex)
-                {
-                    value = $"[Error getting value: {ex.Message}]";
-                }
-
-                result.Append($"{tabs}{name}: ");
-
-                if (value == null)
-                {
-                    result.AppendLine("null");
-                    continue;
-                }
-
-                if (value is IDumpable dumpable)
-                {
-                    result.AppendLine();
-                    result.Append(dumpable.Dump(depth + 1));
-                }
-                else if (IsTuple(value.GetType()))
-                {
-                    result.AppendLine(FormatTuple(value));
-                }
-                else if (IsIDictionary(value.GetType()))
-                {
-                    var dict = value as IDictionary;
-                    result.AppendLine(value.GetType().Name);
-
-                    foreach (DictionaryEntry entry in dict)
-                    {
-                        string dictTabs = GetIndentation(depth + 2);
-                        result.Append($"{dictTabs}{entry.Key}: ");
-
-                        if (entry.Value == null)
-                        {
-                            result.AppendLine("null");
-                        }
-                        else if (entry.Value is IDumpable dumpableValue)
-                        {
-                            result.AppendLine();
-                            result.Append(dumpableValue.Dump(depth + 2));
-                        }
-                        else
-                        {
-                            result.AppendLine(entry.Value.ToString());
-                        }
-                    }
-                }
-                else if (value is IEnumerable collection && !(value is string))
-                {
-                    result.AppendLine(value.GetType().Name);
-                    int index = 1;
-                    foreach (var item in collection)
-                    {
-                        string itemTabs = GetIndentation(depth + 2);
-
-                        result.Append($"{itemTabs}{index}) ");
-
-                        if (item == null)
-                        {
-                            result.AppendLine("null");
-                        }
-                        else if (item is IDumpable dumpableItem)
-                        {
-                            result.AppendLine();
-                            result.Append(dumpableItem.Dump(depth + 2));
-                        }
-                        else
-                        {
-                            result.AppendLine(item.ToString());
-                        }
-
-                        index++;
-                    }
-                }
-                else
-                {
-                    result.AppendLine(value.ToString());
-                }
+                result.Append(DumpProperty(field.Name, () => field.GetValue(this), visited, depth + 1));
             }
 
             return result.ToString().TrimEnd();
         }
 
-        private static string GetIndentation(int depth)
+        public static string DumpProperty(string name, Func<object?> valueProvider, HashSet<object> visited, int depth)
+        {
+            var result = new StringBuilder();
+            string tabs = GetIndentation(depth);
+            object? value;
+
+            try
+            {
+                value = valueProvider();
+            }
+            catch (Exception ex)
+            {
+                value = $"[Error getting value: {ex.Message}]";
+            }
+
+            result.Append($"{tabs}{name}: ");
+
+            if (value == null)
+            {
+                result.AppendLine("null");
+            }
+            else if (value is IDumpable dumpable)
+            {
+                result.AppendLine();
+                result.Append(dumpable.Dump(visited, depth));
+            }
+            else if (value is IDictionary dictionary)
+            {
+                result.AppendLine(dictionary.Dump(visited, depth));
+            }
+            else if (value is IEnumerable collection && !(value is string))
+            {
+                result.AppendLine(collection.Dump(visited, depth));
+            }
+            else
+            {
+                result.AppendLine(value.ToString());
+            }
+
+            return result.ToString();
+        }
+
+        public static string GetIndentation(int depth)
         {
             return new string('\t', depth);
         }
 
-        private static bool IsTuple(Type type)
+        public static string GenerateCode(object value)
         {
-            if (!type.IsGenericType)
-                return false;
+            if (value == null)
+                throw new ArgumentNullException(nameof(value));
 
-            type = type.IsGenericTypeDefinition ? type : type.GetGenericTypeDefinition();
-            return type == typeof(Tuple<>) ||
-                   type == typeof(Tuple<,>) ||
-                   type == typeof(Tuple<,,>) ||
-                   type == typeof(Tuple<,,,>) ||
-                   type == typeof(Tuple<,,,,>) ||
-                   type == typeof(Tuple<,,,,,>) ||
-                   type == typeof(Tuple<,,,,,,>) ||
-                   type == typeof(ValueTuple<>) ||
-                   type == typeof(ValueTuple<,>) ||
-                   type == typeof(ValueTuple<,,>) ||
-                   type == typeof(ValueTuple<,,,>) ||
-                   type == typeof(ValueTuple<,,,,>) ||
-                   type == typeof(ValueTuple<,,,,,>) ||
-                   type == typeof(ValueTuple<,,,,,,>);
+            // Get the hash code and take the absolute value to avoid negative numbers
+            int hashCode = Math.Abs(value.GetHashCode());
+
+            // Take first 3 digits (or fewer if hash code is small)
+            string hashStr = hashCode.ToString();
+            string firstDigits = hashStr.Length >= 3
+                ? hashStr.Substring(0, 3)
+                : hashStr.PadLeft(3, '0');
+
+            // Get the type name and take first 3 characters
+            string typeName = value.GetType().Name;
+            if (typeName.Length < 3)
+                throw new ArgumentException("Type name must be at least 3 characters long", nameof(value));
+
+            string typePrefix = typeName.Substring(0, 3);
+
+            // Return combined code
+            return $"{firstDigits}-{typePrefix}";
         }
+    }
 
-        private static string FormatTuple(object tuple)
+    public static class DumpExtensions
+    {
+        public static string Dump(this IEnumerable collection, HashSet<object> visited, int depth)
         {
-            Type type = tuple.GetType();
-            var items = type.GetProperties()
-                           .Where(p => p.Name.StartsWith("Item"))
-                           .OrderBy(p => p.Name)
-                           .Select(p => p.GetValue(tuple)?.ToString() ?? "null")
-                           .ToList();
-
-            return $"({string.Join(", ", items)})";
-        }
-
-        private static bool IsIDictionary(Type type)
-        {
-            return typeof(IDictionary).IsAssignableFrom(type);
-        }
-
-        public string DumpLisp()
-        {
-            if (this == null)
-                return "null";
-
-            Type type = this.GetType();
-            var properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            var fields = type.GetFields(BindingFlags.Public | BindingFlags.Instance);
-
             var result = new StringBuilder();
+            string tabs = IDumpable.GetIndentation(depth);
+            result.AppendLine(collection.GetType().Name);
 
-            // Add type name
-            result.Append($"({type.Name} ");
-
-            // Process properties
-            foreach (var prop in properties)
+            int index = 1;
+            foreach (var item in collection)
             {
-                string name = prop.Name;
-                object value;
+                result.Append($"{tabs}{index}) ");
 
-                try
+                if (item == null)
                 {
-                    value = prop.GetValue(this);
+                    result.AppendLine("null");
                 }
-                catch (Exception ex)
+                else if (item is IDumpable dumpableItem)
                 {
-                    value = $"[Error getting value: {ex.Message}]";
-                }
-
-                result.Append($"({name} ");
-
-                if (value == null)
-                {
-                    result.Append("null)");
-                }
-                else if (value is IDumpable dumpable)
-                {
-                    result.Append($"{dumpable.DumpLisp()})");
-                }
-                else if (IsTuple(value.GetType()))
-                {
-                    result.Append($"{FormatTuple(value)})");
-                }
-                else if (IsIDictionary(value.GetType()))
-                {
-                    var dict = value as IDictionary;
-                    result.Append("(");
-
-                    foreach (DictionaryEntry entry in dict)
-                    {
-                        result.Append($"({entry.Key} ");
-
-                        if (entry.Value == null)
-                        {
-                            result.Append("null)");
-                        }
-                        else if (entry.Value is IDumpable dumpableValue)
-                        {
-                            result.Append($"{dumpableValue.DumpLisp()})");
-                        }
-                        else
-                        {
-                            result.Append($"{entry.Value})");
-                        }
-                    }
-
-                    result.Append("))");
-                }
-                else if (value is IEnumerable collection && !(value is string))
-                {
-                    result.Append("(");
-
-                    foreach (var item in collection)
-                    {
-                        if (item == null)
-                        {
-                            result.Append("null ");
-                        }
-                        else if (item is IDumpable dumpableItem)
-                        {
-                            result.Append($"{dumpableItem.DumpLisp()} ");
-                        }
-                        else
-                        {
-                            result.Append($"{item} ");
-                        }
-                    }
-
-                    result.Append("))");
+                    result.AppendLine(dumpableItem.GetType().ToString());
+                    result.Append(dumpableItem.Dump(visited, depth + 1));
                 }
                 else
                 {
-                    result.Append($"{value})");
+                    result.AppendLine(item.ToString());
                 }
+
+                index++;
             }
 
-            // Process fields
-            foreach (var field in fields)
+            return result.ToString();
+        }
+
+        public static string Dump(this IDictionary dictionary, HashSet<object> visited, int depth)
+        {
+            var result = new StringBuilder();
+            string tabs = IDumpable.GetIndentation(depth);
+            result.AppendLine(dictionary.GetType().Name);
+
+            foreach (DictionaryEntry entry in dictionary)
             {
-                string name = field.Name;
-                object value;
+                result.Append($"{tabs}{entry.Key}: ");
 
-                try
+                if (entry.Value == null)
                 {
-                    value = field.GetValue(this);
+                    result.AppendLine("null");
                 }
-                catch (Exception ex)
+                else if (entry.Value is IDumpable dumpableValue)
                 {
-                    value = $"[Error getting value: {ex.Message}]";
-                }
-
-                result.Append($"({name} ");
-
-                if (value == null)
-                {
-                    result.Append("null)");
-                }
-                else if (value is IDumpable dumpable)
-                {
-                    result.Append($"{dumpable.DumpLisp()})");
-                }
-                else if (IsTuple(value.GetType()))
-                {
-                    result.Append($"{FormatTuple(value)})");
-                }
-                else if (IsIDictionary(value.GetType()))
-                {
-                    var dict = value as IDictionary;
-                    result.Append("(");
-
-                    foreach (DictionaryEntry entry in dict)
-                    {
-                        result.Append($"({entry.Key} ");
-
-                        if (entry.Value == null)
-                        {
-                            result.Append("null)");
-                        }
-                        else if (entry.Value is IDumpable dumpableValue)
-                        {
-                            result.Append($"{dumpableValue.DumpLisp()})");
-                        }
-                        else
-                        {
-                            result.Append($"{entry.Value})");
-                        }
-                    }
-
-                    result.Append("))");
-                }
-                else if (value is IEnumerable collection && !(value is string))
-                {
-                    result.Append("(");
-
-                    foreach (var item in collection)
-                    {
-                        if (item == null)
-                        {
-                            result.Append("null ");
-                        }
-                        else if (item is IDumpable dumpableItem)
-                        {
-                            result.Append($"{dumpableItem.DumpLisp()} ");
-                        }
-                        else
-                        {
-                            result.Append($"{item} ");
-                        }
-                    }
-
-                    result.Append("))");
+                    result.AppendLine();
+                    result.Append(dumpableValue.Dump(visited, depth + 1));
                 }
                 else
                 {
-                    result.Append($"{value})");
+                    result.AppendLine(entry.Value.ToString());
                 }
             }
 
-            result.Append(")");
             return result.ToString();
         }
     }

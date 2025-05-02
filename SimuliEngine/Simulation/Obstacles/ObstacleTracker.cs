@@ -335,5 +335,10 @@ namespace SimuliEngine.Simulation.Obstacles
 
             return touchedSubcells;
         }
+
+        public HashSet<((int cellX, int cellY), (int subX, int subY))> GetTouchedSubcellsByObject(Actor obj)
+        {
+            return _actorTouchedSubcells.TryGetValue(obj, out var touchedSubcells) ? touchedSubcells : new HashSet<((int cellX, int cellY), (int subX, int subY))>();
+        }
     }
 }

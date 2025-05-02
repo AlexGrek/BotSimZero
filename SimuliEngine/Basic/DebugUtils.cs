@@ -12,7 +12,7 @@ namespace SimuliEngine.Basic
         {
             if (obj == null)
                 throw new ArgumentNullException(nameof(obj), "Object to dump cannot be null.");
-            string dump = obj.DumpLisp();
+            string dump = obj.Dump(new HashSet<object>());
             System.IO.File.WriteAllText(fileName, dump);
         }
 
@@ -20,7 +20,7 @@ namespace SimuliEngine.Basic
         {
             if (obj == null)
                 throw new ArgumentNullException(nameof(obj), "Object to dump cannot be null.");
-            string dump = obj.Dump();
+            string dump = obj.Dump(new HashSet<object>());
             Console.WriteLine(dump);
         }
     }

@@ -9,7 +9,7 @@ namespace SimuliEngine.Simulation.ActorSystem
 {
     public class StaticActor : Actor
     {
-        public StaticActor(WorldState stateReference, IRealPositionProvider positionProvider) : base(stateReference, positionProvider)
+        public StaticActor(WorldState stateReference, IRealPositionProvider positionProvider, IRealRotationProvider rotationProvider) : base(stateReference, positionProvider, rotationProvider)
         {
 
         }

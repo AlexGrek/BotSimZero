@@ -58,6 +58,10 @@ namespace BotSimZero.World
             var dt = (float)Game.UpdateTime.Elapsed.TotalSeconds * TimeShift;
             GlobalWorldController.Update(dt);
             DebugText.Print(GlobalWorldController.DebugMessage, new Stride.Core.Mathematics.Int2(20, 20), Color.DarkRed);
+            if (Input.IsKeyPressed(Stride.Input.Keys.Space))
+            {
+                GlobalWorldController.Sim.Enabled = !GlobalWorldController.Sim.Enabled;
+            }
         }
     }
 }

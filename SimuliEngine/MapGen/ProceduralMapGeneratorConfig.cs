@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -16,13 +17,20 @@ namespace SimuliEngine.MapGen
         {
             return new ProceduralMapGeneratorConfig(@"
 seed: 42
-walls:
-    probability: 0.2
+terrain:
+    wall:
+        chance: 0.2
 fluctuations:
     temp:
         points: 30
         base: 21
         spikes: -2
+spawn:
+    count: 10
+special:
+    charging:
+        enabled: true
+        count: 5
 ");
         }
 
@@ -162,6 +170,35 @@ fluctuations:
             catch
             {
                 return false;
+            }
+        }
+        // GetValueOrDie: Throws an exception if the path is not found
+        public T GetValueOrDie<T>(string path)
+        {
+            var value = GetValue(path);
+            if (value == null)
+            {
+                throw new KeyNotFoundException($"The specified path '{path}' was not found in the configuration.");
+            }
+
+            // Handle type conversion
+            if (value is T typedValue)
+                return typedValue;
+
+            try
+            {
+                // Handle numeric conversions
+                if (typeof(T).IsPrimitive || typeof(T) == typeof(decimal))
+                {
+                    return (T)Convert.ChangeType(value, typeof(T));
+                }
+
+                throw new InvalidCastException($"The value at path '{path}' cannot be cast to type '{typeof(T).Name}'.");
+            }
+            catch (Exception ex)
+            {
+                return (T)Convert.ChangeType(value, typeof(T), CultureInfo.InvariantCulture);
+                throw new InvalidCastException($"Failed to convert the value at path '{path}' to type '{typeof(T).Name}'.", ex);
             }
         }
     }

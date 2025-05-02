@@ -9,7 +9,7 @@ using static BotSimZero.Core.WorldAwareSyncScript;
 
 namespace BotSimZero.World.UI
 {
-    public class MultiCellHighlighter : SyncScript
+    public class MultiCellHighlighter : StartupScript
     {
         protected Dictionary<HighlightType, Stack<Entity>> _highlights = new Dictionary<HighlightType, Stack<Entity>>();
         protected Dictionary<HighlightType, Stack<Entity>> _pool = new Dictionary<HighlightType, Stack<Entity>>();
@@ -39,7 +39,7 @@ namespace BotSimZero.World.UI
         /// <returns></returns>
         private Entity PickEntityOfType(HighlightType type)
         {
-            var stack = _highlights[type];
+            var stack = _pool[type];
             if (stack.TryPop(out var entity))
             {
                 return entity;
@@ -80,6 +80,7 @@ namespace BotSimZero.World.UI
                 {
                     entity.Remove(scaler); // remove the scaler
                 }
+                entity.Transform.Scale = new Vector3(1f, 0f, 1f);
                 if (_pool[type].Count < MaxPoolSize)
                 {
                     _pool[type].Push(entity); // return to pool
@@ -134,11 +135,6 @@ namespace BotSimZero.World.UI
             }
         }
 
-        public override void Update()
-        {
-            
-        }
-
         public void HighlightCell((int x, int y) cell, HighlightType color = HighlightType.Default, float delay = 0, float hvalue = 0.2f)
         {
             Vector3 position = GetWorldCellPosition(cell.x, cell.y);
@@ -150,6 +146,16 @@ namespace BotSimZero.World.UI
                 Delay = delay
             };
             entity.Add(scaler);
+        }
+
+        public void HighlightSubCell((int x, int y) cell, (int x, int y) subcell, int subdivisions, HighlightType color = HighlightType.Default, float hvalue = 0.2f)
+        {
+            Vector3 position = GetWorldCellPosition(cell.x, cell.y);
+            var entity = UseEntityOfType(color);
+            float size = GlobalGameContext.CellSize / subdivisions;
+            Vector3 shift = new Vector3(subcell.x * size, 0, subcell.y * size);
+            entity.Transform.Position = position + shift - new Vector3(GlobalGameContext.CellHalfSize, 0, GlobalGameContext.CellHalfSize);
+            entity.Transform.Scale = new Vector3(size, hvalue, size); // scale to expected size
         }
 
         private Vector3 GetWorldCellPosition(int x, int y)

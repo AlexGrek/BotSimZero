@@ -1,5 +1,6 @@
 ﻿using BotSimZero.VirtualUI;
 using BotSimZero.VirtualUI.Terminal;
+using SimuliEngine;
 using SimuliEngine.Interop;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace BotSimZero.Core
         public static GlobalGameContext Instance => _instance ??= new GlobalGameContext(64, 64);
 
         public static float CellSize = 1f;
+
+        public static float CellHalfSize => CellSize / 2f;
 
         private Dictionary<string, IDisplayDataStringProvider> _dataSources = new();
 
@@ -28,7 +31,14 @@ namespace BotSimZero.Core
             SizeX = sizeX;
             SizeY = sizeY;
 
+            ConfigureGlobalLogger();
+
             _dataSources.Add("Random", new RandomDaatProvider());
+        }
+
+        private void ConfigureGlobalLogger()
+        {
+            GlobalSimLogger.AddLogger(new FileLogConsumer(null));
         }
 
         public static (int, int) GetSize => (Instance.SizeX, Instance.SizeY);

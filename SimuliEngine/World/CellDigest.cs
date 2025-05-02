@@ -28,7 +28,7 @@ namespace SimuliEngine.World
 
         public override string ToString()
         {
-            return (this as IDumpable).Dump();
+            return (this as IDumpable).Dump(new HashSet<object>());
         }
     }
 }

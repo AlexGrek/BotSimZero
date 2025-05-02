@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿using SimuliEngine.Simulation.ActorSystem;
+using SimuliEngine.World;
+using System.Runtime.CompilerServices;
 
 namespace SimuliEngine.Tiles
 {
@@ -13,6 +15,8 @@ namespace SimuliEngine.Tiles
         public sealed record TransparentWall(TransparentWallType Type) : TileType; // Transparent wall, not passable, but passable for light
         public sealed record DoorTile(Door DoorData) : TileType; // Door, passable if open
         public sealed record SpecialObject(SpecialObject ObjectData, bool IsPassable) : TileType; // Special object, passability depends on 2nd parameter
+
+        public sealed record InteractiveObject(IInteractableObject ObjectData, bool IsPassable, (int x, int y) interactablePointDisplacement) : TileType; // Special object, passability depends on 2nd parameter
 
         public static bool IsWall(TileType tileType)
         {
@@ -36,5 +40,13 @@ namespace SimuliEngine.Tiles
         StairsUp,
         StairsDown,
         Elevator,
+    }
+
+    public interface IInteractableObject
+    {
+        void StartInteraction(Actor actor, WorldState world);
+        void Interact(float dt, Actor actor, WorldState world);
+        void EndInteraction(Actor actor, WorldState world);
+        bool IsUsable { get; }
     }
 }

@@ -257,6 +257,7 @@ Hierarchy:
                         Children: {}
                     a96da19cea8b511a6e3e45050c873f3d: !BotSimZero.World.UI.HighlighterSystem,BotSimZero
                         Id: 78ce1750-5672-4f32-a05e-db14ff569f4e
+                        UpdateEveryNFrames: 10
                         CellSize: 1.0
                         HighlightGroundLevel: 0.0
                     7e5b632829ba69dba29b20ecb3bcdea3: !BotSimZero.World.UI.MultiCellHighlighter,BotSimZero

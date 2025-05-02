@@ -352,7 +352,7 @@ namespace SimuliEngine.Basic
     /// <summary>
     /// HyperMap implementation with single-buffered hypercells
     /// </summary>
-    public class HyperMap<T> : HyperMapBase<T, Hypercell<T>>
+    public class HyperMap<T> : HyperMapBase<T, Hypercell<T>>, IDumpable
     {
         public HyperMap(int hypercellSize) : base(hypercellSize) { }
 
@@ -410,6 +410,32 @@ namespace SimuliEngine.Basic
                     }
                 }
             });
+        }
+
+        string IDumpable.Dump(HashSet<object>? visited, int depth)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"{IDumpable.GetIndentation(depth)}{GetType().Name}:");
+            foreach (var hypercell in hypercells)
+            {
+                sb.AppendLine($"{IDumpable.GetIndentation(depth + 1)}Hypercell {hypercell.Key}:");
+                for (int i = 0; i < hypercellSize; i++)
+                {
+                    sb.Append(IDumpable.GetIndentation(depth + 2));
+                    for (int j = 0; j < hypercellSize; j++)
+                    {
+                        var value = hypercell.Value[i, j];
+                        if (value == null)
+                        {
+                            sb.Append($"null ");
+                        } else {
+                            sb.Append($"{IDumpable.GenerateCode(value)} ");
+                        }
+                    }
+                    sb.AppendLine();
+                }
+            }
+            return sb.ToString();
         }
     }
 
