@@ -3,11 +3,80 @@ using BotSimZero.VirtualUI.Terminal;
 using SimuliEngine;
 using SimuliEngine.Interop;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Windows.Data;
 
 namespace BotSimZero.Core
 {
+    public class TerminalLast3Logger : ILogConsumer
+    {
+        private ConcurrentQueue<string> _entries = new ConcurrentQueue<string>();
+
+        public void Dispose()
+        {
+            
+        }
+
+        public void Initialize()
+        {
+            
+        }
+
+        public void Log(string message)
+        {
+            JustLog(message);
+        }
+
+        private void JustLog(string message)
+        {
+            _entries.Enqueue(message);
+            if (_entries.Count > 3)
+            {
+                _entries.TryDequeue(out _);
+            }
+        }
+
+        public string Last()
+        {
+            if (_entries.TryPeek(out var entry))
+            {
+                return entry;
+            }
+            return "";
+        }
+
+        public void LogError(string message)
+        {
+            JustLog(message);
+        }
+
+        public void LogWarning(string message)
+        {
+            JustLog(message);
+        }
+    }
+
+    public class LogDataStringProvider : IDisplayDataStringProvider
+    {
+        private TerminalLast3Logger _logger;
+
+        public LogDataStringProvider(TerminalLast3Logger logger)
+        {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        }
+
+        public string GetDisplayDataHeader(dynamic options)
+        {
+            return "Log";
+        }
+
+        public string GetDisplayDataString(dynamic options)
+        {
+            return _logger.Last();
+        }
+    }
+
     internal class GlobalGameContext
     {
         private static GlobalGameContext _instance;
@@ -31,14 +100,17 @@ namespace BotSimZero.Core
             SizeX = sizeX;
             SizeY = sizeY;
 
-            ConfigureGlobalLogger();
+            ConfigureGlobalLogger(out var logger);
 
             _dataSources.Add("Random", new RandomDaatProvider());
+            _dataSources.Add("LastLog", new LogDataStringProvider(logger));
         }
 
-        private void ConfigureGlobalLogger()
+        private void ConfigureGlobalLogger(out TerminalLast3Logger logger)
         {
             GlobalSimLogger.AddLogger(new FileLogConsumer(null));
+            logger = new TerminalLast3Logger();
+            GlobalSimLogger.AddLogger(logger);
         }
 
         public static (int, int) GetSize => (Instance.SizeX, Instance.SizeY);

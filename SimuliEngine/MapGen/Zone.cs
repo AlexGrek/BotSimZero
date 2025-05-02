@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimuliEngine.Basic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SimuliEngine.MapGen
 {
-    public class Zone<T> where T: IEquatable<T>
+    public class Zone<T>: IDumpable where T: IEquatable<T>
     {
         public readonly T Definition;
 

@@ -12,9 +12,10 @@ using System.Threading.Tasks;
 
 namespace SimuliEngine.Simulation.ActorSystem
 { 
-    public abstract class Actor: IObstacle, IDumpable
+    public abstract class Actor: IObstacle, IDumpable, ILoggable
     {
         private WorldState _stateReference;
+        public string Name;
         protected IRealPositionProvider _positionProvider;
         protected IRealRotationProvider _rotationProvider;
         private bool _instantiated = false;
@@ -212,5 +213,9 @@ namespace SimuliEngine.Simulation.ActorSystem
 
         #endregion
 
+        public override string ToString()
+        {
+            return $"${this.GetType().Name}-{Name}";
+        }
     }
 }

@@ -15,6 +15,8 @@ namespace SimuliEngine.Simulation.ActorSystem.Bots
         private RunsOnBatteries? _batteryComponent;
         private LogicalTask? _task = null;
 
+        private ILoggable _log => this as ILoggable;
+
         public float ChargeAnxietyLevel { get; set; } = 30f;
 
         public void Update(float deltaTime, MovingActor actor, WorldState world)
@@ -49,6 +51,9 @@ namespace SimuliEngine.Simulation.ActorSystem.Bots
                 var task = new FindAndGoToStaticPointLogicalTask(pred, 100, this);
                 task.Priority = 100f - _batteryComponent.ChargeLevel;
                 actor.Intellect.Tasks.Add(task);
+
+                _log.Log($"Recharge task for bot {actor} created");
+
                 _task = task;
             }
         }

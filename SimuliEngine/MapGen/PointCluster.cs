@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SimuliEngine.MapGen
 {
-    public class PointCluster : IReadOnlySet<(int x, int y)>
+    public class PointCluster: IReadOnlySet<(int x, int y)>, IDumpable
     {
         private HashSet<(int x, int y)> _withoutWalls;
         private HashSet<(int x, int y)> _walls;

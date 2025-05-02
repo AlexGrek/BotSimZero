@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SimuliEngine.Simulation.ActorSystem.ActorComponentSystem
 {
-    public interface IActorComponent: IDumpable
+    public interface IActorComponent: IDumpable, ILoggable
     {
         public string ComponentName { get; }
 

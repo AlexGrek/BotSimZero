@@ -237,13 +237,13 @@ Hierarchy:
                             80ebf16b74e62638eabc2cf157dc534b~0: c03be48c-f693-40d4-8c95-d893d03b50d6:EdemAssets/Megaterm/Some_material
                     772c2399838888cd8acc98d1310cb2b4: !BotSimZero.VirtualUI.UiTerminalAsyncScript,BotSimZero
                         Id: e737318e-9862-49ba-ade1-d76fd917c4ec
-                        AppName: Random
+                        AppName: LastLog
                         Font: ae863585-370d-44e6-b8e3-f37f41e35eb7:MyCustomFont
                         PlaneEntity: null
                         TextureWidth: 1024
                         TextureHeight: 1024
                         BgColor: {R: 0, G: 0, B: 0, A: 255}
-                        FontSize: 148.0
+                        FontSize: 80.0
                         UpdateEveryNFrames: 10
         -   Entity:
                 Id: f8b4c922-48b9-443c-8035-abce3d07fb3b

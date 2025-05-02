@@ -33,6 +33,7 @@ namespace BotSimZero.Entities
             Actor = new BotActor(controller.WorldState, new BotRealPositionProvider(Entity), new RealRotationProviderClaude(Entity));
             Actor.AddActorComponent(new RunsOnBatteries());
             Actor.Intellect.AddBehavior(new BotBehavior());
+            Actor.Name = Entity.Name;
         }
     }
 }

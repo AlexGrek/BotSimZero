@@ -4,7 +4,7 @@ using SimuliEngine.World;
 
 namespace SimuliEngine.Simulation.ActorSystem.TaskingSystem
 {
-    public interface IBehavior<T>: IDumpable
+    public interface IBehavior<T>: IDumpable, ILoggable
     {
         public void OnBehaviorAdd(T actor, WorldState world)
         {
