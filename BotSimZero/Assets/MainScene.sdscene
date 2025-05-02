@@ -16,6 +16,9 @@ Hierarchy:
         - ref!! e6717c08-e204-41dd-8a3d-2b7e691f37fb
         - ref!! 2192150a-7ee0-4a5e-8987-f2407b185d04
         - ref!! f8b4c922-48b9-443c-8035-abce3d07fb3b
+        - ref!! c504d52e-eb0c-4ff3-bcae-a67277aca239
+        - ref!! ad12f80f-6a18-4b03-8de2-3856f3b57441
+        - ref!! 326fa5ed-2776-4dae-86ad-7abff45e1829
     Parts:
         -   Entity:
                 Id: 03386349-8b79-4ae7-bf72-0a6ae7231463
@@ -30,6 +33,17 @@ Hierarchy:
                     f9756556f6b7de7a79eadaf71c7a2b55: !BackgroundComponent
                         Id: 6e34e0fa-7936-4a23-8277-30c0f61d2245
                         Texture: ba6c7902-0af0-4fbc-8507-ffce4508b5b4:Skybox texture
+        -   Folder: null
+            Entity:
+                Id: 0813bba1-b53a-4b78-bab5-81acd358a124
+                Name: Pointer
+                Components:
+                    dfff3f5ad13c229766408633e951c17c: !TransformComponent
+                        Id: 50f2fbd3-ab7f-4ea8-a4fd-4863dbbdf6e6
+                        Position: {X: 0.0, Y: 0.0, Z: -5.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
         -   Entity:
                 Id: 176503db-f479-4311-85c7-63b079a1af60
                 Name: Megaterm_screen_top
@@ -103,6 +117,68 @@ Hierarchy:
                         Children:
                             f1dd7735a5c8ca50f953269c80ebe888: ref!! 3685f355-ba5d-4552-9955-b5b6d9500f35
         -   Entity:
+                Id: 326fa5ed-2776-4dae-86ad-7abff45e1829
+                Name: Teleport target
+                Components:
+                    f0c8949bbcdae93773ef6b897efc90bc: !TransformComponent
+                        Id: 00ffefbd-e103-4db1-886a-1ab8b91d315c
+                        Position: {X: 0.0, Y: 0.1, Z: 0.606}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    f705b042fe742acc8c9457e1576277e0: !ModelComponent
+                        Id: f44343cc-8576-48b6-963c-8c80e26d9ca1
+                        Enabled: false
+                        Model: 95c8ba7f-4757-43c2-8978-22b7d0e700e2:Sphere
+                        Materials: {}
+        -   Folder: null
+            Entity:
+                Id: 5db328b9-aaec-488c-8a6c-92dacb87c569
+                Name: Entity
+                Components:
+                    066f84b2482a2515972e87bc75225896: !TransformComponent
+                        Id: a8d16961-463d-4f75-9a51-7cc64333cb4a
+                        Position: {X: -1.5460015E-15, Y: 0.0, Z: 0.1}
+                        Rotation: {X: -0.35355347, Y: 0.6123724, Z: -0.6123724, W: 0.35355324}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    3aec4496990b7865c5e24ca3b3d3e09b: !ModelComponent
+                        Id: 16b53de3-e125-4912-a07e-24c8eb95dbaf
+                        Model: 9d36467c-19a7-47f1-b19a-0fdf407906dc:MaterialModel
+                        Materials: {}
+                    a2bba0d677eeb364a50c62aec6f70ce4: !AnimationComponent
+                        Id: d999a75e-f42c-45f6-b385-49403c55d33b
+                        Animations:
+                            bcf7e5a041247fa30e195038fee344ce~Grab: c85a2dd9-c792-4dfd-8d33-5f9d7bf95c09:Animations/Grab_L
+                    2353863f5ffa0172f5f0f4fb1a249660: !RigidbodyComponent
+                        Id: 0924ce8d-f128-4659-b77f-5b8ab3f38fd1
+                        CollisionGroup: CharacterFilter
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: true
+                        Mass: 3.445
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            94c033572b27dce3473c2a4f87be89d3: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 0.1, Y: 0.1, Z: 0.03}
+                                LocalOffset: {X: 0.0, Y: 0.05, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                            792680a4b4aa1ac0429543c950c2ddf4: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 0.1, Y: 0.08, Z: 0.03}
+                                LocalOffset: {X: 0.0, Y: 0.14, Z: 0.01}
+                                LocalRotation: {X: 0.25881904, Y: 0.0, Z: 0.0, W: 0.9659258}
+        -   Entity:
                 Id: 5e7c6bd1-9f0c-49d6-9ebc-60ca216f96ea
                 Name: MainWorldController
                 Components:
@@ -145,6 +221,79 @@ Hierarchy:
                         Model: c20f8de1-b1d1-4e78-b2bf-80c41f8bf9a7:EdemAssets/Megaterm/Megaterm
                         Materials: {}
         -   Entity:
+                Id: ad12f80f-6a18-4b03-8de2-3856f3b57441
+                Name: CameraVR
+                Components:
+                    2af1ddfb0827624cbff09bdf62d43298: !TransformComponent
+                        Id: 09ef1282-6890-4fbf-8306-3868bac747e7
+                        Position: {X: 5.699039E-09, Y: 1.6, Z: 0.6060585}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    78ba88204fbfe348be7d3f1bea581810: !CameraComponent
+                        Id: 0637324c-e516-4571-8fcb-8ac9669d05f0
+                        Name: VrCumera
+                        Projection: Perspective
+                        Slot: f70c25f8-3ab5-4afd-a6da-3f48277293b7
+        -   Entity:
+                Id: c504d52e-eb0c-4ff3-bcae-a67277aca239
+                Name: PlayerCharacter
+                Components:
+                    9479d6aa0ede2f42a44c5a1e6a6131dd: !TransformComponent
+                        Id: abfa829d-3ff2-4201-9ce5-bd352d6d55de
+                        Position: {X: 0.0, Y: 1.2168225, Z: 0.6060585}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            98c67e4660c57d47a5f1e59aead8ed57: ref!! c4f0215d-9681-4b58-9ab9-c9f1907a8d4f
+                            2e45864c10a9624a8d5b288194fc0afc: ref!! 49697e6d-b6ee-49ba-a69b-d0285d412011
+                    d87c5cb8db100cc828498882abaefff2: !BotSimZero.VR.Player.PlayerInput,BotSimZero
+                        Id: d10968d4-820b-40e4-8ce5-4447911c24ba
+                        ControllerIndex: 0
+                        DeadZone: 0.25
+                        Camera: ref!! 0637324c-e516-4571-8fcb-8ac9669d05f0
+        -   Folder: null
+            Entity:
+                Id: d3d01ec6-cbdd-4529-8ced-0963fbd57a7b
+                Name: RightHand
+                Components:
+                    2e45864c10a9624a8d5b288194fc0afc: !TransformComponent
+                        Id: 49697e6d-b6ee-49ba-a69b-d0285d412011
+                        Position: {X: 0.2, Y: -0.3, Z: -0.35}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            a933ef21b221dc4049a3ff38657d1a7a: ref!! 7123c402-2f53-422a-ba79-2e42368fd23e
+                            3e4f69d6ffdf021ff35c0ef3f7f95fbc: ref!! 848f56c3-c6ae-4411-9b10-9ea51b825c4e
+                    e34c5dff8b32094894e366b1f1596e31: !RigidbodyComponent
+                        Id: 5bb496fd-50a9-49ac-9b36-27a1a7db2a7d
+                        CollisionGroup: CharacterFilter
+                        CanCollideWith: CustomFilter1
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: true
+                        IsKinematic: true
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            210c95318f936d4299948bf2cd438643: !SphereColliderShapeDesc
+                                Is2D: false
+                                Radius: 0.02
+                                LocalOffset: {X: -0.05, Y: 0.0, Z: -0.08}
+                    0e551da00584593e3ee0b9f5c37e3f20: !BotSimZero.VR.Player.HandController,BotSimZero
+                        Id: 1b619a9c-c352-46c8-9788-de57fd2973f8
+                        Head: ref!! ad12f80f-6a18-4b03-8de2-3856f3b57441
+                        MaxMoveSpeed: 1.0
+                        Hand: Right
+        -   Entity:
                 Id: da3d12c4-0b9f-45e9-b59f-a472f523189a
                 Name: UiCamera
                 Components:
@@ -159,6 +308,47 @@ Hierarchy:
                         Name: THeUiCamera
                         Projection: Orthographic
                         Slot: 90368c05-328c-44a8-81be-33d322d1c058
+        -   Folder: null
+            Entity:
+                Id: dae69a3f-c77b-4f41-91df-8e9c96d011c8
+                Name: LeftHand
+                Components:
+                    98c67e4660c57d47a5f1e59aead8ed57: !TransformComponent
+                        Id: c4f0215d-9681-4b58-9ab9-c9f1907a8d4f
+                        Position: {X: -0.2, Y: -0.3, Z: -0.35}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            548641ae170ef0f66641061e49fd9a2a: ref!! a8d16961-463d-4f75-9a51-7cc64333cb4a
+                    278895dba1e0e14f8d5edaa319e6a355: !RigidbodyComponent
+                        Id: a9d0cfc6-9d11-46d9-afcc-24814336b511
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: true
+                        IsKinematic: true
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            667fe67841c1f84d9d879b99972fd80e: !SphereColliderShapeDesc
+                                Is2D: false
+                                Radius: 0.02
+                                LocalOffset: {X: 0.05, Y: 0.0, Z: -0.08}
+                    57186a260a12a3b9a04a7fec902f07c6: !AnimationComponent
+                        Id: 4695ded3-afde-481a-ac65-ded18ea702b9
+                        Animations: {}
+                    076fdcc68cbf66e78c6b679425108aed: !BotSimZero.VR.Player.HandController,BotSimZero
+                        Id: e16993f5-d98c-4249-a555-819616d95759
+                        Head: ref!! ad12f80f-6a18-4b03-8de2-3856f3b57441
+                        MaxMoveSpeed: 1.0
+                        Hand: Left
         -   Folder: Studio
             Entity:
                 Id: ddf852e2-641c-4ec1-9fd6-601153a98f36
@@ -245,6 +435,129 @@ Hierarchy:
                         BgColor: {R: 0, G: 0, B: 0, A: 255}
                         FontSize: 80.0
                         UpdateEveryNFrames: 10
+        -   Folder: null
+            Entity:
+                Id: f7753ad9-c7f0-49ab-8a94-062409a4285a
+                Name: Teleport arc
+                Components:
+                    044f2fb607702a3a2ddc37874fa71f83: !TransformComponent
+                        Id: 848f56c3-c6ae-4411-9b10-9ea51b825c4e
+                        Position: {X: 0.0, Y: 0.028180601, Z: -0.011464879}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            1238ba891c72b8f79d1bd4a49c42bd01: ref!! 50f2fbd3-ab7f-4ea8-a4fd-4863dbbdf6e6
+                    1e1d92d491f803590c652f693760d0ec: !ParticleSystemComponent
+                        Id: fd5520fd-c698-40f9-ac48-db344c1f47cc
+                        Enabled: false
+                        Control:
+                            ResetSeconds: 5.0
+                            Control: Play
+                        Color: {R: 0.012500048, G: 1.0, B: 0.0, A: 1.0}
+                        Speed: 1.0
+                        ParticleSystem:
+                            Settings: {}
+                            BoundingShape: null
+                            Emitters:
+                                b00a97adb90dcc35b6d04b077561802a:
+                                    MaxParticlesOverride: 50
+                                    ParticleLifetime: {X: 0.01, Y: 0.01}
+                                    SortingPolicy: ByOrder
+                                    ShapeBuilder: !ShapeBuilderRibbon
+                                        SmoothingPolicy: Fast
+                                        Segments: 3
+                                        TextureCoordinatePolicy: AsIs
+                                        TexCoordsFactor: 0.0
+                                        UVRotate:
+                                            FlipX: false
+                                            FlipY: false
+                                            UVClockwise: Degree0
+                                    Material: !ParticleMaterialComputeColor
+                                        ComputeColor: !ComputeTextureColor
+                                            FallbackValue:
+                                                Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
+                                            Scale: {X: 1.0, Y: 1.0}
+                                            Offset: {X: 0.0, Y: 0.0}
+                                            Swizzle: null
+                                        UVBuilder: null
+                                        ForceTexCoords: false
+                                    Spawners:
+                                        1d412a5c802225984bc5fb917b6dceb1: !SpawnerPerFrame
+                                            LoopCondition: Looping
+                                            Delay: {X: 0.0, Y: 0.0}
+                                            Duration: {X: 1.0, Y: 1.0}
+                                            SpawnCount: 50.0
+                                            Framerate: 60.0
+                                    Initializers:
+                                        57e03470097e08bbc69c9188121ccb4d: !InitialSpawnOrder
+                                            InheritPosition: true
+                                            Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                                            InheritRotation: true
+                                            Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                                            InheritScale: true
+                                            Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                                            ScaleUniform: 1.0
+                                            DisplayParticlePosition: false
+                                            DisplayParticleRotation: false
+                                            DisplayParticleScale: false
+                                            DisplayParticleScaleUniform: false
+                                        097e6ade9c064b13b35b8954f8591bc8: !InitialSizeSeed
+                                            InheritPosition: true
+                                            Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                                            InheritRotation: true
+                                            Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                                            InheritScale: true
+                                            Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                                            ScaleUniform: 1.0
+                                            SeedOffset: 0
+                                            DisplayParticlePosition: false
+                                            DisplayParticleRotation: false
+                                            DisplayParticleScale: false
+                                            DisplayParticleScaleUniform: true
+                                            RandomSize: {X: 0.01, Y: 0.01}
+                                        9892c8f663458b214fc625aceb063ae1: !InitialPositionArc
+                                            InheritPosition: true
+                                            Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                                            InheritRotation: false
+                                            Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                                            InheritScale: true
+                                            Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                                            ScaleUniform: 1.0
+                                            DisplayParticlePosition: false
+                                            Target: null
+                                            DisplayParticleRotation: true
+                                            DisplayParticleScale: false
+                                            FallbackTarget: {X: 0.0, Y: 0.0, Z: -1.0}
+                                            DisplayParticleScaleUniform: false
+                                            ArcHeight: 1.5
+                                            Sequential: true
+                                            FixedLength: 50
+                                            PositionMin: {X: 0.0, Y: 0.0, Z: 0.0}
+                                            PositionMax: {X: 0.0, Y: 0.0, Z: 0.0}
+                                            SeedOffset: 0
+                                        7233a7b7f6177f994d5fce9f7ceb0fa2: !InitialDirectionSeed
+                                            InheritPosition: true
+                                            Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                                            InheritRotation: true
+                                            Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                                            InheritScale: true
+                                            Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                                            ScaleUniform: 1.0
+                                            SeedOffset: 0
+                                            DisplayParticlePosition: false
+                                            DisplayParticleRotation: true
+                                            DisplayParticleScale: false
+                                            DisplayParticleScaleUniform: true
+                                            DirectionMin: {X: 1.0, Y: 0.0, Z: 0.0}
+                                            DirectionMax: {X: 1.0, Y: 0.0, Z: 0.0}
+                                    Updaters: {}
+                    0d53304dbc3f91701551e0ea9637ce22: !BotSimZero.VR.Player.TeleportController,BotSimZero
+                        Id: 9afe1441-5f39-4db7-b75e-dd3bac86a208
+                        Player: ref!! ad12f80f-6a18-4b03-8de2-3856f3b57441
+                        Pointer: ref!! 0813bba1-b53a-4b78-bab5-81acd358a124
+                        Target: ref!! 326fa5ed-2776-4dae-86ad-7abff45e1829
+                        Arc: ref!! fd5520fd-c698-40f9-ac48-db344c1f47cc
+                        Constraints: {X: -4.5, Y: -4.5, Width: 9.0, Height: 9.0}
         -   Entity:
                 Id: f8b4c922-48b9-443c-8035-abce3d07fb3b
                 Name: HighlighterSystem
@@ -264,6 +577,53 @@ Hierarchy:
                         Id: 4ce5e43d-19b6-4dc4-aec0-0d1c4f799e3c
                         MaxPoolSize: 100
                         Height: 0.0
+        -   Folder: null
+            Entity:
+                Id: fb8345ff-b041-4cfa-bf10-b31b60009021
+                Name: Entity
+                Components:
+                    f742f68263c3a3d188575793fe8b7e81: !TransformComponent
+                        Id: 7123c402-2f53-422a-ba79-2e42368fd23e
+                        Position: {X: 0.0, Y: 0.0, Z: 0.1}
+                        Rotation: {X: -0.35355324, Y: -0.6123724, Z: 0.6123724, W: 0.35355347}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    67ff6f947b9e388019bdd2af859939a3: !ModelComponent
+                        Id: 35d75b12-4dce-4480-baf7-a7c622535d0c
+                        Model: 9d36467c-19a7-47f1-b19a-0fdf407906dc:MaterialModel
+                        Materials: {}
+                    f56dbda1461cd6861d6a84267ff44ccb: !AnimationComponent
+                        Id: 661c0606-5875-464d-a1d9-af6104a34d30
+                        Animations:
+                            b2c017c5bedab7cb305bd775da58d480~Grab: 82b3610c-2a44-4a6b-a16e-a1e730927bb5:Animations/Grab_R
+                    614334a9c99f238912f32f1158767067: !RigidbodyComponent
+                        Id: ef290860-b112-425f-a538-86ac7b584d33
+                        CollisionGroup: CharacterFilter
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: true
+                        Mass: 3.445
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            60f676c039b4fe70f5e8a81529b2e908: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 0.1, Y: 0.1, Z: 0.03}
+                                LocalOffset: {X: 0.0, Y: 0.05, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                            3fe3a5cf4af37dc2d29929a61c2c445a: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 0.1, Y: 0.08, Z: 0.03}
+                                LocalOffset: {X: 0.0, Y: 0.14, Z: 0.01}
+                                LocalRotation: {X: 0.25881904, Y: 0.0, Z: 0.0, W: 0.9659258}
         -   Folder: Studio
             Entity:
                 Id: fbd5896e-b303-4fb6-a65d-ccf8fe440569

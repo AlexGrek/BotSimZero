@@ -14,6 +14,12 @@ AssetFolders:
     -   Path: !dir Assets
     -   Path: !dir Assets
     -   Path: !dir Assets
+    -   Path: !dir Assets
+    -   Path: !dir Assets
+    -   Path: !dir Assets
+    -   Path: !dir Assets
+    -   Path: !dir Assets
+    -   Path: !dir Assets
     -   Path: !dir C:/Users/AlexG/Documents/Stride Projects/BotSimZero/BotSimZero/Assets
 ResourceFolders:
     - !dir Resources
