@@ -134,7 +134,7 @@ namespace BotSimZero.World.UI
             }
             if (botComponentDebug != null)
             {
-                botDebugInfo = $"Bot: {botComponentDebug.Id} {(botComponentDebug.Actor as MovingActor)?.GetNormalizedRotation()})";
+                //botDebugInfo = $"Bot: {botComponentDebug.Id} {(botComponentDebug.Actor as MovingActor)?.GetNormalizedRotation()})";
             }
             else
             {

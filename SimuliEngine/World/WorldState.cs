@@ -17,6 +17,7 @@ namespace SimuliEngine.World
         public static readonly int SubdivisionSize = 4; // Size of the hypercell chunk in each dimension
 
         public DoubleBufferedHyperMap<float> Temperature;
+        public HyperMap<float> Dirt;
         public HyperMap<TileType> TileTypeMap; // Map of tile types
         public HyperMap<HashSet<CellActorReference>> ActorMap; // Map of actors in the world
         public ICollection<Actor> Actors = new List<Actor>(); // List of instantiated actors in the world
@@ -33,6 +34,8 @@ namespace SimuliEngine.World
             Size = (sizeX, sizeY);
             Temperature = new DoubleBufferedHyperMap<float>(HypercellChunkSize);
             Temperature.PreInit(Size);
+            Dirt = new HyperMap<float>(HypercellChunkSize);
+            Dirt.PreInit(Size);
             TileTypeMap = new HyperMap<TileType>(HypercellChunkSize);
             TileTypeMap.PreInit(Size);
             ActorMap = new HyperMap<HashSet<CellActorReference>>(HypercellChunkSize);
@@ -59,7 +62,8 @@ namespace SimuliEngine.World
             return new CellDigest
             {
                 Temperature = Temperature[x, y],
-                TileType = TileTypeMap[x, y]
+                TileType = TileTypeMap[x, y],
+                Dirt = Dirt[x, y],
             };
         }
 

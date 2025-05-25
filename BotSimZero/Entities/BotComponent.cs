@@ -2,6 +2,7 @@
 using SimuliEngine.Simulation;
 using SimuliEngine.Simulation.ActorSystem;
 using SimuliEngine.Simulation.ActorSystem.Bots;
+using SimuliEngine.Simulation.Subsystems;
 using Stride.Engine;
 
 namespace BotSimZero.Entities
@@ -33,6 +34,7 @@ namespace BotSimZero.Entities
             Actor = new BotActor(controller.WorldState, new BotRealPositionProvider(Entity), new RealRotationProviderClaude(Entity));
             Actor.AddActorComponent(new RunsOnBatteries());
             Actor.Intellect.AddBehavior(new BotBehavior());
+            Actor.AddActorComponent(new DirtActorComponent());
             Actor.Name = Entity.Name;
         }
     }

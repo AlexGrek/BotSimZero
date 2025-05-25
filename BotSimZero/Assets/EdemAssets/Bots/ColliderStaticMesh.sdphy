@@ -1,0 +1,7 @@
+!ColliderShapeAsset
+Id: 8eac1a50-fa4f-4fea-bf5a-3bc7bdec5299
+SerializedVersion: {Stride: 3.0.0.0}
+Tags: []
+ColliderShapes:
+    413db4e07c73e12482f4e850327082db: !StaticMeshColliderShapeDesc
+        Model: null

@@ -1,0 +1,22 @@
+!ColliderShapeAsset
+Id: bb80bc7f-db7a-4ef9-b1b9-e145f8df2837
+SerializedVersion: {Stride: 3.0.0.0}
+Tags: []
+ColliderShapes:
+    124b9684ac21a3542c8e417dc725af57: !ConvexHullColliderShapeDesc
+        ConvexHulls: null
+        ConvexHullsIndices: null
+        Model: 02f45ef9-28be-4e20-bb71-b787182a514c:EdemAssets/Bots/BotV2
+        LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+        LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        Scaling: {X: 1.0, Y: 1.0, Z: 1.0}
+        Margin: 0.04
+        Decomposition:
+            Depth: 10
+            PosSampling: 10
+            AngleSampling: 10
+            PosRefine: 5
+            AngleRefine: 5
+            Alpha: 0.01
+            Threshold: 0.01
+            Enabled: false

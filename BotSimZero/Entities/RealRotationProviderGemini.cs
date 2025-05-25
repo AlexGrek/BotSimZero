@@ -91,6 +91,11 @@ namespace BotSimZero.Entities
         {
             return GetRotationDirection();
         }
+
+        public void SetRotationByNormalVector(System.Numerics.Vector2 vector)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public static class Vector2Extensions

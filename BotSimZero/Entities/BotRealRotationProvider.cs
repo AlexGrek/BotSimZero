@@ -68,6 +68,15 @@ namespace BotSimZero.Entities
             SetRotationDirection(target);
         }
 
+        public void SetRotationByNormalVector(Vector2 vector)
+        {
+            if (vector == Vector2.Zero)
+                return;
+
+            vector = Vector2.Normalize(vector);
+            SetRotationDirection(vector);
+        }
+
         private void SetRotationDirection(Vector2 newRotation)
         {
             if (newRotation == Vector2.Zero)

@@ -14,7 +14,7 @@ namespace SimuliEngine.Simulation.ActorSystem
 { 
     public abstract class Actor: IObstacle, IDumpable, ILoggable
     {
-        private WorldState _stateReference;
+        protected WorldState _stateReference;
         public string Name;
         protected IRealPositionProvider _positionProvider;
         protected IRealRotationProvider _rotationProvider;

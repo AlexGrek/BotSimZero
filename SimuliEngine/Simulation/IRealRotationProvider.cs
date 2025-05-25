@@ -14,7 +14,9 @@ namespace SimuliEngine.Simulation
 
         public bool IsFacing(Vector2 target);
 
-        public Vector2 GetRotationDirection(); 
+        public Vector2 GetRotationDirection();
+
+        public void SetRotationByNormalVector(Vector2 vector);
 
         public void LookAtImmediately(Vector2 target);
     }

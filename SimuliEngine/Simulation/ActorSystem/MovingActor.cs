@@ -50,6 +50,10 @@ namespace SimuliEngine.Simulation.ActorSystem
         public virtual void CenterChanged()
         {
             Intellect.ConsiderCenterChanged();
+            foreach (var component in this.ActorComponents)
+            {
+                component.OnMainCellChanged(this, _stateReference, PrevMainPosition, MainPosition);
+            }
         }
 
         public override void MovePosition(float deltaTime)
@@ -102,6 +106,10 @@ namespace SimuliEngine.Simulation.ActorSystem
 
         public virtual void MoveAndRotateTowardsTarget(float deltaTime)
         {
+            if (CenterPositionChanged.ReadAndReset())
+            {
+                CenterChanged();
+            }
             if (MovementStep.HasValue)
             {
                 var (x, y) = MovementStep.Value.TargetCell;

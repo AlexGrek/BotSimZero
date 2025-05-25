@@ -18,6 +18,8 @@ namespace SimuliEngine.Simulation.ActorSystem.ActorComponentSystem
 
         public bool IsIndependent { get; }
 
+        public void OnMainCellChanged(Actor actor, WorldState world, (int x, int y) prev, (int x, int y) next) { }
+
         public UpdateFrequency RequiredUpdateFrequency { get; }
     }
 }

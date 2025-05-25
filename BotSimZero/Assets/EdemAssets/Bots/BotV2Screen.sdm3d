@@ -1,0 +1,15 @@
+!Model
+Id: 086b7cb6-77c8-4ea5-886a-77936e45a03b
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../../../../../blender/Severance/BotV2Screen.glb
+Skeleton: null
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+Materials:
+    f395dbacd1397a17f6a15292c44f6128:
+        Name: Material
+        MaterialInstance:
+            Material: 18048d30-75d1-4dbc-b3b9-96146ba574ed:EdemAssets/OfficeStuff/Some_material
+Modifiers: {}
+~SourceHashes:
+    8ba7285fdc3e7b202e5902c9fad0cfad~../../../../../../blender/Severance/BotV2Screen.glb: a41cb536633b00e9c4c2f5cb722b49d9

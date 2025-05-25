@@ -132,6 +132,21 @@ namespace BotSimZero.Entities
             return ToSystemVector2(GetStrideRotationDirection());
         }
 
+        public void SetRotationByNormalVector(System.Numerics.Vector2 normal)
+        {
+            // Convert normal to Stride vector  
+            Stride.Core.Mathematics.Vector3 strideNormal = new Stride.Core.Mathematics.Vector3(normal.X, 0, normal.Y);
+
+            // Calculate the forward direction (normalized)  
+            strideNormal.Normalize();
+
+            // Calculate the quaternion rotation using BetweenDirections  
+            Quaternion rotation = Quaternion.BetweenDirections(Vector3.UnitZ, strideNormal);
+
+            // Set the entity's rotation  
+            entity.Transform.Rotation = rotation;
+        }
+
         public void LookAtImmediately(System.Numerics.Vector2 target)
         {
             // Convert target to Stride vector

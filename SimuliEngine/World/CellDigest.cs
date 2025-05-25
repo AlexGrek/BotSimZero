@@ -12,6 +12,8 @@ namespace SimuliEngine.World
     public readonly struct CellDigest: IDumpable
     {
         public float Temperature { get; init; }
+
+        public float Dirt { get; init; }
         public TileType TileType { get; init; }
 
         public string GetValue(string propertyName)

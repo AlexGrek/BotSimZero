@@ -1,0 +1,39 @@
+!Model
+Id: 038cef62-fdef-4daa-98ac-3dd84e8e6c5d
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../../../../../blender/Severance/LiftWithDoors.glb
+Skeleton: null
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+Materials:
+    cb3e5b127c83ab132624c78bbcca334f:
+        Name: WhiteWall.002
+        MaterialInstance:
+            Material: c26a218d-56b1-41af-bb0a-b656290fa835:EdemAssets/Walls/WhiteWall.002
+    6af1c656940a53a77ad6d81db57fda03:
+        Name: TopWall.002
+        MaterialInstance:
+            Material: 0d168211-9a46-4c30-b5c4-9f29852b01f1:EdemAssets/Walls/TopWall.002
+    eab20443472c11a6e7aa32e934eac83c:
+        Name: BottomWall.002
+        MaterialInstance:
+            Material: d3c4fe87-e4eb-4678-b5d8-ba46c2cf30b3:EdemAssets/Walls/BottomWall.002
+    ce9935f966ea2594dc4dfaa45e6afe92:
+        Name: Gaps.002
+        MaterialInstance:
+            Material: e9b50cea-1096-4ddb-a531-dc679f0dd1e3:EdemAssets/Walls/Gaps.002
+    25af6f8f3f03f37ff3a39d9586d27be6:
+        Name: LiftLight
+        MaterialInstance:
+            Material: 9ac5e259-6b56-4380-8257-c957fefc6435:EdemAssets/Walls/LiftLight
+    4664b5140c7461c937a3b19787b0a3e7:
+        Name: ElevatorArrowHighlighted
+        MaterialInstance:
+            Material: 982bbc4f-2695-4b27-9af5-11e1b6d59f4a:EdemAssets/Walls/ElevatorArrowHighlighted
+    b0e9b14a7dee85407e957fe075342d52:
+        Name: ElevatorArrowDim
+        MaterialInstance:
+            Material: 1d8361ab-2649-4e52-a4d6-9a0142d34e80:EdemAssets/Walls/ElevatorArrowDim
+Modifiers: {}
+~SourceHashes:
+    383d4dbc152e08c3708aa6bb1ae6f7ca~../../../../../../blender/Severance/LiftWithDoors.glb: 0e06e297525451705e58617bcc175500

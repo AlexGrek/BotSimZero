@@ -1,0 +1,31 @@
+!Model
+Id: 02f45ef9-28be-4e20-bb71-b787182a514c
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../../../../../blender/Severance/BotV2.glb
+Skeleton: null
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+Materials:
+    5017877e29bd16155aece010b5449d54:
+        Name: Material
+        MaterialInstance:
+            Material: d04960f8-cdd6-49e0-be8b-702d6c9ed8ac:EdemAssets/Bots/Material_2
+    7d92299bfd5f885a92dd44c11aea550a:
+        Name: GlassTop
+        MaterialInstance:
+            Material: 978f04bc-bc92-4d2f-9b67-aa9c47ab0d97:EdemAssets/Bots/GlassTop
+    d0bf26b7ec59684f1bd9812c29dd7054:
+        Name: BlackMetalFrame
+        MaterialInstance:
+            Material: null
+    c3727eece44f7903f000b85c37bf9e98:
+        Name: Rubber
+        MaterialInstance:
+            Material: 727b1b72-da38-4bdb-baa2-bf6751c239af:EdemAssets/Bots/Rubber_2
+    828b72e077a6cb20e783adac1bd605d2:
+        Name: Metallic
+        MaterialInstance:
+            Material: eb38e3be-2c3b-4bfc-883d-25fe3cc4efaf:EdemAssets/Bots/Metallic
+Modifiers: {}
+~SourceHashes:
+    8842641639047b0e37345ec89a1434b2~../../../../../../blender/Severance/BotV2.glb: a51084657154ac2675ee396da8b926b1
