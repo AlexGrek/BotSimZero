@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -136,6 +137,223 @@ namespace SimuliEngine.MapGen
 
         #endregion
 
+        #region constructors
+        
+        public static PointCluster CreateEmpty()
+        {
+            return new PointCluster(Enumerable.Empty<(int x, int y)>(), Enumerable.Empty<(int x, int y)>());
+        }
+
+        public static PointCluster CreateFromRectWithWalls((int x, int y) start, (int x, int y) end)
+        {
+            if (start.x > end.x || start.y > end.y)
+                throw new ArgumentException("Start point must be less than or equal to end point in both dimensions.");
+            var withoutWalls = new HashSet<(int x, int y)>();
+            var walls = new HashSet<(int x, int y)>();
+            for (int x = start.x + 1; x <= end.x - 1; x++)
+            {
+                for (int y = start.y + 1; y <= end.y - 1; y++)
+                {
+                    withoutWalls.Add((x, y));
+                }
+            }
+            // Add walls around the rectangle
+            for (int x = start.x; x <= end.x; x++)
+            {
+                walls.Add((x, start.y)); // Top wall
+                walls.Add((x, end.y));   // Bottom wall
+            }
+            for (int y = start.y; y <= end.y; y++)
+            {
+                walls.Add((start.x, y)); // Left wall
+                walls.Add((end.x, y));   // Right wall
+            }
+            return new PointCluster(withoutWalls, walls);
+        }
+
+        public static PointCluster CreateFromRectWithoutWalls((int x, int y) start, (int x, int y) end)
+        {
+            if (start.x > end.x || start.y > end.y)
+                throw new ArgumentException("Start point must be less than or equal to end point in both dimensions.");
+            var withoutWalls = new HashSet<(int x, int y)>();
+            for (int x = start.x; x <= end.x; x++)
+            {
+                for (int y = start.y; y <= end.y; y++)
+                {
+                    withoutWalls.Add((x, y));
+                }
+            }
+            return new PointCluster(withoutWalls, Enumerable.Empty<(int x, int y)>());
+        }
+
+        #endregion
+
+        public PointCluster Offset((int x, int y) offset)
+        {
+            ArgumentNullException.ThrowIfNull(offset, nameof(offset));
+            var newWithoutWalls = _withoutWalls.Select(p => (p.x + offset.x, p.y + offset.y)).ToHashSet();
+            var newWalls = _walls.Select(p => (p.x + offset.x, p.y + offset.y)).ToHashSet();
+            return new PointCluster(newWithoutWalls, newWalls);
+        }
+
+        public (int, int) BoundingBoxSize()
+        {
+            if (_withoutWalls.Count == 0 && _walls.Count == 0)
+                return (0, 0);
+            int minX = int.MaxValue, maxX = int.MinValue;
+            int minY = int.MaxValue, maxY = int.MinValue;
+            foreach (var point in _withoutWalls.Concat(_walls))
+            {
+                if (point.x < minX) minX = point.x;
+                if (point.x > maxX) maxX = point.x;
+                if (point.y < minY) minY = point.y;
+                if (point.y > maxY) maxY = point.y;
+            }
+            foreach (var wall in _walls)
+            {
+                if (wall.x < minX) minX = wall.x;
+                if (wall.x > maxX) maxX = wall.x;
+                if (wall.y < minY) minY = wall.y;
+                if (wall.y > maxY) maxY = wall.y;
+            }
+            return (maxX - minX + 1, maxY - minY + 1);
+        }
+
+        public (int, int) BoundingBoxSizeWithoutWalls()
+        {
+            if (_withoutWalls.Count == 0 && _walls.Count == 0)
+                return (0, 0);
+            int minX = int.MaxValue, maxX = int.MinValue;
+            int minY = int.MaxValue, maxY = int.MinValue;
+            foreach (var point in _withoutWalls.Concat(_walls))
+            {
+                if (point.x < minX) minX = point.x;
+                if (point.x > maxX) maxX = point.x;
+                if (point.y < minY) minY = point.y;
+                if (point.y > maxY) maxY = point.y;
+            }
+            return (maxX - minX + 1, maxY - minY + 1);
+        }
+
+        public ((int, int), (int, int)) BoundingBox()
+        {
+            if (_withoutWalls.Count == 0 && _walls.Count == 0)
+                return ((0, 0), (0, 0));
+            int minX = int.MaxValue, maxX = int.MinValue;
+            int minY = int.MaxValue, maxY = int.MinValue;
+            foreach (var point in _withoutWalls.Concat(_walls))
+            {
+                if (point.x < minX) minX = point.x;
+                if (point.x > maxX) maxX = point.x;
+                if (point.y < minY) minY = point.y;
+                if (point.y > maxY) maxY = point.y;
+            }
+            foreach (var wall in _walls)
+            {
+                if (wall.x < minX) minX = wall.x;
+                if (wall.x > maxX) maxX = wall.x;
+                if (wall.y < minY) minY = wall.y;
+                if (wall.y > maxY) maxY = wall.y;
+            }
+            return ((minX, minY), (maxX, maxY));
+        }
+
+        public ((int, int), (int, int)) BoundingBoxWithoutWalls()
+        {
+            if (_withoutWalls.Count == 0 && _walls.Count == 0)
+                return ((0, 0), (0, 0));
+            int minX = int.MaxValue, maxX = int.MinValue;
+            int minY = int.MaxValue, maxY = int.MinValue;
+            foreach (var point in _withoutWalls.Concat(_walls))
+            {
+                if (point.x < minX) minX = point.x;
+                if (point.x > maxX) maxX = point.x;
+                if (point.y < minY) minY = point.y;
+                if (point.y > maxY) maxY = point.y;
+            }
+            return ((minX, minY), (maxX, maxY));
+        }
+
+        #region set operations
+
+        public PointCluster MergeRemovingInnerWallsWith(PointCluster other)
+        {
+            ArgumentNullException.ThrowIfNull(other, nameof(other));
+
+            // Merge all non-wall points
+            var combinedWithoutWalls = new HashSet<(int x, int y)>(_withoutWalls);
+            combinedWithoutWalls.UnionWith(other._withoutWalls);
+
+            // Merge all wall points
+            var allWalls = new HashSet<(int x, int y)>(_walls);
+            allWalls.UnionWith(other._walls);
+
+            // Find walls that are present in both clusters
+            var intersectionWalls = new HashSet<(int x, int y)>(_walls);
+            intersectionWalls.IntersectWith(other._walls);
+
+            // Keep walls that are not inside, or that were present in both clusters
+            allWalls.ExceptWith(combinedWithoutWalls);
+
+            return new PointCluster(combinedWithoutWalls, allWalls);
+        }
+
+        public PointCluster SubtractRemovingOuterWallsWith(PointCluster cluster)
+        {
+            ArgumentNullException.ThrowIfNull(cluster, nameof(cluster));
+
+            // Remove all non-wall points that are present in cluster
+            var newWithoutWalls = new HashSet<(int x, int y)>(_withoutWalls);
+            newWithoutWalls.ExceptWith(cluster._withoutWalls);
+
+            // Remove all walls that are present in cluster's non-walls or walls
+            var newWalls = new HashSet<(int x, int y)>(_walls);
+            newWalls.RemoveWhere(wall => cluster._withoutWalls.Contains(wall) || cluster._walls.Contains(wall));
+
+            return new PointCluster(newWithoutWalls, newWalls);
+        }
+
+
+        public bool ContainsPoint((int x, int y) point)
+        {
+            return _withoutWalls.Contains(point) || _walls.Contains(point);
+        }
+
+        #endregion
+
+        public bool IsFarFromPoint((int x, int y) point, int manhattanDistance)
+        {
+            // every point (including walls) must be at least `manhattanDistance` away from the given point
+            // Use Manhattan distance (|x1-x2| + |y1-y2|) as is common for grid-based maps.
+            foreach (var p in _withoutWalls)
+            {
+                if (Utils.ManhattanDistance(p, point) < manhattanDistance)
+                    return false;
+            }
+            foreach (var p in _walls)
+            {
+                if (Utils.ManhattanDistance(p, point) < manhattanDistance)
+                    return false;
+            }
+            return true;
+        }
+
+        public bool IsInBounds(int maxX, int maxY)
+        {
+            // Check if all points are within the bounds of the map
+            foreach (var point in _withoutWalls)
+            {
+                if (point.x < 0 || point.x >= maxX || point.y < 0 || point.y >= maxY)
+                    return false;
+            }
+            foreach (var wall in _walls)
+            {
+                if (wall.x < 0 || wall.x >= maxX || wall.y < 0 || wall.y >= maxY)
+                    return false;
+            }
+            return true;
+        }
+
         public PointCluster(IEnumerable<(int x, int y)> withoutWalls, IEnumerable<(int x, int y)> walls)
         {
             _withoutWalls = new HashSet<(int x, int y)>(withoutWalls);
@@ -174,6 +392,8 @@ namespace SimuliEngine.MapGen
         public IEnumerable<(int x, int y)> WithWalls => _withoutWalls.Concat(_walls);
 
         public int Count => ((IReadOnlyCollection<(int x, int y)>)_withoutWalls).Count;
+
+        public IEnumerable<(int x, int y)> Walls { get => _walls; }
 
         public bool Contains((int x, int y) item)
         {
@@ -218,6 +438,30 @@ namespace SimuliEngine.MapGen
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable)_withoutWalls).GetEnumerator();
+        }
+
+        public bool Intersects(PointCluster other)
+        {
+            ArgumentNullException.ThrowIfNull(other, nameof(other));
+
+            // Check if any point (including walls) overlaps between the two clusters
+            // Check _withoutWalls
+            if (_withoutWalls.Overlaps(other._withoutWalls) ||
+                _withoutWalls.Overlaps(other._walls) ||
+                _walls.Overlaps(other._withoutWalls) ||
+                _walls.Overlaps(other._walls))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool IntersectsIgnoringWalls(PointCluster other)
+        {
+            ArgumentNullException.ThrowIfNull(other, nameof(other));
+
+            // Only consider non-wall points for intersection
+            return _withoutWalls.Overlaps(other._withoutWalls);
         }
     }
     public static class Extensions

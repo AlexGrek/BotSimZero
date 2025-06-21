@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotSimZero", "BotSimZero\Bo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimuliEngine", "SimuliEngine\SimuliEngine.csproj", "{53E498EE-2B61-DFAB-9F19-BB1550EC10DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimuliEngineCli", "SimuliEngineCli\SimuliEngineCli.csproj", "{645E334C-7EAF-3DA3-DFFA-07E7C1B5200E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{53E498EE-2B61-DFAB-9F19-BB1550EC10DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53E498EE-2B61-DFAB-9F19-BB1550EC10DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53E498EE-2B61-DFAB-9F19-BB1550EC10DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{645E334C-7EAF-3DA3-DFFA-07E7C1B5200E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{645E334C-7EAF-3DA3-DFFA-07E7C1B5200E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{645E334C-7EAF-3DA3-DFFA-07E7C1B5200E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{645E334C-7EAF-3DA3-DFFA-07E7C1B5200E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

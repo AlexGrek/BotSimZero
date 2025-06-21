@@ -9,6 +9,44 @@ namespace SimuliEngine
 {
     public static class Utils
     {
+        public class RandomVariant<T>
+        {
+            public T Item { get; set; }
+            public double Chance { get; set; }
+            public RandomVariant(T item, double chance)
+            {
+                Item = item;
+                Chance = chance;
+            }
+        }
+
+        public static T RandomItem<T>(this Random random, IEnumerable<RandomVariant<T>> variants)
+        {
+            if (variants == null || !variants.Any())
+                throw new ArgumentException("Variants collection cannot be null or empty");
+            double totalChance = variants.Sum(v => v.Chance);
+            if (totalChance <= 0)
+                throw new ArgumentException("Total chance must be greater than zero");
+            double randomValue = random.NextDouble() * totalChance;
+            double cumulativeChance = 0;
+            foreach (var variant in variants)
+            {
+                cumulativeChance += variant.Chance;
+                if (randomValue < cumulativeChance)
+                {
+                    return variant.Item;
+                }
+            }
+            // Fallback in case of rounding errors
+            return variants.Last().Item;
+        }
+
+        public static T RandomOf<T>(this Random random, params (T, double)[] variants)
+        {
+            var asVariants = variants.Select(v => new RandomVariant<T>(v.Item1, v.Item2));
+            return random.RandomItem(asVariants);
+        }
+
         /// <summary>
         /// Generates a random point within the given 2D array dimensions
         /// </summary>
@@ -59,6 +97,33 @@ namespace SimuliEngine
             } while (x == excludeX && y == excludeY);
 
             return (x, y);
+        }
+
+        public static int NormalDistributionRandomInt(this Random random, int min, int max)
+        {
+            if (min >= max)
+                throw new ArgumentException("Min must be less than max");
+
+            // Calculate mean and standard deviation for the range
+            double mean = (min + max) / 2.0;
+            double stddev = (max - min) / 6.0; // 99.7% of values within [min, max] (3σ rule)
+
+            int value;
+            do
+            {
+                // Box-Muller transform to generate a standard normal value
+                double u1 = 1.0 - random.NextDouble(); // avoid 0
+                double u2 = 1.0 - random.NextDouble();
+                double randStdNormal = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Sin(2.0 * Math.PI * u2);
+
+                // Scale and shift to desired mean and stddev
+                double randNormal = mean + stddev * randStdNormal;
+
+                value = (int)Math.Round(randNormal);
+            }
+            while (value < min || value >= max);
+
+            return value;
         }
 
         /// <summary>
@@ -127,6 +192,16 @@ namespace SimuliEngine
             (x, y + 1),
             (x + 1, y),
                 ];
+        }
+
+        public static float Distance((int x, int y) a, (int x, int y) b)
+        {
+            return (float)Math.Sqrt(Math.Pow(a.x - b.x, 2) + Math.Pow(a.y - b.y, 2));
+        }
+
+        public static int ManhattanDistance((int x, int y) a, (int x, int y) b)
+        {
+            return Math.Abs(a.x - b.x) + Math.Abs(a.y - b.y);
         }
 
         public static dynamic ParseTuple(string input)

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace SimuliEngine.MapGen
 {
@@ -28,12 +29,14 @@ namespace SimuliEngine.MapGen
 
         protected List<MapGenerationStep> _steps = new List<MapGenerationStep>();
 
+        protected MapGenerationMemory _memo = new MapGenerationMemory();
+
         public WorldState Generate()
         {
             var initial = new WorldState(Size.Item1, Size.Item2);
             var seed = Config.GetValueOrDefault<int?>("seed", null);
             var random = seed.HasValue ? new Random(seed.Value) : new Random();
-            AddGenerateTerrainSteps(random, initial);
+            AddSmartSteps(random, initial);
             AddGenerateFluctuationsSteps(random, initial);
             _steps.Add(new MapGenerationStep("GenerateSpawnPositions", GenerateSpawnPositions));
             initial = RunGeneration(_steps, random, initial);
@@ -42,6 +45,7 @@ namespace SimuliEngine.MapGen
 
         private WorldState RunGeneration(List<MapGenerationStep> steps, Random rand, WorldState initial)
         {
+            _memo = new MapGenerationMemory();
             foreach (var step in steps)
             {
                 initial = step.Execute(rand, initial);
@@ -77,6 +81,93 @@ namespace SimuliEngine.MapGen
             initial.TileTypeMap.Fill(new TileType.Space());
             _steps.Add(new MapGenerationStep("BasicTerrain", GenerateBasicTerrain));
             _steps.Add(new MapGenerationStep("GenerateSpecialObjects", GenerateSpecialObjects));
+        }
+
+        private void AddSmartSteps(Random random, WorldState initial)
+        {
+            initial.TileTypeMap.Fill(new TileType.Space());
+            var center = (Size.Item1 / 2, Size.Item2 / 2);
+            var centerSector = 3;
+            var initialCrawelerPosition = (random.Next(-Size.Item1 / centerSector, Size.Item1 / centerSector), random.Next(-Size.Item2 / centerSector, Size.Item2 / centerSector));
+            var loggable = (ILoggable)this;
+
+            _steps.Add(new MapGenerationStep("GenerateCrawlerRoot", (rand, world) =>
+            {
+                world.TileTypeMap[initialCrawelerPosition.Item1 + center.Item1, initialCrawelerPosition.Item2 + center.Item2] = new TileType.Wall();
+                return world;
+            }));
+            _steps.Add(new MapGenerationStep("GenerateLargeSpaces", (rand, world) =>
+            {
+                var spacesCount = (Size.Item1 * Size.Item2) * Config.GetValueOrDie<double>("spaces.spawn_rate");
+                var spacesRetries = Config.GetValueOrDie<double>("spaces.retries");
+                var minDIstanceFromCenter = Config.GetValueOrDie<double>("spaces.min_distance_from_center");
+                var sizeMin = Config.GetValueOrDie<int>("spaces.size.min");
+                var sizeMax = Config.GetValueOrDie<int>("spaces.size.max");
+                var multiZoneOffsetMax = Config.GetValueOrDie<int>("spaces.multi_zone_offset_max");
+                for (int i = 0; i < spacesCount; i++)
+                {
+                    loggable.Log($"Generating large space {i + 1}/{spacesCount} with retries {spacesRetries} and size range ({sizeMin}, {sizeMax})");
+                    for (int retries = 0; retries <= spacesRetries; retries++)
+                    {
+                        var (xx, yx) = rand.RandomPoint(Size.Item1, Size.Item2);
+                        if (Utils.Distance((xx, yx), center) < minDIstanceFromCenter)
+                        {
+                            continue; // too close to center
+                        }
+                        var start = (0, 0);
+                        var end = (rand.Next(sizeMin, sizeMax), rand.Next(sizeMin, sizeMax));
+                        var zone = PointCluster.CreateFromRectWithWalls(start, end);
+                        var type = rand.RandomOf(
+                            ("single", Config.GetValueOrDie<double>("spaces.single_rate")),
+                            ("double", Config.GetValueOrDie<double>("spaces.double_rate")),
+                            ("triple", Config.GetValueOrDie<double>("spaces.triple_rate"))
+                            );
+                        loggable.Log($"Generating large space with mode: {type}; end: {end}, offset: {(xx / 2 + 1, yx / 2 + 1)}");
+                        if (type != "single")
+                        {
+                            var end2 = (rand.Next(sizeMin, sizeMax), rand.Next(sizeMin, sizeMax));
+                            var shuffle = rand.RandomPoint(multiZoneOffsetMax, multiZoneOffsetMax);
+                            var zone2 = PointCluster.CreateFromRectWithWalls(start, end2).Offset(shuffle);
+                            zone = zone.MergeRemovingInnerWallsWith(zone2);
+                        }
+                        if (type == "triple")
+                        {
+                            var end3 = (rand.Next(sizeMin, sizeMax) / 2 + 1, rand.Next(sizeMin, sizeMax) / 2 + 1);
+                            var shuffle = rand.RandomPoint(multiZoneOffsetMax, multiZoneOffsetMax);
+                            var zone3 = PointCluster.CreateFromRectWithWalls(start, end3).Offset(shuffle);
+                            zone = zone.MergeRemovingInnerWallsWith(zone3);
+                        }
+                        zone = zone.Offset((xx, yx));
+                        if (!zone.IsInBounds(Size.Item1, Size.Item2))
+                        {
+                            loggable.Log($"Out of bounds: {zone.BoundingBoxSize()}; at: {zone.BoundingBox()}");
+                            continue; // out of bounds
+                        }
+                        if (_memo.LargeSpaces.Any(z => z.IntersectsIgnoringWalls(zone)))
+                        {
+                            loggable.Log("Intersects with existing zone");
+                            continue; // intersects with existing zone
+                        }
+                        PutRegionWithWalls(zone, world);
+                        loggable.Log("Success!");
+                        _memo.LargeSpaces.Add(zone);
+                        break; // successfully placed the zone
+                    }
+                }
+                return world;
+            }));
+        }
+
+        private WorldState PutRegionWithWalls(PointCluster cluster, WorldState state)
+        {
+            foreach(var wall in cluster.Walls)
+            {
+                if (state.TileTypeMap[wall.Item1, wall.Item2] is TileType.Space)
+                {
+                    state.TileTypeMap[wall.Item1, wall.Item2] = new TileType.Wall();
+                }
+            }
+            return state;
         }
 
         private WorldState GenerateSpecialObjects(Random random, WorldState initial)
@@ -195,6 +286,12 @@ namespace SimuliEngine.MapGen
         {
             Config = config;
             return this;
+        }
+
+        protected class MapGenerationMemory: ILoggable
+        {
+            public (int, int) CrawlerRoot { get; set; } = (0, 0);
+            public List<PointCluster> LargeSpaces { get; set; } = new List<PointCluster>();
         }
         
         protected class MapGenerationStep: ILoggable

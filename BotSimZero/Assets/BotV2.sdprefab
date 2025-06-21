@@ -1,0 +1,74 @@
+!PrefabAsset
+Id: 7511697f-4084-4f37-be58-c00875933a3c
+SerializedVersion: {Stride: 3.1.0.1}
+Tags: []
+Hierarchy:
+    RootParts:
+        - ref!! 38ded0da-0a4e-4ec3-a2c5-15fa96feab61
+    Parts:
+        -   Entity:
+                Id: 38ded0da-0a4e-4ec3-a2c5-15fa96feab61
+                Name: BotV2
+                Components:
+                    ef4c4909f38875bdffd1c78ac10d94ef: !TransformComponent
+                        Id: 252e993c-4eb3-4f90-84ae-96954965f417
+                        Position: {X: -0.35190845, Y: -2.3841858E-07, Z: 1.8621411}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            47edf30192996fbfddb4c889f46fcac3: ref!! a75973c1-89d3-401b-a8cb-eac6d50351e4
+                    ea38aaed1c7b0b2ccc89c56d81f9defe: !ModelComponent
+                        Id: b8a03096-f3c0-409d-9d86-9c9338b13f0d
+                        Model: 02f45ef9-28be-4e20-bb71-b787182a514c:EdemAssets/Bots/BotV2
+                        Materials:
+                            120f8fca90755811f7bc9f4ab65f664f~0: a1df5482-ddd0-4ede-8307-744b09d3cb3e:EdemAssets/Bots/Material
+                    cf6e63302f33a6ad430324a02c54822e: !RigidbodyComponent
+                        Id: 0b0748b2-6689-4a4e-a431-fe5414ead33b
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: true
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            630bb86a3ce5c96fc62db6f939fe17db: !ColliderShapeAssetDesc
+                                Shape: bb80bc7f-db7a-4ef9-b1b9-e145f8df2837:EdemAssets/Bots/BotV2Collider
+                    15e25dd95d879390af07c4f7b5332af1: !BotSimZero.Entities.BotComponent,BotSimZero
+                        Id: 9e31e9be-5782-40c8-9a2f-4198218e3251
+                        SpawnPosition:
+                            Item1: 0
+                            Item2: 0
+        -   Entity:
+                Id: 4f890627-c0f0-4f97-95bb-bc71f3c3984e
+                Name: BotV2Screen
+                Components:
+                    e05da37c09fd18cfa8e0a7ffcb3faec9: !TransformComponent
+                        Id: a75973c1-89d3-401b-a8cb-eac6d50351e4
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    4516273a2f464575dc18c5acb18af771: !ModelComponent
+                        Id: 334a6a31-9e41-4b72-a3cf-825f3525e49f
+                        Model: 086b7cb6-77c8-4ea5-886a-77936e45a03b:EdemAssets/Bots/BotV2Screen
+                        Materials:
+                            17154e6a80a5e6d8f4e007c1bcef4e19~0: 18048d30-75d1-4dbc-b3b9-96146ba574ed:EdemAssets/OfficeStuff/Some_material
+                    1a7d224aafa361bef9c6e352f17b4b30: !BotSimZero.VirtualUI.UiDisplayAsyncScript,BotSimZero
+                        Id: e5403d58-c351-491a-8fe4-fd32c637feea
+                        Font: ae863585-370d-44e6-b8e3-f37f41e35eb7:MyCustomFont
+                        PlaneEntity: null
+                        TextureWidth: 1024
+                        TextureHeight: 1024
+                        BgColor: {R: 0, G: 0, B: 0, A: 255}
+                        FontSize: 48.0
+                        Message: Hello World!
+                        DataSourceAddress: Random
+                        UpdateEveryNFrames: 10

@@ -20,6 +20,17 @@ seed: 42
 terrain:
     wall:
         chance: 0.2
+spaces:
+    spawn_rate: 0.0039
+    retries: 50
+    single_rate: 0.1
+    double_rate: 0.6
+    triple_rate: 0.4
+    size:
+        min: 3
+        max: 10
+    min_distance_from_center: 10
+    multi_zone_offset_max: 4
 fluctuations:
     temp:
         points: 30

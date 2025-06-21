@@ -20,7 +20,6 @@ Hierarchy:
         - ref!! ad12f80f-6a18-4b03-8de2-3856f3b57441
         - ref!! 326fa5ed-2776-4dae-86ad-7abff45e1829
         - ref!! 31287249-c704-4c47-8bcd-7ccc741e912c
-        - ref!! 9bb61c3b-17ea-4433-b989-bad69bfd6842
     Parts:
         -   Entity:
                 Id: 03386349-8b79-4ae7-bf72-0a6ae7231463
@@ -237,39 +236,6 @@ Hierarchy:
                         Model: c20f8de1-b1d1-4e78-b2bf-80c41f8bf9a7:EdemAssets/Megaterm/Megaterm
                         Materials: {}
         -   Entity:
-                Id: 9bb61c3b-17ea-4433-b989-bad69bfd6842
-                Name: BotV2
-                Components:
-                    ef4c4909f38875bdffd1c78ac10d94ef: !TransformComponent
-                        Id: c8f3a449-e2bd-418b-8145-480f011001a0
-                        Position: {X: -0.35190845, Y: -2.3841858E-07, Z: 1.8621411}
-                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
-                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
-                        Children:
-                            47edf30192996fbfddb4c889f46fcac3: ref!! 51a97a5c-355d-4913-934e-93b53b1f4e18
-                    ea38aaed1c7b0b2ccc89c56d81f9defe: !ModelComponent
-                        Id: a91fb294-e3d9-4a5a-a308-be9c96b8c5b0
-                        Model: 02f45ef9-28be-4e20-bb71-b787182a514c:EdemAssets/Bots/BotV2
-                        Materials:
-                            120f8fca90755811f7bc9f4ab65f664f~0: a1df5482-ddd0-4ede-8307-744b09d3cb3e:EdemAssets/Bots/Material
-                    cf6e63302f33a6ad430324a02c54822e: !RigidbodyComponent
-                        Id: 65c47a43-1449-41c0-9dc8-39c0211bdb06
-                        CanSleep: false
-                        Restitution: 0.0
-                        Friction: 0.5
-                        RollingFriction: 0.0
-                        CcdMotionThreshold: 0.0
-                        CcdSweptSphereRadius: 0.0
-                        IsTrigger: false
-                        IsKinematic: false
-                        Mass: 1.0
-                        LinearDamping: 0.0
-                        AngularDamping: 0.0
-                        OverrideGravity: false
-                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
-                        NodeName: null
-                        ColliderShapes: {}
-        -   Entity:
                 Id: ad12f80f-6a18-4b03-8de2-3856f3b57441
                 Name: CameraVR
                 Components:
@@ -284,20 +250,6 @@ Hierarchy:
                         Name: VrCumera
                         Projection: Perspective
                         Slot: 8b2892f1-f46e-4397-bcdc-a18a1ec39ee2
-        -   Entity:
-                Id: b9ee39ad-1c02-4eae-9e4d-d24128be42dc
-                Name: BotV2Screen
-                Components:
-                    e05da37c09fd18cfa8e0a7ffcb3faec9: !TransformComponent
-                        Id: 51a97a5c-355d-4913-934e-93b53b1f4e18
-                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
-                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
-                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
-                        Children: {}
-                    4516273a2f464575dc18c5acb18af771: !ModelComponent
-                        Id: 98bce49c-4fb9-4170-ac14-a82d680f22b8
-                        Model: 086b7cb6-77c8-4ea5-886a-77936e45a03b:EdemAssets/Bots/BotV2Screen
-                        Materials: {}
         -   Entity:
                 Id: c504d52e-eb0c-4ff3-bcae-a67277aca239
                 Name: PlayerCharacter
